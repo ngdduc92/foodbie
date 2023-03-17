@@ -1,0 +1,41 @@
+@import '../../styles/base';
+
+.Container {
+  margin-top: 20px;
+}
+.MobileCategory {
+}
+.MobileCategoryList {
+  display: flex;
+  list-style: none;
+  padding-left: 0;
+  max-width: 100%;
+  overflow-x: auto;
+  &::-webkit-scrollbar {
+    display: none;
+  }
+}
+.MobileCategoryListItem {
+  display: flex;
+  align-items: center;
+  flex-shrink: 0;
+  margin-right: 10px;
+  padding: 10px 10px;
+  border: 1px solid #9999;
+  border-radius: 20px;
+  max-width: 130px;
+}
+.MobileCategoryIcon {
+  font-size: 30px;
+  color: $primary-color;
+}
+.MobileCategoryContent {
+  font-size: 20px;
+  text-transform: uppercase;
+  white-space: inherit;
+  word-wrap: unset;
+  flex: 1;
+  line-height: 17px;
+  font-weight: 600;
+  margin-left: 6px;
+}
