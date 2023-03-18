@@ -11,6 +11,7 @@
   padding-left: 0;
   max-width: 100%;
   overflow-x: auto;
+  justify-content: center;
   &::-webkit-scrollbar {
     display: none;
   }
@@ -24,6 +25,15 @@
   border: 1px solid #9999;
   border-radius: 20px;
   max-width: 130px;
+  cursor: pointer;
+  &:hover {
+    background: linear-gradient(95deg, $primary-color, #a0eacf);
+    .MobileCategoryIcon,
+    .MobileCategoryContent {
+      transition: 500ms ease-in-out;
+      color: $white;
+    }
+  }
 }
 .MobileCategoryIcon {
   font-size: 30px;

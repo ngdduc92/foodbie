@@ -1,5 +1,11 @@
 $primary-color: #3ac5c9;
 $text-color: #444;
 $font-family: 'ProximaNova', sans-serif;
-$white: '#ffffff';
+$white: #fff;
 $black: #000;
+
+%img-cover {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}

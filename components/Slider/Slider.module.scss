@@ -1,3 +1,30 @@
-.Slider {
-  margin: 20px -10px 0;
+@import '../../styles/base';
+
+.slider {
+  padding: 40px 0;
+}
+.slider__item {
+  height: 370px;
+  margin: 0 20px;
+  cursor: pointer;
+  img {
+    @extend %img-cover;
+    border-radius: 4px;
+  }
+  &:hover {
+    transform: scale(1.05);
+    transition: 400ms ease-in-out;
+  }
+}
+
+@media (max-width: 767px) {
+  .slider {
+    padding: 0;
+    margin: 20px -10px 0;
+  }
+  .slider__item {
+    margin: 0 6px;
+    border-radius: 4px;
+    height: 145px;
+  }
 }
