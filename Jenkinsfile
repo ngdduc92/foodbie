@@ -6,15 +6,16 @@ pipeline {
     stages {
         stage('Build') {
             steps {
-                sh 'npm run install'
+                sh 'npm install'
+                echo 'Install successfully'
                 sh 'npm run build'
-                echo 'Building NextJS App'
+                echo 'Build successfully'
             }
         }
         stage('Deploy') {
             steps {
                 sh 'npm run start'
-                echo 'Building NextJS App'
+                echo 'Start successfully'
             }
         }
     }
