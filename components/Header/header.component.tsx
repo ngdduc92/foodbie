@@ -1,12 +1,15 @@
 import React from 'react';
 import classNames from 'classnames/bind';
-import styles from './header.module.scss';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faLocationDot, faBars, faMagnifyingGlass } from '@fortawesome/free-solid-svg-icons';
 import { faEnvelope } from '@fortawesome/free-regular-svg-icons';
+import styles from './header.module.scss';
+import { useSearchStore } from '@/store/search/search.store';
 
 const cx = classNames.bind(styles);
 function Header() {
+  // const searchValue = useSearchStore((state) => state.search);
+  // console.log('searchValue', searchValue);
   return (
     <div className={cx('wrapper__header')}>
       <div className={cx('Nav__bar')}>
