@@ -1,8 +1,9 @@
 import React from 'react';
 import { useForm, SubmitHandler } from 'react-hook-form';
-import style from './Login.module.scss';
+import style from './login.module.scss';
 import clsx from 'clsx';
 import Link from 'next/link';
+
 type Inputs = {
   example: string;
   exampleRequired: string;

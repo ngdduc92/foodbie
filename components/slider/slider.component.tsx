@@ -2,8 +2,11 @@ import classNames from 'classnames/bind';
 import React from 'react';
 import { Carousel } from 'react-responsive-carousel';
 import 'react-responsive-carousel/lib/styles/carousel.min.css';
+import Image from 'next/image';
 import styles from './slider.module.scss';
+
 const cx = classNames.bind(styles);
+
 function Slider() {
   return (
     <Carousel
@@ -19,16 +22,16 @@ function Slider() {
       className={cx('slider')}
     >
       <div className={cx('slider__item')}>
-        <img alt="Picture 1" src="assets/images/images.jfif" />
+        <Image alt="picture 1" src="/assets/images/images.jfif" width={800} height={500} />
       </div>
       <div className={cx('slider__item')}>
-        <img alt="Picture 2" src="assets/images/images1.jfif" />
+        <Image alt="picture 1" src="/assets/images/images1.jfif" width={800} height={500} />
       </div>
       <div className={cx('slider__item')}>
-        <img alt="Picture 3" src="assets/images/images2.jfif" />
+        <Image alt="picture 1" src="/assets/images/images2.jfif" width={800} height={500} />
       </div>
       <div className={cx('slider__item')}>
-        <img alt="Picture 3" src="assets/images/images3.jfif" />
+        <Image alt="picture 1" src="/assets/images/images3.jfif" width={800} height={500} />
       </div>
     </Carousel>
   );

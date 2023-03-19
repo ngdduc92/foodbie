@@ -1,6 +1,6 @@
-import Main from '@/components/main/main.component';
+import Main from '../components/category/category.component';
 import Layout from '@/components/layout/layout.component';
-import Slider from '@/components/slider/slider.component';
+import Slider from '../components/slider/slider.component';
 
 export default function Home() {
   return (
