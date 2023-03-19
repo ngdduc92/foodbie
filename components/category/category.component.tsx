@@ -2,8 +2,8 @@ import React from 'react';
 
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faPlateWheat, faBagShopping, faPenRuler } from '@fortawesome/free-solid-svg-icons';
-import styte from './Main.module.scss';
-function Main() {
+import styte from './category.module.scss';
+function Category() {
   return (
     <div className={styte.Container}>
       <nav className={styte.MobileCategory}>
@@ -38,4 +38,4 @@ function Main() {
   );
 }
 
-export default Main;
+export default Category;
