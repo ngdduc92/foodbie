@@ -6,6 +6,7 @@ pipeline {
     stages {
         stage('Build') {
             steps {
+                sh 'nvm alias default 16'
                 sh 'node -v'
                 sh 'npm -v'
                 sh 'npm install'
