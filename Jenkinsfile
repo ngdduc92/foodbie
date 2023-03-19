@@ -4,17 +4,14 @@ pipeline {
     stages {
         stage('Build') {
             steps {
-                echo 'Building..'
-            }
-        }
-        stage('Test') {
-            steps {
-                echo 'Testing..'
+                sh 'npm build'
+                echo 'Building NextJS App'
             }
         }
         stage('Deploy') {
             steps {
-                echo 'Deploying....'
+                sh 'npm start'
+                echo 'Building NextJS App'
             }
         }
     }
