@@ -1,22 +1,21 @@
-@import '../../styles/base';
+@use '../../styles/base' as *;
+
 .wrapper__header {
   padding: 0 28px;
 }
 .Nav__bar {
-  display: flex;
+  @include flex(center, space-between);
   height: 36px;
-  align-items: center;
-  justify-content: space-between;
 }
+
 .location {
-  display: flex;
-  align-items: center;
+  @include flex(center, null);
 }
 
 .location__icon {
   margin: 0 10px;
-  color: $primary-color;
   font-size: 2rem;
+  color: $primary-color;
 }
 .location__current p {
   display: -webkit-box;
@@ -29,7 +28,7 @@
   font-size: 2rem;
 }
 .actions {
-  display: flex;
+  @include flex(null, null);
 }
 .mobile__menu,
 .notification {
@@ -37,14 +36,13 @@
   font-size: 2rem;
 }
 .search {
-  display: flex;
+  @include flex(center, null);
   border: 2px solid #e8e8e8;
   border-radius: 20px;
   height: 40px;
   padding: 0 30px 0 30px;
   transition: border-color 0.2s ease-in-out;
   width: 100%;
-  align-items: center;
   margin-top: 10px;
 }
 .search__icon {
@@ -62,7 +60,7 @@
   outline: none;
   padding-left: 10px;
 }
-@media (max-width: 767px) {
+@include mobile {
   .wrapper__header {
     padding: 0;
   }

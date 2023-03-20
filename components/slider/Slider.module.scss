@@ -1,4 +1,4 @@
-@import '../../styles/base';
+@use '../../styles/base' as *;
 
 .slider__item {
   height: 370px;
@@ -13,8 +13,7 @@
     transition: 400ms ease-in-out;
   }
 }
-
-@media (max-width: 767px) {
+@include mobile {
   .slider {
     padding: 0;
     margin: 20px -10px 0;
