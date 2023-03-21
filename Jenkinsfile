@@ -6,8 +6,8 @@ pipeline {
     stages {
         stage('Build') {
             steps {
-                sh: 'npm install --global yarn'
-                echo: 'Install yarn successfully'
+                sh 'npm install --global yarn'
+                echo 'Install yarn successfully'
                 sh 'yarn install'
                 echo 'Install successfully'
                 sh 'yarn build'
