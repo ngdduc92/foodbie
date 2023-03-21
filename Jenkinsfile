@@ -6,15 +6,17 @@ pipeline {
     stages {
         stage('Build') {
             steps {
-                sh 'npm install'
+                sh: 'npm install --global yarn'
+                echo: 'Install yarn successfully'
+                sh 'yarn install'
                 echo 'Install successfully'
-                sh 'npm run build'
+                sh 'yarn build'
                 echo 'Build successfully'
             }
         }
         stage('Deploy') {
             steps {
-                sh 'npm run start'
+                sh 'yarn start'
                 echo 'Start successfully'
             }
         }
