@@ -1,36 +1,50 @@
 import React from 'react';
-
+import classNames from 'classnames/bind';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faPlateWheat, faBagShopping, faPenRuler } from '@fortawesome/free-solid-svg-icons';
-import styte from './category.module.scss';
+import stytes from './category.module.scss';
+const cx = classNames.bind(stytes);
 function Category() {
   return (
-    <div className={styte.Container}>
-      <nav className={styte.MobileCategory}>
-        <ul className={styte.MobileCategoryList}>
-          <li className={styte.MobileCategoryListItem}>
-            <FontAwesomeIcon icon={faPenRuler} className={styte.MobileCategoryIcon} />
-            <span className={styte.MobileCategoryContent}>studio</span>
+    <div className={cx('container')}>
+      <nav className={cx('category')}>
+        <ul className={cx('category__list')}>
+          <li className={cx('category__item')}>
+            <i className={cx('wrapper__icon')}>
+              <FontAwesomeIcon icon={faPenRuler} className={cx('category__icon')} />
+            </i>
+            <span className={cx('category__content')}>studio</span>
           </li>
-          <li className={styte.MobileCategoryListItem}>
-            <FontAwesomeIcon icon={faBagShopping} className={styte.MobileCategoryIcon} />
-            <span className={styte.MobileCategoryContent}>mart</span>
+          <li className={cx('category__item')}>
+            <i className={cx('wrapper__icon')}>
+              <FontAwesomeIcon icon={faBagShopping} className={cx('category__icon')} />
+            </i>
+            <span className={cx('category__content')}>mart</span>
           </li>
-          <li className={styte.MobileCategoryListItem}>
-            <FontAwesomeIcon icon={faPlateWheat} className={styte.MobileCategoryIcon} />
-            <span className={styte.MobileCategoryContent}>mama woo</span>
+          <li className={cx('category__item')}>
+            <i className={cx('wrapper__icon')}>
+              <FontAwesomeIcon icon={faPlateWheat} className={cx('category__icon')} />
+            </i>
+            <span className={cx('category__content')}>mama woo</span>
           </li>
-          <li className={styte.MobileCategoryListItem}>
-            <FontAwesomeIcon icon={faPenRuler} className={styte.MobileCategoryIcon} />
-            <span className={styte.MobileCategoryContent}>studio</span>
+          <li className={cx('category__item')}>
+            <i className={cx('wrapper__icon')}>
+              {' '}
+              <FontAwesomeIcon icon={faPenRuler} className={cx('category__icon')} />
+            </i>
+            <span className={cx('category__content')}>studio</span>
           </li>
-          <li className={styte.MobileCategoryListItem}>
-            <FontAwesomeIcon icon={faBagShopping} className={styte.MobileCategoryIcon} />
-            <span className={styte.MobileCategoryContent}>mart</span>
+          <li className={cx('category__item')}>
+            <i className={cx('wrapper__icon')}>
+              <FontAwesomeIcon icon={faBagShopping} className={cx('category__icon')} />
+            </i>
+            <span className={cx('category__content')}>mart</span>
           </li>
-          <li className={styte.MobileCategoryListItem}>
-            <FontAwesomeIcon icon={faPlateWheat} className={styte.MobileCategoryIcon} />
-            <span className={styte.MobileCategoryContent}>mama woo</span>
+          <li className={cx('category__item')}>
+            <i className={cx('wrapper__icon')}>
+              <FontAwesomeIcon icon={faPlateWheat} className={cx('category__icon')} />
+            </i>
+            <span className={cx('category__content')}>mama woo</span>
           </li>
         </ul>
       </nav>

@@ -1,11 +1,9 @@
 @use '../../styles/base' as *;
 
-.MobileCategory {
-}
-.MobileCategoryList {
-  display: flex;
+.category__list {
+  @include flex(null, null);
   list-style: none;
-  padding-left: 0;
+  padding: 20px 0;
   max-width: 100%;
   overflow-x: auto;
   justify-content: center;
@@ -13,36 +11,63 @@
     display: none;
   }
 }
-.MobileCategoryListItem {
-  display: flex;
-  align-items: center;
-  flex-shrink: 0;
-  margin-right: 10px;
+.category__item {
+  @include flex(center, space-evenly);
+  flex-direction: column;
+  width: 96px;
+  min-height: 112px;
+  margin-right: 40px;
   padding: 10px 10px;
-  border: 1px solid #9999;
-  border-radius: 20px;
-  max-width: 130px;
+  background-color: $white;
+  box-shadow: 4px 4px 14px -3px #999;
   cursor: pointer;
+  border-radius: 0.5rem;
+  &:active {
+    transform: scale(0.7);
+    transition: 100ms ease;
+  }
   &:hover {
-    background: linear-gradient(95deg, $primary-color, #a0eacf);
-    .MobileCategoryIcon,
-    .MobileCategoryContent {
-      transition: 500ms ease-in-out;
+    background-color: $primary-color;
+    .wrapper__icon {
+      transition: 400ms ease-in-out;
+      background-color: $white;
+    }
+    .category__icon {
+      transition: 400ms ease-in-out;
+      color: $text-color;
+    }
+    .category__content {
+      transition: 400ms ease-in-out;
       color: $white;
     }
   }
 }
-.MobileCategoryIcon {
-  font-size: 30px;
-  color: $primary-color;
+.wrapper__icon {
+  @include flex(center, center);
+  width: 40px;
+  height: 40px;
+  background-color: $primary-color;
+  border-radius: 50px;
 }
-.MobileCategoryContent {
-  font-size: 20px;
-  text-transform: uppercase;
+.category__icon {
+  font-size: 18px;
+  color: $white;
+}
+.category__content {
   white-space: inherit;
   word-wrap: unset;
-  flex: 1;
+  font-size: 14px;
   line-height: 17px;
   font-weight: 600;
-  margin-left: 6px;
+  text-align: center;
+  text-transform: capitalize;
+}
+
+@include mobile {
+  .category__list {
+    justify-content: unset;
+  }
+  .category__item {
+    min-width: 96px;
+  }
 }

@@ -8,8 +8,7 @@ import { useSearchStore } from '@/store/search/search.store';
 
 const cx = classNames.bind(styles);
 function Header() {
-  // const searchValue = useSearchStore((state) => state.search);
-  // console.log('searchValue', searchValue);
+  const searchValue = useSearchStore((state: any) => state.searchString);
   return (
     <div className={cx('wrapper__header')}>
       <div className={cx('Nav__bar')}>

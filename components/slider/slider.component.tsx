@@ -22,16 +22,16 @@ function Slider() {
       className={cx('slider')}
     >
       <div className={cx('slider__item')}>
-        <Image alt="picture 1" src="/assets/images/images.jfif" width={800} height={500} />
+        <Image alt="picture 1" src="/assets/images/hero-1.jpg" width={800} height={500} />
       </div>
       <div className={cx('slider__item')}>
-        <Image alt="picture 1" src="/assets/images/images1.jfif" width={800} height={500} />
+        <Image alt="picture 1" src="/assets/images/hero-2.jpg" width={800} height={500} />
       </div>
       <div className={cx('slider__item')}>
-        <Image alt="picture 1" src="/assets/images/images2.jfif" width={800} height={500} />
+        <Image alt="picture 1" src="/assets/images/hero-3.jpg" width={800} height={500} />
       </div>
       <div className={cx('slider__item')}>
-        <Image alt="picture 1" src="/assets/images/images3.jfif" width={800} height={500} />
+        <Image alt="picture 1" src="/assets/images/hero-4.jpg" width={800} height={500} />
       </div>
     </Carousel>
   );
