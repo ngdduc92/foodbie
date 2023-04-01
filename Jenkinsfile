@@ -2,7 +2,7 @@ pipeline {
     agent any
 
     environment {
-        def env = readJSON file: 'jenkinsEnv.json'
+        def env = readJSON(file: "./jenkinsEnv.json")
         version = "${env.version}"
     }
     stages {
