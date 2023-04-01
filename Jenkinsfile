@@ -1,20 +1,20 @@
 pipeline {
     agent any
 
-    tools {nodejs "19.8.1"}
-
     stages {
+        environment {
+            def env = readJSON file: 'jenkinsEnv.json'
+            version = "${env.version}"
+        }
         stage('Build') {
             steps {
-                sh 'npm install'
-                echo 'Install successfully'
-                sh 'npm run build'
+                sh "docker build -t foobbie:${version} ."
                 echo 'Build successfully'
             }
         }
         stage('Deploy') {
             steps {
-                sh 'npm run start'
+                sh "docker run -p 3000:3000 foobbie-deploy:${version} ."
                 echo 'Start successfully'
             }
         }
