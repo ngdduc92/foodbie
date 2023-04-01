@@ -8,6 +8,7 @@ pipeline {
         }
         stage('Build') {
             steps {
+                sh "stopByPort.sh 3000"
                 sh "docker build -t foobbie:${version} ."
                 echo 'Build successfully'
             }
