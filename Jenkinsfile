@@ -4,7 +4,7 @@ pipeline {
     stages {
         stage('Build') {
             steps {
-                sh "./stopByPort.sh 3000"
+                sh "sudo ./stopByPort.sh 3000"
                 sh "docker build -t foobbie:0.0.1 ."
                 echo 'Build successfully'
             }
