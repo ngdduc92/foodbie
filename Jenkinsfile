@@ -1,11 +1,11 @@
 pipeline {
     agent any
 
+    environment {
+        def env = readJSON file: 'jenkinsEnv.json'
+        version = "${env.version}"
+    }
     stages {
-        environment {
-            def env = readJSON file: 'jenkinsEnv.json'
-            version = "${env.version}"
-        }
         stage('Build') {
             steps {
                 sh "stopByPort.sh 3000"
