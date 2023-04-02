@@ -1,6 +1,9 @@
 FROM node:18-alpine AS deps
 RUN apk add --no-cache libc6-compat
-RUN apt-get install node
+RUN npm install npm@latest -g && \
+    npm install n -g && \
+    n latest
+
 WORKDIR /app
 
 COPY package.json package-lock.json ./
@@ -8,7 +11,11 @@ RUN  npm install --production
 
 FROM node:18-alpine AS builder
 WORKDIR /app
-RUN apt-get install node
+
+RUN npm install npm@latest -g && \
+    npm install n -g && \
+    n latest
+
 COPY --from=deps /app/node_modules ./node_modules
 COPY . .
 
