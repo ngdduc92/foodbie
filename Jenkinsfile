@@ -10,7 +10,7 @@ pipeline {
         }
         stage('Deploy') {
             steps {
-                sh "docker run -p 3000:3000 foobbie::0.0.1 ."
+                sh "docker run -p 3000:3000 foobbie:0.0.1 ."
                 echo 'Start successfully'
             }
         }
