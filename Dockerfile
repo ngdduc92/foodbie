@@ -2,8 +2,6 @@ FROM node:18-alpine as builder
 
 WORKDIR /app
 
-RUN apk add --update nodejs npm
-
 COPY package.json ./
 
 COPY . .
