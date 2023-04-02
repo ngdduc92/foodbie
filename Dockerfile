@@ -1,8 +1,6 @@
 FROM node:18-alpine AS deps
 RUN apk add --no-cache libc6-compat
-RUN npm install npm@latest -g && \
-    npm install n -g && \
-    n latest
+RUN apk add --update nodejs npm
 
 WORKDIR /app
 
@@ -12,9 +10,8 @@ RUN  npm install --production
 FROM node:18-alpine AS builder
 WORKDIR /app
 
-RUN npm install npm@latest -g && \
-    npm install n -g && \
-    n latest
+RUN apk add --update nodejs npm
+
 
 COPY --from=deps /app/node_modules ./node_modules
 COPY . .
