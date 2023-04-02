@@ -4,13 +4,13 @@ pipeline {
     stages {
         stage('Build') {
             steps {
-                sh "docker build -t foobbie:0.0.1 ."
+                sh "sudo docker build -t foobbie:0.0.1 ."
                 echo 'Build successfully'
             }
         }
         stage('Deploy') {
             steps {
-                sh "docker run -p 3000:3000 foobbie:0.0.1 ."
+                sh "sudo docker run -p 3000:3000 foobbie:0.0.1 ."
                 echo 'Start successfully'
             }
         }
