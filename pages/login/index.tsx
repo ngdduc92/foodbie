@@ -1,24 +1,36 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { useForm, SubmitHandler } from 'react-hook-form';
 import style from './login.module.scss';
 import clsx from 'clsx';
 import Link from 'next/link';
+import { AUTH_LOGIN } from '@/share/constants';
+import { HttpClient } from '@/services/http-client';
+import { useRouter } from 'next/router';
 
 type Inputs = {
-  example: string;
-  exampleRequired: string;
+  email: string;
+  password: string;
 };
 
 function Login() {
+  const router = useRouter();
   const {
     register,
     handleSubmit,
-    watch,
     formState: { errors },
   } = useForm<Inputs>();
-  const onSubmit: SubmitHandler<Inputs> = (data) => console.log(data);
-
-  console.log(watch('example'));
+  const onSubmit: SubmitHandler<Inputs> = (data) => {
+    HttpClient.post(AUTH_LOGIN, data)
+      .then((res) => {
+        if (res.status === 200) {
+          localStorage.setItem('API_TOKEN', res.data.accessToken);
+          router.push('/');
+        }
+      })
+      .catch((errors) => {
+        console.log(errors);
+      });
+  };
 
   const loginSteps = [
     {
@@ -30,6 +42,7 @@ function Login() {
       link: '/',
     },
   ];
+
   const handleRenderBtn = () =>
     loginSteps.map((loginStep, index) => (
       <div key={index} className={clsx(style.SiginBtn)}>
@@ -57,24 +70,22 @@ function Login() {
                 <div className={clsx(style.FormControlWrapper)}>
                   <label className={clsx(style.FormControlLabel)}>Email</label>
                   <div className={clsx(style.FormControlInput)}>
-                    <input {...register('example')} />
+                    <input {...register('email', { required: true })} />
                   </div>
                 </div>
+                {errors.email && <span>This field is required</span>}
                 <div className={clsx(style.FormControlWrapper)}>
                   <label className={clsx(style.FormControlLabel)}>Password</label>
                   <div className={clsx(style.FormControlInput)}>
-                    <input {...register('exampleRequired', { required: true })} type="PassWord" />
+                    <input {...register('password', { required: true })} type="PassWord" />
                   </div>
                 </div>
-                {errors.exampleRequired && <span>This field is required</span>}
-
-                <Link href="/">
-                  <button type="submit" className={clsx(style.LoginBtn)}>
-                    <div className={clsx(style.LoginBtnInner)}>
-                      <span>Login</span>
-                    </div>
-                  </button>
-                </Link>
+                {errors.password && <span>This field is required</span>}
+                <button type="submit" className={clsx(style.LoginBtn)}>
+                  <div className={clsx(style.LoginBtnInner)}>
+                    <span>Login</span>
+                  </div>
+                </button>
               </form>
             </div>
             <div className={clsx(style.LoginOr)}>

@@ -7,10 +7,10 @@ type DashboardLayoutProps = {
 
 function Layout({ children }: DashboardLayoutProps) {
   return (
-    <>
+    <div className="container">
       <Header />
       <main>{children}</main>
-    </>
+    </div>
   );
 }
 
