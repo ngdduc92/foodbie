@@ -35,6 +35,9 @@
   padding: 0 10px;
   font-size: 2rem;
 }
+.mobile__menu {
+  position: relative;
+}
 .search {
   @include flex(center, null);
   border: 2px solid #e8e8e8;

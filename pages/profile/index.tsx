@@ -1,0 +1,104 @@
+import React from 'react';
+import classNames from 'classnames/bind';
+import styles from './profile.module.scss';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faUser, faArrowLeft, faPen, faChevronRight } from '@fortawesome/free-solid-svg-icons';
+import { useRouter } from 'next/router';
+const cx = classNames.bind(styles);
+
+export default function Profile() {
+  const router = useRouter();
+  const back = () => {
+    router.push('/menu');
+  };
+  return (
+    <div className={cx('wrapper__profile')}>
+      <div className={cx('header__profile')}>
+        <i>
+          <FontAwesomeIcon
+            icon={faArrowLeft}
+            onClick={() => {
+              back();
+            }}
+          />
+        </i>
+        <p>Account Information</p>
+      </div>
+      <div className={cx('avt__profile')}>
+        <i className={cx('avt__user')}>
+          <FontAwesomeIcon icon={faUser} />
+        </i>
+      </div>
+      <ul className={cx('information__user')}>
+        <li>
+          <div className={cx('information__content')}>
+            <p className={cx('title__information')}>Tên</p>
+            <input value={'Long'} />
+          </div>
+          <i>
+            <FontAwesomeIcon icon={faPen} />
+          </i>
+        </li>
+        <li>
+          <div className={cx('information__content')}>
+            <p className={cx('title__information')}>Telephone</p>
+            <input value={'0123455566'} />
+          </div>
+          <i>
+            <FontAwesomeIcon icon={faPen} />
+          </i>
+        </li>
+        <li>
+          <div className={cx('information__content')}>
+            <p className={cx('title__information')}>Email Address</p>
+            <input value={'lelong236610@gmail.com'} />
+          </div>
+          <i>
+            <FontAwesomeIcon icon={faPen} />
+          </i>
+        </li>
+        <li>
+          <div className={cx('information__content')}>
+            <p className={cx('title__information')}>Gender</p>
+            <input value={'Male'} />
+          </div>
+          <i>
+            <FontAwesomeIcon icon={faPen} />
+          </i>
+        </li>
+        <li>
+          <div className={cx('information__content')}>
+            <p className={cx('title__information')}>Brith Day</p>
+            <input value={'09/04/2000'} />
+          </div>
+          <i>
+            <FontAwesomeIcon icon={faPen} />
+          </i>
+        </li>
+        <li>
+          <div className={cx('information__content')}>
+            <p className={cx('title__information')}>Job</p>
+            <input value={'IT'} />
+          </div>
+          <i>
+            <FontAwesomeIcon icon={faPen} />
+          </i>
+        </li>
+      </ul>
+      <div className={cx('notification')}>
+        <p>* This information will not be displayed or shared with anyone other than you</p>
+      </div>
+      <div className={cx('change_password')}>
+        <p>Change Password</p>
+        <FontAwesomeIcon icon={faChevronRight} />
+      </div>
+      <div className={cx('change_password')}>
+        <p>Delete Account</p>
+        <FontAwesomeIcon icon={faChevronRight} />
+      </div>
+      <div className={cx('logout')}>
+        <span>Logout</span>
+      </div>
+    </div>
+  );
+}

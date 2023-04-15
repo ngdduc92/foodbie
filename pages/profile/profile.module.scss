@@ -1,0 +1,61 @@
+@use '../../styles/base' as *;
+
+.header__profile {
+  @include flex(center, center);
+  position: relative;
+}
+.header__profile i {
+  position: absolute;
+  left: 0;
+}
+.avt__profile {
+  @include flex(center, center);
+  margin: 20px 0;
+}
+.avt__user {
+  @include flex(center, center);
+  border-radius: 50%;
+  width: 70px;
+  height: 70px;
+  font-size: 25px;
+  color: #fff;
+  background-color: #e80013;
+}
+// .information__content {
+//   border-bottom: 1px solid;
+// }
+.information__user {
+  padding: 0;
+}
+.information__user li {
+  @include flex(center, space-between);
+  list-style-type: none;
+  border-bottom: 1px solid #8f9193;
+  padding: 10px 0;
+}
+.information__user input {
+  border: none;
+  outline: none;
+}
+.title__information {
+  margin-bottom: 0;
+}
+.change_password {
+  @include flex(center, space-between);
+  padding: 10px 0;
+  border-bottom: 1px solid #8f9193;
+}
+.change_password p {
+  margin: 0;
+}
+.notification p {
+  margin: 10px 0;
+  background: #cbd9e1;
+  padding: 10px 0;
+}
+.logout {
+  @include flex(center, center);
+  padding: 10px 0;
+  border-bottom: 1px solid #8f9193;
+  color: red;
+}
