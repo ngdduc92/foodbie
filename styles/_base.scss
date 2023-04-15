@@ -12,6 +12,15 @@ $black: #000;
   height: 100%;
   object-fit: cover;
 }
+%search-input {
+  border: none;
+  caret-color: #444;
+  outline: none;
+  flex: 1 1;
+  height: 100%;
+  padding-left: 10px;
+  font-size: 14px;
+}
 // End: Extend/Inheritance
 
 //Start: mixin

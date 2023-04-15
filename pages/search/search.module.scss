@@ -1,0 +1,14 @@
+@use '../../styles/base' as *;
+
+.search__input {
+  @extend %search-input;
+}
+.heading {
+  font-size: 1.4rem;
+}
+.suggestions__item {
+  background-color: #e0e0e0;
+  border-radius: 20px;
+  padding: 2px 6px;
+  margin: 4px 0 0 4px;
+}

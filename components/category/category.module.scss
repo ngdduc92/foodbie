@@ -26,28 +26,25 @@
   &:hover {
     background-color: $primary-color;
     .wrapper__icon {
-      transition: 400ms ease-in-out;
       background-color: $white;
     }
     .category__icon {
-      transition: 400ms ease-in-out;
       color: $text-color;
     }
     .category__content {
-      transition: 400ms ease-in-out;
       color: $white;
     }
   }
 }
 .wrapper__icon {
   @include flex(center, center);
-  width: 40px;
-  height: 40px;
+  width: 30px;
+  height: 30px;
   background-color: $primary-color;
   border-radius: 50px;
 }
 .category__icon {
-  font-size: 18px;
+  font-size: 14px;
   color: $white;
 }
 .category__content {

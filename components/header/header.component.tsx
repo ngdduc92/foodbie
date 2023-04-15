@@ -1,10 +1,11 @@
 import React from 'react';
 import classNames from 'classnames/bind';
+import styles from './header.module.scss';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faLocationDot, faBars, faMagnifyingGlass } from '@fortawesome/free-solid-svg-icons';
 import { faEnvelope } from '@fortawesome/free-regular-svg-icons';
-import styles from './header.module.scss';
 import { useSearchStore } from '@/store/search/search.store';
+import Link from 'next/link';
 
 const cx = classNames.bind(styles);
 function Header() {
@@ -27,10 +28,12 @@ function Header() {
           </div>
         </div>
       </div>
-      <div className={cx('search')}>
-        <FontAwesomeIcon icon={faMagnifyingGlass} className={cx('search__icon')} />
-        <input className={cx('search__input')} placeholder="Tìm cửa hàng hay sản phẩm" />
-      </div>
+      <Link href="/search">
+        <div className={cx('search')}>
+          <FontAwesomeIcon icon={faMagnifyingGlass} className={cx('search__icon')} />
+          <input className={cx('search__input')} placeholder="Tìm cửa hàng hay sản phẩm" disabled />
+        </div>
+      </Link>
     </div>
   );
 }
