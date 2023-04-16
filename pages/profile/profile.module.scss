@@ -1,16 +1,25 @@
 @use '../../styles/base' as *;
 
+.wrapper__profile {
+  background: #cbd9e145;
+}
+.wrapper__profile p {
+  margin: 0;
+}
 .header__profile {
   @include flex(center, center);
   position: relative;
+  background: #fff;
+  padding: 10px;
 }
 .header__profile i {
   position: absolute;
-  left: 0;
+  left: 10px;
 }
 .avt__profile {
   @include flex(center, center);
-  margin: 20px 0;
+  padding: 20px 0;
+  background: #fff;
 }
 .avt__user {
   @include flex(center, center);
@@ -26,12 +35,28 @@
 // }
 .information__user {
   padding: 0;
+  margin: 0;
+}
+.information__user li:last-child .information__content {
+  border-bottom: none;
+}
+.information__content {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+  border-bottom: 1px solid rgba(158, 158, 158, 0.37);
+  padding: 10px 0;
+}
+.information__user li i {
+  position: absolute;
+  right: 20px;
 }
 .information__user li {
   @include flex(center, space-between);
   list-style-type: none;
-  border-bottom: 1px solid #8f9193;
-  padding: 10px 0;
+  padding: 0 10px;
+  background-color: #fff;
 }
 .information__user input {
   border: none;
@@ -40,22 +65,29 @@
 .title__information {
   margin-bottom: 0;
 }
-.change_password {
-  @include flex(center, space-between);
-  padding: 10px 0;
-  border-bottom: 1px solid #8f9193;
+.account {
+  position: relative;
+  padding: 0 10px;
+  background-color: #fff;
 }
-.change_password p {
+.account p {
   margin: 0;
+  border-bottom: 1px solid rgba(158, 158, 158, 0.37);
+  padding: 10px 0;
+}
+.icon__account {
+  position: absolute;
+  right: 20px;
+  top: 14px;
 }
 .notification p {
   margin: 10px 0;
-  background: #cbd9e1;
-  padding: 10px 0;
+  padding: 10px;
 }
 .logout {
   @include flex(center, center);
   padding: 10px 0;
   border-bottom: 1px solid #8f9193;
   color: red;
+  background-color: #fff;
 }

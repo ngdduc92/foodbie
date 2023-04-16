@@ -68,7 +68,7 @@ export default function Profile() {
         </li>
         <li>
           <div className={cx('information__content')}>
-            <p className={cx('title__information')}>Brith Day</p>
+            <p className={cx('title__information')}>Date of birth</p>
             <input value={'09/04/2000'} />
           </div>
           <i>
@@ -88,13 +88,13 @@ export default function Profile() {
       <div className={cx('notification')}>
         <p>* This information will not be displayed or shared with anyone other than you</p>
       </div>
-      <div className={cx('change_password')}>
+      <div className={cx('change__password', 'account')}>
         <p>Change Password</p>
-        <FontAwesomeIcon icon={faChevronRight} />
+        <FontAwesomeIcon icon={faChevronRight} className={cx('icon__account')} />
       </div>
-      <div className={cx('change_password')}>
+      <div className={cx('Delete__Account', 'account')}>
         <p>Delete Account</p>
-        <FontAwesomeIcon icon={faChevronRight} />
+        <FontAwesomeIcon icon={faChevronRight} className={cx('icon__account')} />
       </div>
       <div className={cx('logout')}>
         <span>Logout</span>

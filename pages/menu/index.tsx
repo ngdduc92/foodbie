@@ -18,6 +18,7 @@ import {
   faCircleExclamation,
 } from '@fortawesome/free-solid-svg-icons';
 import { useRouter } from 'next/router';
+import Link from 'next/link';
 
 const cx = classNames.bind(styles);
 
@@ -41,7 +42,7 @@ export default function SideMenu() {
         <p>Account Information</p>
       </div>
       <div className={cx('profile')}>
-        <a href="/profile">
+        <Link href="/profile">
           <div className={cx('user__sidebar')}>
             <i className={cx('user__icon')}>
               <FontAwesomeIcon icon={faUser} />
@@ -49,7 +50,7 @@ export default function SideMenu() {
             <p>Profile</p>
           </div>
           <FontAwesomeIcon icon={faChevronRight} />
-        </a>
+        </Link>
       </div>
       <div className={cx('utility__list')}>
         <div className={cx('utility__item')}>
@@ -71,59 +72,60 @@ export default function SideMenu() {
           </div>
         </div>
       </div>
-
-      <ul className={cx('payment__option')}>
-        <li className={cx('payment__option__item')}>
+      <ul className={cx('payment__option', 'option')}>
+        <li className={cx('payment__option__item', 'option__item')}>
           <a>
-            <i className={cx('payment__icon')}>
+            <i className={cx('payment__icon', 'icon')}>
               <FontAwesomeIcon icon={faWallet} />
             </i>
             <p>Wallet Coupon</p>
           </a>
         </li>
-        <li className={cx('payment__option__item')}>
+        <li className={cx('payment__option__item', 'option__item')}>
           <a>
-            <i className={cx('payment__icon')}>
+            <i className={cx('payment__icon', 'icon')}>
               <FontAwesomeIcon icon={faCreditCard} />
             </i>
             <p>Payment management</p>
           </a>
         </li>
-        <li className={cx('payment__option__item')}>
+        <li className={cx('payment__option__item', 'option__item')}>
           <a>
-            <i className={cx('payment__icon')}>
+            <i className={cx('payment__icon', 'icon')}>
               <FontAwesomeIcon icon={faShieldHalved} />
             </i>
             <p>Share personal information</p>
           </a>
         </li>
-        <li className={cx('payment__option__item')}>
+      </ul>
+      <ul className={cx('evaluate__option', 'option')}>
+        <li className={cx('payment__option__item', 'option__item')}>
           <a>
-            <i className={cx('payment__icon')}>
+            <i className={cx('payment__icon', 'icon')}>
               <FontAwesomeIcon icon={faStar} />
             </i>
             <p>Review Foobbie</p>
           </a>
         </li>
-        <li className={cx('payment__option__item')}>
+        <li className={cx('payment__option__item', 'option__item')}>
           <a>
-            <i className={cx('payment__icon')}>
+            <i className={cx('payment__icon', 'icon')}>
               <FontAwesomeIcon icon={faBell} />
             </i>
             <p>Notification</p>
           </a>
         </li>
-        <li className={cx('payment__option__item')}>
+        <li className={cx('payment__option__item', 'option__item')}>
           <a>
-            <i className={cx('payment__icon')}>
+            <i className={cx('payment__icon', 'icon')}>
               <FontAwesomeIcon icon={faHeadphonesSimple} />
             </i>
             <p>Support</p>
           </a>
         </li>
-        <li className={cx('payment__option__item')}>
+        <li className={cx('payment__option__item', 'option__item')}>
           <a>
-            <i className={cx('payment__icon')}>
+            <i className={cx('payment__icon', 'icon')}>
               <FontAwesomeIcon icon={faCircleExclamation} />
             </i>
             <p>Controls and Policies</p>
