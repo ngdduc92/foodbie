@@ -1,14 +1,50 @@
 @use '../../styles/base' as *;
 
+.wrapper__search__input {
+  @include flex(center, null);
+  height: 40px;
+  border-bottom: 1px solid #999;
+}
+.icon__back {
+  font-size: 2rem;
+}
 .search__input {
   @extend %search-input;
 }
-.heading {
+.history,
+.suggestions {
+  display: flex;
+  flex-wrap: wrap;
+  margin-left: -14px;
+}
+.history__item,
+.suggestions__item {
+  background-color: #f2f2f2;
+  border-radius: 20px;
+  padding: 6px 10px;
+  margin: 14px 0 0 14px;
   font-size: 1.4rem;
 }
-.suggestions__item {
-  background-color: #e0e0e0;
-  border-radius: 20px;
-  padding: 2px 6px;
-  margin: 4px 0 0 4px;
+.search__item {
+  @include flex(center, space-between);
+  padding: 15px 0;
+}
+
+.history__heading {
+  @include flex('center', space-between);
+  margin-top: 20px;
+  h2 {
+    font-weight: 700;
+  }
+  span {
+    color: $primary-color;
+  }
+}
+
+.remove__icon {
+  color: #999;
+}
+.suggestions__heading {
+  margin-top: 20px;
+  font-weight: 700;
 }

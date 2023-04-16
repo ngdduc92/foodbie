@@ -1,16 +1,5 @@
 @use '../../styles/base' as *;
 
-// .category__list {
-//   @include flex(null, null);
-//   list-style: none;
-//   padding: 20px 0;
-//   max-width: 100%;
-//   overflow-x: auto;
-//   justify-content: center;
-//   &::-webkit-scrollbar {
-//     display: none;
-//   }
-// }
 .category__item {
   @include flex(center, space-evenly);
   flex-direction: column;
