@@ -4,6 +4,8 @@ pipeline {
     stages {
         stage('Build') {
             steps {
+                sh "bash stopByPort.sh 3000"
+                echo 'Stop successfully'
                 sh "docker build -t foobbie:0.0.1 ."
                 echo 'Build successfully'
             }
