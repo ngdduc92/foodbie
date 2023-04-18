@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import classNames from 'classnames/bind';
 import styles from './header.module.scss';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
@@ -6,10 +6,17 @@ import { faLocationDot, faBars, faMagnifyingGlass } from '@fortawesome/free-soli
 import { faEnvelope } from '@fortawesome/free-regular-svg-icons';
 import { useSearchStore } from '@/store/search/search.store';
 import Link from 'next/link';
+import { useRouter } from 'next/router';
 
 const cx = classNames.bind(styles);
 function Header() {
   const searchValue = useSearchStore((state: any) => state.searchString);
+  const router = useRouter();
+
+  const showMenu = () => {
+    router.push('/menu');
+  };
+
   return (
     <div className={cx('wrapper__header')}>
       <div className={cx('Nav__bar')}>
@@ -24,7 +31,7 @@ function Header() {
             <FontAwesomeIcon icon={faEnvelope} />
           </div>
           <div className={cx('mobile__menu')}>
-            <FontAwesomeIcon icon={faBars} />
+            <FontAwesomeIcon icon={faBars} onClick={() => showMenu()} />
           </div>
         </div>
       </div>

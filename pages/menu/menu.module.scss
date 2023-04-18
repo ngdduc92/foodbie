@@ -1,0 +1,87 @@
+@use '../../styles/base' as *;
+
+.wrapper__menu {
+  color: #7a7878;
+  background: #cbd9e145;
+}
+.wrapper__menu p {
+  margin: 0;
+}
+.header__menu {
+  @include flex(center, center);
+  position: relative;
+  background-color: #fff;
+  padding: 10px 0;
+}
+.header__menu > i {
+  position: absolute;
+  left: 10px;
+}
+.profile {
+  background-color: #fff;
+}
+.profile > a {
+  @include flex(center, space-between);
+  color: #65657e;
+  padding: 10px;
+}
+.utility__item__content {
+  @include flex(center, space-between);
+  flex-direction: column;
+  font-size: 20px;
+}
+.utility__item__content > label {
+  font-size: 15px;
+}
+.utility__list {
+  @include flex(null, center);
+  border: 1px solid rgb(158 158 158 / 37%);
+  border-left: none;
+  border-right: none;
+  background-color: #fff;
+}
+.utility__item {
+  flex: 1;
+  padding: 10px 0;
+  border-right: 1px solid rgb(158 158 158 / 37%);
+}
+.utility__item:last-child {
+  border-right: none;
+}
+.option {
+  padding: 0;
+  margin: 15px 0 0 0;
+}
+.option__item {
+  list-style-type: none;
+  background-color: #fff;
+  padding: 0 10px;
+}
+.option__item > a {
+  @include flex(center, null);
+  padding: 10px 0;
+  border-bottom: 1px solid rgb(158 158 158 / 37%);
+}
+.icon {
+  padding: 0 20px 0 0;
+  font-size: 20px;
+}
+.payment__option .payment__option__item:last-child a {
+  border-bottom: none;
+}
+///////////////////////
+
+.user__sidebar {
+  @include flex(center, null);
+  font-size: 15px;
+}
+.user__icon {
+  @include flex(center, center);
+  border-radius: 50%;
+  width: 50px;
+  height: 50px;
+  font-size: 25px;
+  margin-right: 15px;
+  color: #fff;
+  background-color: #e80013;
+}

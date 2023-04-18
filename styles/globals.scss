@@ -11,7 +11,7 @@ html {
   font-size: 62.5%;
 }
 
-body {
+html body {
   font-family: $font-family;
   font-size: 1.6rem;
   line-height: 1.5;
@@ -20,7 +20,6 @@ body {
   overflow-y: overlay;
   margin: 0 auto;
   max-width: 1920px;
-  padding: 5px 10px 0;
 }
 body a {
   text-decoration: none;
@@ -29,7 +28,10 @@ body a {
     color: $text-color;
   }
 }
-
+.bottom-line {
+  margin: 20px -7px;
+  border-bottom: 8px solid #cbd9e145;
+}
 // Start: slider
 .slider-wrapper {
   padding: 20px 0;
