@@ -57,7 +57,6 @@ export class HttpClient {
         });
     }
   }
-
   static logout() {
     this.get('/auth/logout');
     localStorage.removeItem('API_TOKEN');
