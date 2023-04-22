@@ -7,16 +7,6 @@
 .wrapper__menu p {
   margin: 0;
 }
-.header__menu {
-  @include flex(center, center);
-  position: relative;
-  background-color: #fff;
-  padding: 10px 0;
-}
-.header__menu > i {
-  position: absolute;
-  left: 10px;
-}
 .profile {
   background-color: #fff;
 }

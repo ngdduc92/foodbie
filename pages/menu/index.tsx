@@ -5,7 +5,6 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import {
   faUser,
   faChevronRight,
-  faArrowLeft,
   faReceipt,
   faHeart,
   faMapLocationDot,
@@ -17,30 +16,15 @@ import {
   faHeadphonesSimple,
   faCircleExclamation,
 } from '@fortawesome/free-solid-svg-icons';
-import { useRouter } from 'next/router';
 import Link from 'next/link';
+import HeaderOption from '@/components/headerOption';
 
 const cx = classNames.bind(styles);
 
 export default function SideMenu() {
-  const router = useRouter();
-
-  const back = () => {
-    router.push('/');
-  };
   return (
     <nav className={cx('wrapper__menu')}>
-      <div className={cx('header__menu')}>
-        <i>
-          <FontAwesomeIcon
-            icon={faArrowLeft}
-            onClick={() => {
-              back();
-            }}
-          />
-        </i>
-        <p>Account Information</p>
-      </div>
+      <HeaderOption title={'Account Information'} link={'/'} />
       <div className={cx('profile')}>
         <Link href="/profile">
           <div className={cx('user__sidebar')}>
@@ -54,22 +38,22 @@ export default function SideMenu() {
       </div>
       <div className={cx('utility__list')}>
         <div className={cx('utility__item')}>
-          <div className={cx('utility__item__content')}>
+          <Link href="../order" className={cx('utility__item__content')}>
             <FontAwesomeIcon icon={faReceipt} />
             <label>Order</label>
-          </div>
+          </Link>
         </div>
         <div className={cx('utility__item')}>
-          <div className={cx('utility__item__content')}>
+          <Link href="../favoriteStore" className={cx('utility__item__content')}>
             <FontAwesomeIcon icon={faHeart} />
             <label>Favorite store</label>
-          </div>
+          </Link>
         </div>
         <div className={cx('utility__item')}>
-          <div className={cx('utility__item__content')}>
+          <Link href="../address" className={cx('utility__item__content')}>
             <FontAwesomeIcon icon={faMapLocationDot} />
             <label>Address</label>
-          </div>
+          </Link>
         </div>
       </div>
       <ul className={cx('payment__option', 'option')}>

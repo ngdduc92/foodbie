@@ -1,0 +1,66 @@
+@use '../../styles/base' as *;
+
+.favorite__content__item {
+  display: flex;
+  padding: 15px 15px 10px 15px;
+  border-bottom: 1px solid rgba(158, 158, 158, 0.37);
+}
+.favorite__content__item:last-child {
+  border-bottom: none;
+}
+.item__right {
+  width: 30%;
+}
+.item__right img {
+  width: 100%;
+  border-radius: 6px;
+}
+.item__left {
+  display: flex;
+  flex-direction: column;
+  width: 70%;
+  padding-left: 10px;
+}
+.title__item__left {
+  color: #151414;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  overflow: hidden;
+}
+.title__item__left i {
+  color: #e80013;
+  margin-right: 5px;
+  font-size: 13px;
+}
+.sub__title {
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  overflow: hidden;
+}
+.evaluate {
+  font-size: 13px;
+  margin-top: 8px;
+  border-bottom: 1px solid rgba(158, 158, 158, 0.37);
+  padding-bottom: 5px;
+}
+.evaluate i {
+  color: #ffeb3b;
+  margin-right: 5px;
+}
+.promotion {
+  color: #a52a2ac9;
+  display: flex;
+  font-size: 10px;
+  margin-top: 10px;
+  font-weight: 600;
+}
+.promotion span {
+  background: #ffebcd;
+  padding: 2px 4px;
+  border-radius: 3px;
+}
+.heart {
+  text-align: end;
+  margin-top: 20px;
+  color: red;
+}

@@ -1,0 +1,46 @@
+@use '../../styles/base' as *;
+
+.wapper__order {
+  color: #7a7878;
+  background: rgba(203, 217, 225, 0.2705882353);
+}
+.Order__completed {
+  margin-top: 20px;
+}
+.Order__completed__title {
+  padding: 0 15px;
+}
+.Order__completed__content {
+  margin-top: 10px;
+}
+.information__order {
+  position: relative;
+  background: #fff;
+  padding: 15px;
+  border-bottom: 1px solid rgba(158, 158, 158, 0.37);
+}
+.information__shop {
+  color: #292828;
+}
+.order__date {
+  @include flex(center, null);
+
+  font-size: 13px;
+}
+.icon__information__order {
+  position: absolute;
+  right: 15px;
+  top: 50%;
+  transform: translateY(-50%);
+}
+.again__oder {
+  background-color: #fff;
+  text-align: center;
+  padding: 8px 0;
+  color: #e80013;
+  font-size: 14px;
+}
+.information__price {
+  margin-top: 10px;
+  font-size: 14px;
+}

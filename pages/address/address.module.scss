@@ -1,0 +1,51 @@
+@use '../../styles/base' as *;
+
+.wrapper__address {
+  background: rgba(203, 217, 225, 0.2705882353);
+}
+.address {
+  margin-top: 20px;
+}
+.address__content {
+  margin-top: 10px;
+  background-color: #fff;
+}
+.address__title {
+  padding: 0 15px;
+}
+.address__content__item {
+  @include flex(center, null);
+  position: relative;
+  padding: 15px 0;
+  border-bottom: 1px solid rgba(158, 158, 158, 0.37);
+}
+.address__content__item .address__content__item__icon {
+  padding: 0 15px;
+  font-size: 20px;
+}
+.text__address {
+  display: flex;
+  flex-direction: column;
+}
+.text__address__tile {
+  color: #292828;
+}
+.text__address__subtitle {
+  font-size: 14px;
+}
+.icon__chevron-right {
+  position: absolute;
+  right: 15px;
+  top: 50%;
+  transform: translateY(-50%);
+}
+.add__adress {
+  @include flex(center, null);
+  padding: 15px 0;
+  background-color: #fff;
+  color: #e80013;
+}
+.add__adress__icon {
+  padding: 0 15px;
+  font-size: 20px;
+}

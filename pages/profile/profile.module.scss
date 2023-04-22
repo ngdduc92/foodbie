@@ -6,16 +6,6 @@
 .wrapper__profile p {
   margin: 0;
 }
-.header__profile {
-  @include flex(center, center);
-  position: relative;
-  background: #fff;
-  padding: 10px;
-}
-.header__profile i {
-  position: absolute;
-  left: 10px;
-}
 .avt__profile {
   @include flex(center, center);
   padding: 20px 0;

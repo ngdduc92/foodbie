@@ -1,0 +1,18 @@
+@use '../../styles/base' as *;
+.header__option {
+  @include flex(center, center);
+  position: relative;
+  background-color: #fff;
+  padding: 10px 0;
+  border-bottom: 1px solid rgba(158, 158, 158, 0.37);
+}
+.header__option > i {
+  position: absolute;
+  left: 10px;
+}
+.header__option p {
+  margin: 0;
+  color: #333;
+  font-weight: bold;
+  font-size: 14px;
+}

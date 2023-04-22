@@ -2,28 +2,14 @@ import React from 'react';
 import classNames from 'classnames/bind';
 import styles from './profile.module.scss';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faUser, faArrowLeft, faPen, faChevronRight } from '@fortawesome/free-solid-svg-icons';
-import { useRouter } from 'next/router';
+import { faUser, faPen, faChevronRight } from '@fortawesome/free-solid-svg-icons';
+import HeaderOption from '@/components/headerOption';
 const cx = classNames.bind(styles);
 
 export default function Profile() {
-  const router = useRouter();
-  const back = () => {
-    router.push('/menu');
-  };
   return (
     <div className={cx('wrapper__profile')}>
-      <div className={cx('header__profile')}>
-        <i>
-          <FontAwesomeIcon
-            icon={faArrowLeft}
-            onClick={() => {
-              back();
-            }}
-          />
-        </i>
-        <p>Account Information</p>
-      </div>
+      <HeaderOption title={'Account Information'} link={'/menu'} />
       <div className={cx('avt__profile')}>
         <i className={cx('avt__user')}>
           <FontAwesomeIcon icon={faUser} />
@@ -32,7 +18,7 @@ export default function Profile() {
       <ul className={cx('information__user')}>
         <li>
           <div className={cx('information__content')}>
-            <p className={cx('title__information')}>Tên</p>
+            <p className={cx('title__information')}>Name</p>
             <input value={'Long'} />
           </div>
           <i>
