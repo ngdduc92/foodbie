@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import Header from '../header/header.component';
 
 type DashboardLayoutProps = {
@@ -13,5 +13,4 @@ function Layout({ children }: DashboardLayoutProps) {
     </div>
   );
 }
-
 export default Layout;

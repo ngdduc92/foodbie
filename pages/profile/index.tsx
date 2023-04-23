@@ -4,9 +4,13 @@ import styles from './profile.module.scss';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faUser, faPen, faChevronRight } from '@fortawesome/free-solid-svg-icons';
 import HeaderOption from '@/components/headerOption';
+import { HttpClient } from '@/services/http-client';
 const cx = classNames.bind(styles);
 
 export default function Profile() {
+  const logout = () => {
+    HttpClient.logout();
+  };
   return (
     <div className={cx('wrapper__profile')}>
       <HeaderOption title={'Account Information'} link={'/menu'} />
@@ -82,7 +86,7 @@ export default function Profile() {
         <p>Delete Account</p>
         <FontAwesomeIcon icon={faChevronRight} className={cx('icon__account')} />
       </div>
-      <div className={cx('logout')}>
+      <div className={cx('logout')} onClick={() => logout()}>
         <span>Logout</span>
       </div>
     </div>
