@@ -7,7 +7,7 @@ pipeline {
                 sh "docker build -t foobbie:0.0.1 ."
                 echo 'Build successfully'
 
-                sh "stopByPort.sh 3000"
+                sh "./stopByPort.sh 3000"
                 echo 'Stop successfully'
             }
         }
