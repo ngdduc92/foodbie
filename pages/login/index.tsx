@@ -14,24 +14,22 @@ type Inputs = {
 
 function Login() {
   const router = useRouter();
+  const [errorMessages, setErrorMessages] = useState(false);
   const {
     register,
     handleSubmit,
     formState: { errors },
   } = useForm<Inputs>();
   const onSubmit: SubmitHandler<Inputs> = (data) => {
-    HttpClient.post(AUTH_LOGIN, data)
-      .then((res) => {
-        if (res.status === 200) {
-          localStorage.setItem('API_TOKEN', res.data.accessToken);
-          router.push('/');
-        }
-      })
-      .catch((errors) => {
-        console.log(errors);
-      });
+    HttpClient.post(AUTH_LOGIN, data).then((res) => {
+      if (res.status === 200) {
+        localStorage.setItem('API_TOKEN', res.data.accessToken);
+        router.push('/');
+      } else {
+        setErrorMessages(true);
+      }
+    });
   };
-
   const loginSteps = [
     {
       title: 'Login with google',
@@ -46,13 +44,13 @@ function Login() {
   const handleRenderBtn = () =>
     loginSteps.map((loginStep, index) => (
       <div key={index} className={clsx(style.SiginBtn)}>
-        <Link href={loginStep.link} className={clsx(style.SiginLink)}>
+        <a href={loginStep.link} className={clsx(style.SiginLink)}>
           <img src="https://accounts.fullstack.edu.vn/assets/images/signin/personal-18px.svg" />
           <span>{loginStep.title}</span>
-        </Link>
+        </a>
       </div>
     ));
-
+  3;
   return (
     <div className={clsx(style.LoginWrapper)}>
       <div className={clsx(style.LoginContainer)}>
@@ -70,17 +68,26 @@ function Login() {
                 <div className={clsx(style.FormControlWrapper)}>
                   <label className={clsx(style.FormControlLabel)}>Email</label>
                   <div className={clsx(style.FormControlInput)}>
-                    <input {...register('email', { required: true })} />
+                    <input
+                      {...register('email', {
+                        required: 'Email is required.',
+                        pattern: {
+                          value: /^[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$/,
+                          message: 'Please enter a valid email',
+                        },
+                      })}
+                    />
                   </div>
+                  {errors?.email && <span className="mt-2 text-danger text-center">{errors.email.message}</span>}
                 </div>
-                {errors.email && <span>This field is required</span>}
                 <div className={clsx(style.FormControlWrapper)}>
                   <label className={clsx(style.FormControlLabel)}>Password</label>
                   <div className={clsx(style.FormControlInput)}>
-                    <input {...register('password', { required: true })} type="PassWord" />
+                    <input {...register('password', { required: 'Password is required' })} type="password" />
                   </div>
+                  {errors?.password && <span className="mt-2 text-danger text-center">{errors.password.message}</span>}
+                  {errorMessages && <span className="mt-2 text-danger text-center">Invalid username or password</span>}
                 </div>
-                {errors.password && <span>This field is required</span>}
                 <button type="submit" className={clsx(style.LoginBtn)}>
                   <div className={clsx(style.LoginBtnInner)}>
                     <span>Login</span>
