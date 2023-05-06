@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import React from 'react';
 import Header from '../header/header.component';
 
 type DashboardLayoutProps = {
@@ -9,7 +9,7 @@ function Layout({ children }: DashboardLayoutProps) {
   return (
     <div className="container-fluid">
       <Header />
-      <main>{children}</main>
+      <div className="body">{children}</div>
     </div>
   );
 }

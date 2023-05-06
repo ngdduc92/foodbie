@@ -23,8 +23,8 @@ const cx = classNames.bind(stytes);
 
 function Category() {
   return (
-    <nav className={cx('category')}>
-      <div className="row row-cols-4 row-cols-lg-6 g-5 g-lg-4">
+    <nav className={cx('container')}>
+      <div className="row row-cols-4 row-cols-lg-6 gy-4 gx-4">
         <div className="col">
           <div className={cx('category__item')}>
             <i className={cx('wrapper__icon')}>
@@ -118,7 +118,7 @@ function Category() {
             <i className={cx('wrapper__icon')}>
               <FontAwesomeIcon icon={faCandyCane} className={cx('category__icon')} />
             </i>
-            <span className={cx('category__content')}>studio</span>
+            <span className={cx('category__content')}>candy</span>
           </div>
         </div>
       </div>

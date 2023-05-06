@@ -38,7 +38,7 @@ function Header() {
       <Link href="/search">
         <div className={cx('search')}>
           <FontAwesomeIcon icon={faMagnifyingGlass} className={cx('search__icon')} />
-          <input className={cx('search__input')} placeholder="Tìm cửa hàng hay sản phẩm" disabled />
+          <input className={cx('search__input')} placeholder="Find restaurants, dishes" disabled />
         </div>
       </Link>
     </div>
