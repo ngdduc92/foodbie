@@ -5,7 +5,7 @@ const BASE_URL = 'http://foobbie.com:5000';
 
 export class HttpClient {
   static isRefresh: boolean;
-  constructor() { }
+  constructor() {}
 
   static contains(target: string, pattern: any[]) {
     let value = 0;
@@ -42,6 +42,7 @@ export class HttpClient {
     if (errors.response.status == 401 && !this.contains(url, ['logout', 'refresh'])) {
       this.get(REFRESH_TOKEN)
         .then((res) => {
+          console.log(res);
           if (res.data) {
             localStorage.setItem('API_TOKEN', res.data);
             apiCall();

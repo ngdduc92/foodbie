@@ -9,6 +9,7 @@
 
 html {
   font-size: 62.5%;
+  overflow-y: scroll;
 }
 
 html body {
@@ -17,9 +18,11 @@ html body {
   line-height: 1.5;
   text-rendering: optimizespeed;
   color: $text-color;
-  overflow-y: overlay;
   margin: 0 auto;
   max-width: 1920px;
+}
+.body {
+  margin-top: 86px;
 }
 body a {
   text-decoration: none;
@@ -29,7 +32,9 @@ body a {
   }
 }
 .bottom-line {
-  margin: 20px -7px;
+  margin-top: 20px;
+  margin-right: calc(var(--bs-gutter-x) * -0.5);
+  margin-left: calc(var(--bs-gutter-x) * -0.5);
   border-bottom: 8px solid #cbd9e145;
 }
 // Start: slider

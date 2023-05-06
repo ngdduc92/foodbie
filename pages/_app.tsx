@@ -3,17 +3,21 @@ import { AUTH_PROFILE } from '@/share/constants';
 import '@/styles/globals.scss';
 import 'bootstrap/dist/css/bootstrap.css';
 import type { AppProps } from 'next/app';
+import { useRouter } from 'next/router';
 import React, { useEffect } from 'react';
 
 export default function App({ Component, pageProps }: AppProps) {
+  const router = useRouter();
   useEffect(() => {
+    const apiToken = localStorage.getItem('API_TOKEN');
     HttpClient.get(AUTH_PROFILE)
       .then((res) => {
-        console.log(res);
+        console.log('res', res);
       })
-      .catch((errors) => {
-        console.log(errors);
-      });
+      .catch((errors) => {});
+    if (!apiToken) {
+      router.push('/login');
+    }
   }, []);
   return <Component {...pageProps} />;
 }

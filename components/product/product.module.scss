@@ -1,0 +1,54 @@
+@use '../../styles/base' as *;
+
+.wrapper__product__list {
+  margin-top: 18px;
+}
+.heading {
+  @extend %heading;
+}
+.title {
+  @extend %title;
+}
+.title__icon {
+  color: $primary-color;
+}
+.sub__title {
+  font-size: 14px;
+}
+.title__icon {
+  margin-right: 4px;
+}
+.product__content {
+  margin-left: 10px;
+  flex: 1;
+}
+
+.product__item {
+  @include flex(center, null);
+  padding: 20px 0;
+}
+.product__line {
+  border-bottom: 1px solid #999;
+  margin-right: calc(var(--bs-gutter-x) * -0.5);
+  margin-left: calc(var(--bs-gutter-x) * -0.5);
+}
+.product__image {
+  width: 100px;
+  height: 80px;
+  img {
+    @extend %img-cover;
+    border-radius: 6px;
+  }
+}
+.content__bottom {
+  @include flex(center, null);
+}
+.quantity__purchased {
+  margin: 0 8px 0 4px;
+}
+.distance {
+  margin-left: 8px;
+}
+.rating {
+  color: #ffce3e;
+}

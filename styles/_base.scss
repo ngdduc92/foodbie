@@ -20,6 +20,15 @@ $black: #000;
   height: 100%;
   padding-left: 10px;
   font-size: 16px;
+  background-color: #fff;
+}
+%heading {
+  font-size: 20px;
+  font-weight: 700;
+}
+%title {
+  font-size: 18px;
+  font-weight: 600;
 }
 
 // End: Extend/Inheritance
