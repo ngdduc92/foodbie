@@ -1,9 +1,8 @@
 /* eslint-disable @next/next/no-img-element */
-import classNames from 'classnames/bind';
 import React from 'react';
+import classNames from 'classnames/bind';
 import { Carousel } from 'react-responsive-carousel';
 import 'react-responsive-carousel/lib/styles/carousel.min.css';
-import Image from 'next/image';
 import styles from './slider.module.scss';
 
 const cx = classNames.bind(styles);
@@ -14,7 +13,7 @@ function Slider() {
       autoPlay
       autoFocus={true}
       centerMode
-      infiniteLoop
+      infiniteLoop={true}
       showArrows={false}
       showStatus={false}
       showIndicators={false}

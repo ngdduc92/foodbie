@@ -1,4 +1,4 @@
-import React, { useRef, useState } from 'react';
+import React, { useEffect, useRef, useState } from 'react';
 import { faArrowLeft, faCircleXmark, faMagnifyingGlass, faXmark } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import classNames from 'classnames/bind';
@@ -51,6 +51,7 @@ function Search() {
   ];
   const inputElement = useRef<HTMLInputElement>(null);
   const [searchResults, setSearchResults] = useState<string[]>([]);
+  const [searchHistory, setsearchHistory] = useState<string[]>([]);
   const handleSearch = (e: any) => {
     const keySearch = e.target.value;
     if (keySearch === '') {
@@ -66,6 +67,17 @@ function Search() {
     }
     setSearchResults([]);
   };
+  const handleRemoveHistory = (value: string) => {
+    const results = searchHistory.filter((item) => item !== value);
+    setsearchHistory(results);
+  };
+  // search history
+  useEffect(() => {
+    const searchHistory: string[] = ['Bánh khọt', 'Bánh xèo', 'Bún mắm'];
+    localStorage.setItem('SEARCHHISTORYS', JSON.stringify(searchHistory));
+    setsearchHistory(JSON.parse(localStorage.getItem('SEARCHHISTORYS') || '[]'));
+  }, []);
+
   return (
     <div className={cx('container-fluid')}>
       <div className={cx('wrapper__search__input')}>
@@ -73,7 +85,7 @@ function Search() {
           <FontAwesomeIcon icon={faArrowLeft} className={cx('icon__back')} />
         </Link>
         <input
-          placeholder="Tìm nhà hàng, món ăn"
+          placeholder="Find restaurants, dishes"
           className={cx('search__input')}
           ref={inputElement}
           onChange={(e) => handleSearch(e)}
@@ -94,26 +106,31 @@ function Search() {
         </div>
       ) : (
         <>
-          <div className={cx('search__history')}>
-            <div className={cx('history__heading')}>
-              <h2>Tìm kiếm gần đây</h2>
-              <span>Xóa</span>
-            </div>
-            <div className={cx('history')}>
-              <div className={cx('history__item')}>
-                Bánh khọt <FontAwesomeIcon icon={faXmark} className={cx('ms-2')} />
+          {searchHistory.length > 0 && (
+            <>
+              <div className={cx('search__history')}>
+                <div className={cx('history__heading')}>
+                  <h2>Recent searches</h2>
+                  <span onClick={() => setsearchHistory([])}>Clean</span>
+                </div>
+                <div className={cx('history')}>
+                  {searchHistory.map((item, index) => (
+                    <div className={cx('history__item')} key={index}>
+                      {item}
+                      <FontAwesomeIcon
+                        icon={faXmark}
+                        className={cx('ms-2')}
+                        onClick={() => handleRemoveHistory(item)}
+                      />
+                    </div>
+                  ))}
+                </div>
               </div>
-              <div className={cx('history__item')}>
-                Bánh xèo <FontAwesomeIcon icon={faXmark} className={cx('ms-2')} />
-              </div>
-              <div className={cx('history__item')}>
-                Bún mắm <FontAwesomeIcon icon={faXmark} className={cx('ms-2')} />
-              </div>
-            </div>
-          </div>
-          <div className="bottom-line"></div>
+              <div className="bottom-line"></div>
+            </>
+          )}
           <div className={cx('food__suggestions')}>
-            <h2 className={cx('suggestions__heading')}>Món gì đang hot?</h2>
+            <h2 className={cx('suggestions__heading')}>What's hot?</h2>
             <div className={cx('suggestions')}>
               <div className={cx('suggestions__item')}>Bánh khọt</div>
               <div className={cx('suggestions__item')}>Cơm tấm</div>
