@@ -8,7 +8,7 @@ export default function Home() {
     <Layout>
       <Slider />
       <Category />
-      <div className="bottom-line"></div>
+      <div className="large__line"></div>
       <Product />
     </Layout>
   );

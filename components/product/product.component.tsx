@@ -90,7 +90,7 @@ function Product() {
                 </div>
               </div>
             </div>
-            <div className={cx('product__line')}></div>
+            <div className={cx('small__line')}></div>
           </div>
         ))}
       </div>

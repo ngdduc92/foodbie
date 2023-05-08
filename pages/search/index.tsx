@@ -92,6 +92,7 @@ function Search() {
         />
         <FontAwesomeIcon icon={faCircleXmark} className={cx('remove__icon')} onClick={() => handleRemoveSearchText()} />
       </div>
+      <div className="small__line"></div>
       {searchResults.length > 0 ? (
         <div className={cx('search__result')}>
           {searchResults.map((item, index) => (
@@ -111,7 +112,7 @@ function Search() {
               <div className={cx('search__history')}>
                 <div className={cx('history__heading')}>
                   <h2>Recent searches</h2>
-                  <span onClick={() => setsearchHistory([])}>Clean</span>
+                  <span onClick={() => setsearchHistory([])}>Clear</span>
                 </div>
                 <div className={cx('history')}>
                   {searchHistory.map((item, index) => (
@@ -126,7 +127,7 @@ function Search() {
                   ))}
                 </div>
               </div>
-              <div className="bottom-line"></div>
+              <div className="large__line"></div>
             </>
           )}
           <div className={cx('food__suggestions')}>

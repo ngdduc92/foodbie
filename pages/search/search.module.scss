@@ -3,10 +3,11 @@
 .wrapper__search__input {
   @include flex(center, null);
   height: 40px;
-  border-bottom: 1px solid #999;
+  margin-top: 10px;
 }
 .icon__back {
   font-size: 2rem;
+  padding-right: 10px;
 }
 .search__input {
   @extend %search-input;

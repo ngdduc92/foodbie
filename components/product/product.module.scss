@@ -27,11 +27,7 @@
   @include flex(center, null);
   padding: 20px 0;
 }
-.product__line {
-  border-bottom: 1px solid #999;
-  margin-right: calc(var(--bs-gutter-x) * -0.5);
-  margin-left: calc(var(--bs-gutter-x) * -0.5);
-}
+
 .product__image {
   width: 100px;
   height: 80px;
