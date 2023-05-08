@@ -80,7 +80,7 @@ function DetailStore() {
         <div className={cx('menu')}>
           <h2 className={cx('menu__title')}>Menu</h2>
           <div className="container">
-            <div className="row row-cols-2 row-cols-lg-6 gy-4 gx-4">
+            <div className="row row-cols-2 row-cols-md-4 row-cols-lg-6 gy-4 gx-4">
               <div className="col">
                 <div className={cx('menu__item')}>
                   <div className={cx('menu__item__img')}>
