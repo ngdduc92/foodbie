@@ -79,8 +79,8 @@ function DetailStore() {
         <div className="large__line"></div>
         <div className={cx('menu')}>
           <h2 className={cx('menu__title')}>Menu</h2>
-          <div className="container">
-            <div className="row row-cols-2 row-cols-md-4 row-cols-lg-6 gy-4 gx-4">
+          <div className="menu__group">
+            <div className="row row-cols-2 row-cols-sm-4 row-cols-lg-5 gy-4 gx-4">
               <div className="col">
                 <div className={cx('menu__item')}>
                   <div className={cx('menu__item__img')}>
