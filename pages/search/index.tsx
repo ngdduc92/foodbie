@@ -6,10 +6,12 @@ import styles from './search.module.scss';
 import { useRouter } from 'next/router';
 import Link from 'next/link';
 import Image from 'next/image';
+import { useSearchStore } from '@/store/search/search.store';
 
 const cx = classNames.bind(styles);
 
 function Search() {
+  const router = useRouter();
   const dataSearch = [
     'Phở',
     'Bánh khọt',
@@ -50,27 +52,36 @@ function Search() {
     'Chả mực',
   ];
   const inputElement = useRef<HTMLInputElement>(null);
-  const [searchResults, setSearchResults] = useState<string[]>([]);
+  const [searchFilter, setSearchFilter] = useState<string[]>([]);
   const [searchHistory, setsearchHistory] = useState<string[]>([]);
-  const handleSearch = (e: any) => {
-    const keySearch = e.target.value;
+  const { searchResult, setSearchParam } = useSearchStore((state: any) => ({
+    searchResult: state.searchResult,
+    setSearchParam: state.setSearchParam,
+  }));
+  const handleSearchFilter = (e: any) => {
+    const keySearch = e.target.value.toLowerCase();
     if (keySearch === '') {
-      setSearchResults([]);
+      setSearchFilter([]);
     } else {
       const results = dataSearch.filter((item) => item.toLowerCase().includes(keySearch));
-      setSearchResults(results);
+      setSearchFilter(results);
     }
   };
   const handleRemoveSearchText = () => {
     if (null !== inputElement.current) {
       inputElement.current.value = '';
     }
-    setSearchResults([]);
+    setSearchFilter([]);
   };
   const handleRemoveHistory = (value: string) => {
     const results = searchHistory.filter((item) => item !== value);
     setsearchHistory(results);
   };
+  const handleSearchResult = (value: string) => {
+    setSearchParam(value);
+    router.push('/searchresult');
+  };
+
   // search history
   useEffect(() => {
     const searchHistory: string[] = ['Bánh khọt', 'Bánh xèo', 'Bún mắm'];
@@ -88,15 +99,15 @@ function Search() {
           placeholder="Find restaurants, dishes"
           className={cx('search__input')}
           ref={inputElement}
-          onChange={(e) => handleSearch(e)}
+          onChange={(e) => handleSearchFilter(e)}
         />
         <FontAwesomeIcon icon={faCircleXmark} className={cx('remove__icon')} onClick={() => handleRemoveSearchText()} />
       </div>
       <div className="small__line"></div>
-      {searchResults.length > 0 ? (
+      {searchFilter.length > 0 ? (
         <div className={cx('search__result')}>
-          {searchResults.map((item, index) => (
-            <div className={cx('search__item')} key={index}>
+          {searchFilter.map((item, index) => (
+            <div className={cx('search__item')} key={index} onClick={() => handleSearchResult(item)}>
               <div>
                 <FontAwesomeIcon icon={faMagnifyingGlass} />
                 <span className={cx('ms-5')}>{item}</span>
