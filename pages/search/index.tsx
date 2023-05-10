@@ -3,15 +3,15 @@ import { faArrowLeft, faCircleXmark, faMagnifyingGlass, faXmark } from '@fortawe
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import classNames from 'classnames/bind';
 import styles from './search.module.scss';
-import { useRouter } from 'next/router';
 import Link from 'next/link';
 import Image from 'next/image';
 import { useSearchStore } from '@/store/search/search.store';
+import Product from '@/components/product/product.component';
+import { DATA_PRODUCTS } from '@/share/constants';
 
 const cx = classNames.bind(styles);
 
 function Search() {
-  const router = useRouter();
   const dataSearch = [
     'Phở',
     'Bánh khọt',
@@ -53,16 +53,18 @@ function Search() {
   ];
   const inputElement = useRef<HTMLInputElement>(null);
   const [searchFilter, setSearchFilter] = useState<string[]>([]);
+  const [searchResult, setSearchResult] = useState<object[]>([]);
   const [searchHistory, setsearchHistory] = useState<string[]>([]);
-  const { searchResult, setSearchParam } = useSearchStore((state: any) => ({
-    searchResult: state.searchResult,
-    setSearchParam: state.setSearchParam,
-  }));
+  // const { searchResult, setSearchParam } = useSearchStore((state: any) => ({
+  //   searchResult: state.searchResult,
+  //   setSearchParam: state.setSearchParam,
+  // }));
   const handleSearchFilter = (e: any) => {
     const keySearch = e.target.value.toLowerCase();
     if (keySearch === '') {
       setSearchFilter([]);
     } else {
+      setSearchResult([]);
       const results = dataSearch.filter((item) => item.toLowerCase().includes(keySearch));
       setSearchFilter(results);
     }
@@ -72,16 +74,21 @@ function Search() {
       inputElement.current.value = '';
     }
     setSearchFilter([]);
+    setSearchResult([]);
   };
   const handleRemoveHistory = (value: string) => {
     const results = searchHistory.filter((item) => item !== value);
     setsearchHistory(results);
   };
   const handleSearchResult = (value: string) => {
-    setSearchParam(value);
-    router.push('/searchresult');
+    const results = DATA_PRODUCTS.filter((item) => item.title.toLowerCase().includes(value.toLowerCase()));
+    setSearchResult(results);
   };
-
+  const handleKeyDown = (e: any, value: string) => {
+    if (e.key === 'Enter') {
+      handleSearchResult(value);
+    }
+  };
   // search history
   useEffect(() => {
     const searchHistory: string[] = ['Bánh khọt', 'Bánh xèo', 'Bún mắm'];
@@ -100,69 +107,76 @@ function Search() {
           className={cx('search__input')}
           ref={inputElement}
           onChange={(e) => handleSearchFilter(e)}
+          onKeyDown={(e) => handleKeyDown(e, (e.target as HTMLInputElement).value)}
         />
         <FontAwesomeIcon icon={faCircleXmark} className={cx('remove__icon')} onClick={() => handleRemoveSearchText()} />
       </div>
       <div className="small__line"></div>
-      {searchFilter.length > 0 ? (
-        <div className={cx('search__result')}>
-          {searchFilter.map((item, index) => (
-            <div className={cx('search__item')} key={index} onClick={() => handleSearchResult(item)}>
-              <div>
-                <FontAwesomeIcon icon={faMagnifyingGlass} />
-                <span className={cx('ms-5')}>{item}</span>
-              </div>
-              <Image alt="" src="/assets/images/up-left-arrow.png" width={25} height={25} />
-            </div>
-          ))}
-        </div>
+      {searchResult.length > 0 ? (
+        <Product dataProduct={searchResult} />
       ) : (
         <>
-          {searchHistory.length > 0 && (
-            <>
-              <div className={cx('search__history')}>
-                <div className={cx('history__heading')}>
-                  <h2>Recent searches</h2>
-                  <span onClick={() => setsearchHistory([])}>Clear</span>
+          {searchFilter.length > 0 ? (
+            <div className={cx('search__result')}>
+              {searchFilter.map((item, index) => (
+                <div className={cx('search__item')} key={index} onClick={() => handleSearchResult(item)}>
+                  <div>
+                    <FontAwesomeIcon icon={faMagnifyingGlass} />
+                    <span className={cx('ms-5')}>{item}</span>
+                  </div>
+                  <Image alt="" src="/assets/images/up-left-arrow.png" width={25} height={25} />
                 </div>
-                <div className={cx('history')}>
-                  {searchHistory.map((item, index) => (
-                    <div className={cx('history__item')} key={index}>
-                      {item}
-                      <FontAwesomeIcon
-                        icon={faXmark}
-                        className={cx('ms-2')}
-                        onClick={() => handleRemoveHistory(item)}
-                      />
+              ))}
+            </div>
+          ) : (
+            <>
+              {searchHistory.length > 0 && (
+                <>
+                  <div className={cx('search__history')}>
+                    <div className={cx('history__heading')}>
+                      <h2>Recent searches</h2>
+                      <span onClick={() => setsearchHistory([])}>Clear</span>
                     </div>
-                  ))}
+                    <div className={cx('history')}>
+                      {searchHistory.map((item, index) => (
+                        <div className={cx('history__item')} key={index}>
+                          {item}
+                          <FontAwesomeIcon
+                            icon={faXmark}
+                            className={cx('ms-2')}
+                            onClick={() => handleRemoveHistory(item)}
+                          />
+                        </div>
+                      ))}
+                    </div>
+                  </div>
+                  <div className="large__line"></div>
+                </>
+              )}
+              <div className={cx('food__suggestions')}>
+                <h2 className={cx('suggestions__heading')}>What's hot?</h2>
+                <div className={cx('suggestions')}>
+                  <div className={cx('suggestions__item')}>Bánh khọt</div>
+                  <div className={cx('suggestions__item')}>Cơm tấm</div>
+                  <div className={cx('suggestions__item')}>Phở</div>
+                  <div className={cx('suggestions__item')}>Chả cá</div>
+                  <div className={cx('suggestions__item')}>Bánh xèo</div>
+                  <div className={cx('suggestions__item')}>Cao lầu</div>
+                  <div className={cx('suggestions__item')}>Rau muống</div>
+                  <div className={cx('suggestions__item')}>Nem rán/chả giò</div>
+                  <div className={cx('suggestions__item')}>Gỏi cuốn</div>
+                  <div className={cx('suggestions__item')}>Bún bò Huế</div>
+                  <div className={cx('suggestions__item')}>Gà tần</div>
+                  <div className={cx('suggestions__item')}>Nộm hoa chuối</div>
+                  <div className={cx('suggestions__item')}>Bún bò Nam bộ</div>
+                  <div className={cx('suggestions__item')}>Hoa quả dầm</div>
+                  <div className={cx('suggestions__item')}>Phở cuốn</div>
+                  <div className={cx('suggestions__item')}>Gà nướng</div>
+                  <div className={cx('suggestions__item')}>Phở xào</div>
                 </div>
               </div>
-              <div className="large__line"></div>
             </>
           )}
-          <div className={cx('food__suggestions')}>
-            <h2 className={cx('suggestions__heading')}>What's hot?</h2>
-            <div className={cx('suggestions')}>
-              <div className={cx('suggestions__item')}>Bánh khọt</div>
-              <div className={cx('suggestions__item')}>Cơm tấm</div>
-              <div className={cx('suggestions__item')}>Phở</div>
-              <div className={cx('suggestions__item')}>Chả cá</div>
-              <div className={cx('suggestions__item')}>Bánh xèo</div>
-              <div className={cx('suggestions__item')}>Cao lầu</div>
-              <div className={cx('suggestions__item')}>Rau muống</div>
-              <div className={cx('suggestions__item')}>Nem rán/chả giò</div>
-              <div className={cx('suggestions__item')}>Gỏi cuốn</div>
-              <div className={cx('suggestions__item')}>Bún bò Huế</div>
-              <div className={cx('suggestions__item')}>Gà tần</div>
-              <div className={cx('suggestions__item')}>Nộm hoa chuối</div>
-              <div className={cx('suggestions__item')}>Bún bò Nam bộ</div>
-              <div className={cx('suggestions__item')}>Hoa quả dầm</div>
-              <div className={cx('suggestions__item')}>Phở cuốn</div>
-              <div className={cx('suggestions__item')}>Gà nướng</div>
-              <div className={cx('suggestions__item')}>Phở xào</div>
-            </div>
-          </div>
         </>
       )}
     </div>
