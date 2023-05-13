@@ -32,7 +32,7 @@ body a {
   }
 }
 .large__line {
-  margin-top: 20px;
+  margin: 20px 0;
   margin-right: calc(var(--bs-gutter-x) * -0.5);
   margin-left: calc(var(--bs-gutter-x) * -0.5);
   border-bottom: 8px solid #cbd9e145;
@@ -41,6 +41,9 @@ body a {
   border-bottom: 1px solid #999;
   margin-right: calc(var(--bs-gutter-x) * -0.5);
   margin-left: calc(var(--bs-gutter-x) * -0.5);
+}
+.heading {
+  @extend %heading;
 }
 // Start: slider
 .slider-wrapper {

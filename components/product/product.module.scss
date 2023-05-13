@@ -1,8 +1,5 @@
 @use '../../styles/base' as *;
 
-.wrapper__product__list {
-  margin-top: 18px;
-}
 .heading {
   @extend %heading;
 }
@@ -24,7 +21,7 @@
 }
 
 .product__item {
-  @include flex(center, null);
+  @include flex(null, null);
   padding: 20px 0;
 }
 

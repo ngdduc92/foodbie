@@ -10,7 +10,10 @@ export default function Home() {
       <Slider />
       <Category />
       <div className="large__line"></div>
-      <Product dataProduct={DATA_PRODUCTS} />
+      <div className="wrapper__product__list">
+        <h2 className="heading">What's delicious around here?</h2>
+        <Product dataProduct={DATA_PRODUCTS} />
+      </div>
     </Layout>
   );
 }

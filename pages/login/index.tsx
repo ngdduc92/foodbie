@@ -6,6 +6,7 @@ import Link from 'next/link';
 import { AUTH_LOGIN } from '@/share/constants';
 import { HttpClient } from '@/services/http-client';
 import { useRouter } from 'next/router';
+import { AuthService } from '@/services/auth';
 
 type Inputs = {
   email: string;
@@ -20,8 +21,10 @@ function Login() {
     handleSubmit,
     formState: { errors },
   } = useForm<Inputs>();
+  const httpClient = new HttpClient();
+  const authService = new AuthService(httpClient);
   const onSubmit: SubmitHandler<Inputs> = (data) => {
-    HttpClient.post(AUTH_LOGIN, data).then((res) => {
+    authService.login(data).then((res) => {
       if (res.status === 200) {
         localStorage.setItem('API_TOKEN', res.data.accessToken);
         router.push('/');

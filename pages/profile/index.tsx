@@ -5,11 +5,15 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faUser, faPen, faChevronRight } from '@fortawesome/free-solid-svg-icons';
 import HeaderOption from '@/components/headerOption';
 import { HttpClient } from '@/services/http-client';
+import { AuthService } from '@/services/auth';
 const cx = classNames.bind(styles);
+
+const httpClient = new HttpClient();
+const authService = new AuthService(httpClient);
 
 export default function Profile() {
   const logout = () => {
-    HttpClient.logout();
+    authService.logout();
   };
   return (
     <div className={cx('wrapper__profile')}>

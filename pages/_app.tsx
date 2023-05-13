@@ -8,9 +8,11 @@ import React, { useEffect } from 'react';
 
 export default function App({ Component, pageProps }: AppProps) {
   const router = useRouter();
+  const httpClient = new HttpClient();
   useEffect(() => {
     const apiToken = localStorage.getItem('API_TOKEN');
-    HttpClient.get(AUTH_PROFILE)
+    httpClient
+      .get(AUTH_PROFILE)
       .then((res) => {
         console.log('res', res);
       })

@@ -1,13 +1,14 @@
 import { REFRESH_TOKEN } from '@/share/constants';
 import axios from 'axios';
 import Router from 'next/router';
-const BASE_URL = 'http://foobbie.com:5000';
+// const BASE_URL = 'http://foobbie.com:5000';
+const BASE_URL = 'http://localhost:5000';
 
 export class HttpClient {
-  static isRefresh: boolean;
+  isRefresh = false;
   constructor() {}
 
-  static contains(target: string, pattern: any[]) {
+  contains(target: string, pattern: any[]) {
     let value = 0;
     pattern.forEach((word) => {
       value = value + (target.includes(word) ? 1 : 0);
@@ -15,7 +16,7 @@ export class HttpClient {
     return value !== 0;
   }
 
-  static getDefaultOptions() {
+  getDefaultOptions() {
     const token = typeof localStorage !== 'undefined' ? localStorage.getItem('API_TOKEN') : null;
     return {
       baseURL: BASE_URL,
@@ -26,19 +27,31 @@ export class HttpClient {
     };
   }
 
-  static get(url: string) {
+  get(url: string) {
     return axios.get(url, this.getDefaultOptions()).catch((errors) => {
       this.refreshTokenAndRetry(errors, url, () => this.get(url));
       return errors;
     });
   }
-  static post(url: string, body: Object) {
+  post(url: string, body: Object) {
     return axios.post(url, body, this.getDefaultOptions()).catch((errors) => {
       this.refreshTokenAndRetry(errors, url, () => this.post(url, body));
       return errors;
     });
   }
-  static refreshTokenAndRetry(errors: any, url: string, apiCall: Function) {
+  put(url: string, body: Object) {
+    return axios.put(url, body, this.getDefaultOptions()).catch((errors) => {
+      this.refreshTokenAndRetry(errors, url, () => this.put(url, body));
+      return errors;
+    });
+  }
+  delete(url: string) {
+    return axios.delete(url, this.getDefaultOptions()).catch((errors) => {
+      this.refreshTokenAndRetry(errors, url, () => this.delete(url));
+      return errors;
+    });
+  }
+  refreshTokenAndRetry(errors: any, url: string, apiCall: Function) {
     if (errors.response.status == 401 && !this.contains(url, ['logout', 'refresh'])) {
       this.get(REFRESH_TOKEN)
         .then((res) => {
@@ -58,7 +71,7 @@ export class HttpClient {
         });
     }
   }
-  static logout() {
+  logout() {
     this.get('/auth/logout');
     localStorage.removeItem('API_TOKEN');
     return Router.push('/login');

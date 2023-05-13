@@ -8,6 +8,9 @@ import Image from 'next/image';
 import { useSearchStore } from '@/store/search/search.store';
 import Product from '@/components/product/product.component';
 import { DATA_PRODUCTS } from '@/share/constants';
+import { ShopService } from '@/services/shop';
+import { HttpClient } from '@/services/http-client';
+import { OrderService } from '@/services/order';
 
 const cx = classNames.bind(styles);
 
@@ -51,7 +54,27 @@ function Search() {
     'Chả cá',
     'Chả mực',
   ];
+  const foodSuggestions = [
+    'Cơm tấm',
+    'Bánh khọt',
+    'Phở',
+    'Chả cá',
+    'Bánh xèo',
+    'Cao lầu',
+    'Rau muống',
+    'Nem rán/chả giò',
+    'Gỏi cuốn',
+    'Bún bò Huế',
+    'Gà tần',
+    'Nộm hoa chuối',
+    'Bún bò Nam bộ',
+    'Hoa quả dầm',
+    'Phở cuốn',
+    'Gà nướng',
+    'Phở xào',
+  ];
   const inputElement = useRef<HTMLInputElement>(null);
+  const [searchInput, setsearchInput] = useState<string>('');
   const [searchFilter, setSearchFilter] = useState<string[]>([]);
   const [searchResult, setSearchResult] = useState<object[]>([]);
   const [searchHistory, setsearchHistory] = useState<string[]>([]);
@@ -59,18 +82,8 @@ function Search() {
   //   searchResult: state.searchResult,
   //   setSearchParam: state.setSearchParam,
   // }));
-  const handleSearchFilter = (e: any) => {
-    const keySearch = e.target.value.toLowerCase();
-    if (keySearch === '') {
-      setSearchFilter([]);
-    } else {
-      setSearchResult([]);
-      const results = dataSearch.filter((item) => item.toLowerCase().includes(keySearch));
-      setSearchFilter(results);
-    }
-  };
   const handleRemoveSearchText = () => {
-    if (null !== inputElement.current) {
+    if (inputElement.current !== null) {
       inputElement.current.value = '';
     }
     setSearchFilter([]);
@@ -81,6 +94,9 @@ function Search() {
     setsearchHistory(results);
   };
   const handleSearchResult = (value: string) => {
+    if (inputElement.current !== null) {
+      inputElement.current.value = value;
+    }
     const results = DATA_PRODUCTS.filter((item) => item.title.toLowerCase().includes(value.toLowerCase()));
     setSearchResult(results);
   };
@@ -89,13 +105,26 @@ function Search() {
       handleSearchResult(value);
     }
   };
+  useEffect(() => {
+    const keySearch = searchInput.toLowerCase();
+    if (keySearch === '') {
+      setSearchFilter([]);
+    } else {
+      setSearchResult([]);
+      const results = dataSearch.filter((item) => item.toLowerCase().includes(keySearch));
+      setSearchFilter(results);
+    }
+  }, [searchInput]);
   // search history
   useEffect(() => {
-    const searchHistory: string[] = ['Bánh khọt', 'Bánh xèo', 'Bún mắm'];
+    const searchHistory: string[] = ['Cơm tấm', 'Phở', 'Bún mắm'];
     localStorage.setItem('SEARCHHISTORYS', JSON.stringify(searchHistory));
     setsearchHistory(JSON.parse(localStorage.getItem('SEARCHHISTORYS') || '[]'));
-  }, []);
 
+    const httpClient = new HttpClient();
+    const shopService = new ShopService(httpClient);
+    const orderService = new OrderService(httpClient);
+  }, []);
   return (
     <div className={cx('container-fluid')}>
       <div className={cx('wrapper__search__input')}>
@@ -103,23 +132,27 @@ function Search() {
           <FontAwesomeIcon icon={faArrowLeft} className={cx('icon__back')} />
         </Link>
         <input
+          value={inputElement.current?.value}
           placeholder="Find restaurants, dishes"
           className={cx('search__input')}
           ref={inputElement}
-          onChange={(e) => handleSearchFilter(e)}
+          onChange={(e) => setsearchInput(e.target.value)}
           onKeyDown={(e) => handleKeyDown(e, (e.target as HTMLInputElement).value)}
         />
         <FontAwesomeIcon icon={faCircleXmark} className={cx('remove__icon')} onClick={() => handleRemoveSearchText()} />
       </div>
       <div className="small__line"></div>
       {searchResult.length > 0 ? (
-        <Product dataProduct={searchResult} />
+        <div className={cx('search__result')}>
+          <span className={cx('search__result__title')}>{searchResult.length} restaurants found</span>
+          <Product dataProduct={searchResult} />
+        </div>
       ) : (
         <>
           {searchFilter.length > 0 ? (
-            <div className={cx('search__result')}>
+            <div className={cx('search__suggestions')}>
               {searchFilter.map((item, index) => (
-                <div className={cx('search__item')} key={index} onClick={() => handleSearchResult(item)}>
+                <div className={cx('search__suggestion__item')} key={index} onClick={() => handleSearchResult(item)}>
                   <div>
                     <FontAwesomeIcon icon={faMagnifyingGlass} />
                     <span className={cx('ms-5')}>{item}</span>
@@ -139,7 +172,7 @@ function Search() {
                     </div>
                     <div className={cx('history')}>
                       {searchHistory.map((item, index) => (
-                        <div className={cx('history__item')} key={index}>
+                        <div className={cx('history__item')} key={index} onClick={() => handleSearchResult(item)}>
                           {item}
                           <FontAwesomeIcon
                             icon={faXmark}
@@ -156,23 +189,11 @@ function Search() {
               <div className={cx('food__suggestions')}>
                 <h2 className={cx('suggestions__heading')}>What's hot?</h2>
                 <div className={cx('suggestions')}>
-                  <div className={cx('suggestions__item')}>Bánh khọt</div>
-                  <div className={cx('suggestions__item')}>Cơm tấm</div>
-                  <div className={cx('suggestions__item')}>Phở</div>
-                  <div className={cx('suggestions__item')}>Chả cá</div>
-                  <div className={cx('suggestions__item')}>Bánh xèo</div>
-                  <div className={cx('suggestions__item')}>Cao lầu</div>
-                  <div className={cx('suggestions__item')}>Rau muống</div>
-                  <div className={cx('suggestions__item')}>Nem rán/chả giò</div>
-                  <div className={cx('suggestions__item')}>Gỏi cuốn</div>
-                  <div className={cx('suggestions__item')}>Bún bò Huế</div>
-                  <div className={cx('suggestions__item')}>Gà tần</div>
-                  <div className={cx('suggestions__item')}>Nộm hoa chuối</div>
-                  <div className={cx('suggestions__item')}>Bún bò Nam bộ</div>
-                  <div className={cx('suggestions__item')}>Hoa quả dầm</div>
-                  <div className={cx('suggestions__item')}>Phở cuốn</div>
-                  <div className={cx('suggestions__item')}>Gà nướng</div>
-                  <div className={cx('suggestions__item')}>Phở xào</div>
+                  {foodSuggestions.map((item, index) => (
+                    <div className={cx('suggestions__item')} key={index}>
+                      {item}
+                    </div>
+                  ))}
                 </div>
               </div>
             </>
