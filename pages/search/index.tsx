@@ -190,7 +190,7 @@ function Search() {
                 <h2 className={cx('suggestions__heading')}>What's hot?</h2>
                 <div className={cx('suggestions')}>
                   {foodSuggestions.map((item, index) => (
-                    <div className={cx('suggestions__item')} key={index}>
+                    <div className={cx('suggestions__item')} key={index} onClick={() => handleSearchResult(item)}>
                       {item}
                     </div>
                   ))}
