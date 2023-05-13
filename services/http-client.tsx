@@ -1,8 +1,7 @@
 import { REFRESH_TOKEN } from '@/share/constants';
 import axios from 'axios';
 import Router from 'next/router';
-// const BASE_URL = 'http://foobbie.com:5000';
-const BASE_URL = 'http://localhost:5000';
+const BASE_URL = 'http://foobbie.com:5000';
 
 export class HttpClient {
   isRefresh = false;
