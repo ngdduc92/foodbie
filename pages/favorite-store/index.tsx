@@ -1,6 +1,6 @@
 import React from 'react';
 import classNames from 'classnames/bind';
-import styles from './favoriteStore.module.scss';
+import styles from './favorite-store.module.scss';
 import HeaderOption from '../../components/headerOption';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 

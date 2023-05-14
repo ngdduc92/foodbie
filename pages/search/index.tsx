@@ -8,9 +8,6 @@ import Image from 'next/image';
 import { useSearchStore } from '@/store/search/search.store';
 import Product from '@/components/product/product.component';
 import { DATA_PRODUCTS } from '@/share/constants';
-import { ShopService } from '@/services/shop';
-import { HttpClient } from '@/services/http-client';
-import { OrderService } from '@/services/order';
 
 const cx = classNames.bind(styles);
 
@@ -120,10 +117,6 @@ function Search() {
     const searchHistory: string[] = ['Cơm tấm', 'Phở', 'Bún mắm'];
     localStorage.setItem('SEARCHHISTORYS', JSON.stringify(searchHistory));
     setsearchHistory(JSON.parse(localStorage.getItem('SEARCHHISTORYS') || '[]'));
-
-    const httpClient = new HttpClient();
-    const shopService = new ShopService(httpClient);
-    const orderService = new OrderService(httpClient);
   }, []);
   return (
     <div className={cx('container-fluid')}>

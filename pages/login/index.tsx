@@ -4,9 +4,9 @@ import style from './login.module.scss';
 import clsx from 'clsx';
 import Link from 'next/link';
 import { AUTH_LOGIN } from '@/share/constants';
-import { HttpClient } from '@/services/http-client';
+import http from '@/services/http';
 import { useRouter } from 'next/router';
-import { AuthService } from '@/services/auth';
+import authService from '@/services/auth';
 
 type Inputs = {
   email: string;
@@ -21,8 +21,6 @@ function Login() {
     handleSubmit,
     formState: { errors },
   } = useForm<Inputs>();
-  const httpClient = new HttpClient();
-  const authService = new AuthService(httpClient);
   const onSubmit: SubmitHandler<Inputs> = (data) => {
     authService.login(data).then((res) => {
       if (res.status === 200) {

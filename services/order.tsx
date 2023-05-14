@@ -1,25 +1,21 @@
-import { HttpClient } from './http-client';
+import httpService from './http';
 
-export class OrderService {
-  url = '/order';
-  httpClient: HttpClient;
-  constructor(httpClient: HttpClient) {
-    this.httpClient = httpClient;
-  }
+const BASE_URI = '/order';
+const ORDER_DETAIL = BASE_URI + '/{id}';
 
-  get() {
-    return this.httpClient.get(this.url);
-  }
-  getById(id: string) {
-    return this.httpClient.get(this.url + '/' + id);
-  }
-  post(body: Object) {
-    return this.httpClient.post(this.url, body);
-  }
-  put(id: string, body: Object) {
-    return this.httpClient.put(this.url + '/' + id, body);
-  }
-  delete(id: string) {
-    return this.httpClient.delete(this.url + '/' + id);
-  }
+function get() {
+  return httpService.get(BASE_URI);
 }
+function getById(id: string) {
+  return httpService.get(ORDER_DETAIL.replace('{id}', id));
+}
+function post(body: Object) {
+  return httpService.post(BASE_URI, body);
+}
+function put(id: string, body: Object) {
+  return httpService.put(ORDER_DETAIL.replace('{id}', id), body);
+}
+function remove(id: string) {
+  return httpService.remove(ORDER_DETAIL.replace('{id}', id));
+}
+export default { get, getById, post, put, remove };
