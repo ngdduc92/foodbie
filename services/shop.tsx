@@ -1,21 +1,16 @@
+import { DATA_PRODUCTS } from '@/share/constants';
 import httpService from './http';
+import { Shop } from '@/share/model/shop';
 
 const BASE_URI = '/shop';
 const SHOP_DETAIL = BASE_URI + '/{id}';
-const data = [
-  {
-    id: 1,
-    name: '123',
-  },
-];
 
 function get() {
   // return httpService.get(URL);
-  return data;
+  return DATA_PRODUCTS;
 }
-function getById(id: string) {
-  // return httpService.get(URL + '/' + id);
-  return data.filter((item: any) => item.id === id);
+function getById(id: string): Shop {
+  return DATA_PRODUCTS.filter((item: any) => item.id.toString() === id)[0];
 }
 function post(body: Object) {
   return httpService.post(BASE_URI, body);

@@ -18,6 +18,7 @@
 .product__content {
   margin-left: 10px;
   flex: 1;
+  justify-content: space-between;
 }
 
 .product__item {
@@ -32,6 +33,20 @@
     @extend %img-cover;
     border-radius: 6px;
   }
+}
+.product__content__right {
+  display: flex;
+  justify-content: space-between;
+}
+.product__price {
+  font-size: 18px;
+  font-weight: 700;
+  color: #0288d1;
+  margin-right: 20px;
+}
+.product__icon__add {
+  font-size: 30px;
+  color: $primary-color;
 }
 .content__bottom {
   @include flex(center, null);

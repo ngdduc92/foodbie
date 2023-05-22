@@ -35,60 +35,59 @@
   border-radius: 50px;
   cursor: pointer;
 }
-.content {
-  margin-top: -50px;
-  position: relative;
-  z-index: 1;
-}
+
 .detail__restaurant__info {
-  text-align: center;
-  width: 100%;
-  background-color: #fff;
-  padding: 10px 20px;
-  border-radius: 4px;
-  box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
+  padding-top: 20px;
 }
 .label {
-  color: $primary-color;
+  color: $white;
   margin-bottom: 0;
-  .label__icon {
-    margin-right: 4px;
-  }
+  background-color: $primary-color;
+  padding: 2px 4px;
+  border-radius: 2px;
+  font-size: 14px;
+}
+.label__icon {
+  margin: 0 6px;
+  color: #ffc107;
 }
 .detail__restaurant {
-  font-size: 2rem;
-  font-weight: 800;
-  margin: 10px 0;
+  display: inline;
+  font-weight: 700;
+  color: #333;
 }
 .address__restaurant {
   font-size: 14px;
 }
-.detail__other {
+.wrapper__reviews {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
   margin-top: 10px;
 }
-.other__item {
-  @include flex(center, space-between);
-  padding: 14px 0;
-  font-size: 1.6rem;
-  font-weight: 600;
-  border-bottom: 1px solid #e7e1e1;
+.reviews {
+  display: flex;
 }
-.item__left {
-  @include flex(center, null);
-  .detail__other__icon {
-    font-size: 2rem;
-    margin-right: 10px;
+.star_item {
+  margin-right: 2px;
+  &:last-child {
+    margin-right: 0;
   }
+}
+.rating {
+  margin: 0 6px;
 }
 .highlight {
-  color: #f78837;
+  color: #ffc107;
 }
-.item__right {
-  color: $primary-color;
+.heart__icon {
+  font-size: 25px;
   cursor: pointer;
-  &:hover {
-    opacity: 0.5;
-  }
+}
+.reviews__distance {
+  margin-left: 10px;
+  padding-left: 10px;
+  border-left: 1px solid #999;
 }
 .menu__title {
   @extend %heading;

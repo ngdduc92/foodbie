@@ -5,7 +5,6 @@ import classNames from 'classnames/bind';
 import styles from './search.module.scss';
 import Link from 'next/link';
 import Image from 'next/image';
-import { useSearchStore } from '@/store/search/search.store';
 import Product from '@/components/product/product.component';
 import { DATA_PRODUCTS } from '@/share/constants';
 
