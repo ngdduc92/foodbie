@@ -20,7 +20,6 @@ import {
   faUtensils,
 } from '@fortawesome/free-solid-svg-icons';
 import Link from 'next/link';
-import HeaderOption from '@/components/headerOption';
 import Footer from '@/components/footer/footer.component';
 
 const cx = classNames.bind(styles);
@@ -29,7 +28,6 @@ export default function SideMenu() {
   return (
     <>
       <nav className={cx('wrapper__menu')}>
-        <HeaderOption title={'Account Information'} link={'/'} />
         <div className={cx('profile')}>
           <Link href="/profile" className={cx('user__sidebar')}>
             <img className={cx('user__img')} src="https://vnn-imgs-f.vgcloud.vn/2021/05/11/15/nintchdbpict000591626263.jpg" />
