@@ -3,119 +3,157 @@ import styles from './menu.module.scss';
 import classNames from 'classnames/bind';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import {
-  faUser,
   faChevronRight,
-  faReceipt,
-  faHeart,
   faMapLocationDot,
   faWallet,
   faShieldHalved,
   faCreditCard,
   faStar,
-  faBell,
   faHeadphonesSimple,
   faCircleExclamation,
+  faTicket,
+  faEnvelope,
+  faCircleQuestion,
+  faStore,
+  faFileContract,
+  faGear,
+  faUtensils,
 } from '@fortawesome/free-solid-svg-icons';
 import Link from 'next/link';
 import HeaderOption from '@/components/headerOption';
+import Footer from '@/components/footer/footer.component';
 
 const cx = classNames.bind(styles);
 
 export default function SideMenu() {
   return (
-    <nav className={cx('wrapper__menu')}>
-      <HeaderOption title={'Account Information'} link={'/'} />
-      <div className={cx('profile')}>
-        <Link href="/profile">
-          <div className={cx('user__sidebar')}>
-            <i className={cx('user__icon')}>
-              <FontAwesomeIcon icon={faUser} />
-            </i>
-            <p>Profile</p>
+    <>
+      <nav className={cx('wrapper__menu')}>
+        <HeaderOption title={'Account Information'} link={'/'} />
+        <div className={cx('profile')}>
+          <Link href="/profile" className={cx('user__sidebar')}>
+            <img className={cx('user__img')} src="https://vnn-imgs-f.vgcloud.vn/2021/05/11/15/nintchdbpict000591626263.jpg" />
+            <label>Leonardo DiCaprio</label>
+          </Link>
+        </div>
+        {/* <div className={cx('utility__list')}>
+          <div className={cx('utility__item')}>
+            <Link href="../order" className={cx('utility__item__content')}>
+              <FontAwesomeIcon icon={faReceipt} />
+              <label>Order</label>
+            </Link>
           </div>
-          <FontAwesomeIcon icon={faChevronRight} />
-        </Link>
-      </div>
-      <div className={cx('utility__list')}>
-        <div className={cx('utility__item')}>
-          <Link href="../order" className={cx('utility__item__content')}>
-            <FontAwesomeIcon icon={faReceipt} />
-            <label>Order</label>
-          </Link>
-        </div>
-        <div className={cx('utility__item')}>
-          <Link href="../favoriteStore" className={cx('utility__item__content')}>
-            <FontAwesomeIcon icon={faHeart} />
-            <label>Favorite store</label>
-          </Link>
-        </div>
-        <div className={cx('utility__item')}>
-          <Link href="../address" className={cx('utility__item__content')}>
-            <FontAwesomeIcon icon={faMapLocationDot} />
-            <label>Address</label>
-          </Link>
-        </div>
-      </div>
-      <ul className={cx('payment__option', 'option')}>
-        <li className={cx('payment__option__item', 'option__item')}>
-          <a>
-            <i className={cx('payment__icon', 'icon')}>
-              <FontAwesomeIcon icon={faWallet} />
-            </i>
-            <p>Wallet Coupon</p>
-          </a>
-        </li>
-        <li className={cx('payment__option__item', 'option__item')}>
-          <a>
-            <i className={cx('payment__icon', 'icon')}>
-              <FontAwesomeIcon icon={faCreditCard} />
-            </i>
-            <p>Payment management</p>
-          </a>
-        </li>
-        <li className={cx('payment__option__item', 'option__item')}>
-          <a>
-            <i className={cx('payment__icon', 'icon')}>
-              <FontAwesomeIcon icon={faShieldHalved} />
-            </i>
-            <p>Share personal information</p>
-          </a>
-        </li>
-      </ul>
-      <ul className={cx('evaluate__option', 'option')}>
-        <li className={cx('payment__option__item', 'option__item')}>
-          <a>
-            <i className={cx('payment__icon', 'icon')}>
-              <FontAwesomeIcon icon={faStar} />
-            </i>
-            <p>Review Foobbie</p>
-          </a>
-        </li>
-        <li className={cx('payment__option__item', 'option__item')}>
-          <a>
-            <i className={cx('payment__icon', 'icon')}>
-              <FontAwesomeIcon icon={faBell} />
-            </i>
-            <p>Notification</p>
-          </a>
-        </li>
-        <li className={cx('payment__option__item', 'option__item')}>
-          <a>
-            <i className={cx('payment__icon', 'icon')}>
-              <FontAwesomeIcon icon={faHeadphonesSimple} />
-            </i>
-            <p>Support</p>
-          </a>
-        </li>
-        <li className={cx('payment__option__item', 'option__item')}>
-          <a>
-            <i className={cx('payment__icon', 'icon')}>
-              <FontAwesomeIcon icon={faCircleExclamation} />
-            </i>
-            <p>Controls and Policies</p>
-          </a>
-        </li>
-      </ul>
-    </nav>
+          <div className={cx('utility__item')}>
+            <Link href="../favoriteStore" className={cx('utility__item__content')}>
+              <FontAwesomeIcon icon={faHeart} />
+              <label>Favorite store</label>
+            </Link>
+          </div>
+          <div className={cx('utility__item')}>
+            <Link href="../address" className={cx('utility__item__content')}>
+              <FontAwesomeIcon icon={faMapLocationDot} />
+              <label>Address</label>
+            </Link>
+          </div>
+        </div> */}
+        <ul className={cx('payment__option', 'option')}>
+          <li className={cx('option__item')}>
+            <a>
+              <div className={cx('option__item__content')}>
+                <i className={cx('icon')} style={{ color: 'red' }}>
+                  <FontAwesomeIcon icon={faTicket} />
+                </i>
+                <label>My Vouchers</label>
+              </div>
+              <FontAwesomeIcon icon={faChevronRight} />
+            </a>
+          </li>
+          <li className={cx('option__item')}>
+            <a>
+              <div className={cx('option__item__content')}>
+                <i className={cx('icon')} style={{ color: '#26aa99' }}>
+                  <FontAwesomeIcon icon={faMapLocationDot} />
+                </i>
+                <label>Address</label>
+              </div>
+              <FontAwesomeIcon icon={faChevronRight} />
+            </a>
+          </li>
+        </ul>
+        <ul className={cx('share__information__option', 'option')}>
+          <li className={cx('option__item')}>
+            <a>
+              <div className={cx('option__item__content')}>
+                <i className={cx('icon')} style={{ color: 'darkslateblue' }}>
+                  <FontAwesomeIcon icon={faEnvelope} />
+                </i>
+                <label>Controls and Policies</label>
+              </div>
+              <FontAwesomeIcon icon={faChevronRight} />
+            </a>
+          </li>
+          <li className={cx('option__item')}>
+            <a>
+              <div className={cx('option__item__content')}>
+                <i className={cx('icon')} style={{ color: '#26aa99' }}>
+                  <FontAwesomeIcon icon={faCircleQuestion} />
+                </i>
+                <label>Help Center</label>
+              </div>
+              <FontAwesomeIcon icon={faChevronRight} />
+            </a>
+          </li>
+        </ul>
+        <ul className={cx('share__information__option', 'option')}>
+          <li className={cx('option__item')}>
+            <a>
+              <div className={cx('option__item__content')}>
+                <i className={cx('icon')} style={{ color: 'red' }}>
+                  <FontAwesomeIcon icon={faStore} />
+                </i>
+                <label>For Shop Owners</label>
+              </div>
+              <FontAwesomeIcon icon={faChevronRight} />
+            </a>
+          </li>
+        </ul>
+        <ul className={cx('evaluate__option', 'option')}>
+          <li className={cx('option__item')}>
+            <a>
+              <div className={cx('option__item__content')}>
+                <i className={cx('icon')}>
+                  <FontAwesomeIcon icon={faFileContract} style={{ color: '#ffc107' }} />
+                </i>
+                <label>User Policy</label>
+              </div>
+              <FontAwesomeIcon icon={faChevronRight} />
+            </a>
+          </li>
+          <li className={cx('option__item')}>
+            <a>
+              <div className={cx('option__item__content')}>
+                <i className={cx('icon')}>
+                  <FontAwesomeIcon icon={faGear} style={{ color: 'darkslateblue' }} />
+                </i>
+                <label>Settings</label>
+              </div>
+              <FontAwesomeIcon icon={faChevronRight} />
+            </a>
+          </li>
+          <li className={cx('option__item')}>
+            <a>
+              <div className={cx('option__item__content')}>
+                <i className={cx('icon')} style={{ color: 'red' }}>
+                  <FontAwesomeIcon icon={faUtensils} />
+                </i>
+                <label>About Foobbie</label>
+              </div>
+              <FontAwesomeIcon icon={faChevronRight} />
+            </a>
+          </li>
+        </ul>
+      </nav>
+      <Footer />
+    </>
   );
 }

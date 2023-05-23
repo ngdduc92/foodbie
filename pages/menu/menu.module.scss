@@ -1,19 +1,16 @@
-@use '../../styles/base' as *;
+@use "../../styles/base" as *;
 
 .wrapper__menu {
   color: #7a7878;
   background: #cbd9e145;
+  margin-bottom: 71px;
 }
 .wrapper__menu p {
   margin: 0;
 }
 .profile {
-  background-color: #fff;
-}
-.profile > a {
-  @include flex(center, space-between);
-  color: #65657e;
-  padding: 10px;
+  background: linear-gradient(-180deg, #f53d2d, #f63);
+  padding: 35px 10px 10px;
 }
 .utility__item__content {
   @include flex(center, space-between);
@@ -51,27 +48,29 @@
   @include flex(center, null);
   padding: 10px 0;
   border-bottom: 1px solid rgb(158 158 158 / 37%);
+  justify-content: space-between;
 }
 .icon {
   padding: 0 20px 0 0;
   font-size: 20px;
 }
-.payment__option .payment__option__item:last-child a {
+.option .option__item:last-child a {
   border-bottom: none;
 }
 ///////////////////////
 
 .user__sidebar {
-  @include flex(center, null);
+  display: inline-block;
   font-size: 15px;
-}
-.user__icon {
-  @include flex(center, center);
-  border-radius: 50%;
-  width: 50px;
-  height: 50px;
-  font-size: 25px;
-  margin-right: 15px;
   color: #fff;
-  background-color: #e80013;
+}
+.user__sidebar > label {
+  font-size: 17px;
+}
+.user__img {
+  border-radius: 50%;
+  width: 55px;
+  height: 55px;
+  margin-right: 15px;
+  object-fit: cover;
 }
