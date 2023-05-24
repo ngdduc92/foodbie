@@ -3,7 +3,6 @@ import classNames from 'classnames/bind';
 import styles from './address.module.scss';
 
 import Link from 'next/link';
-import HeaderOption from '@/components/headerOption';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faHouse, faChevronRight, faBriefcase, faPlus } from '@fortawesome/free-solid-svg-icons';
 
@@ -12,7 +11,6 @@ const cx = classNames.bind(styles);
 export default function Address() {
   return (
     <div className={cx('wrapper__address')}>
-      <HeaderOption title={'Saved address'} link={'/menu'} />
       <div className={cx('address')}>
         <span className={cx('address__title')}>My address</span>
         <div className={cx('address__content')}>

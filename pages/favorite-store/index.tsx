@@ -1,7 +1,6 @@
 import React from 'react';
 import classNames from 'classnames/bind';
 import styles from './favorite-store.module.scss';
-import HeaderOption from '../../components/headerOption';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 
 import { faCircleCheck, faStar, faHeart } from '@fortawesome/free-solid-svg-icons';
@@ -13,7 +12,6 @@ export default function FavoriteStore() {
   return (
     <>
       <div className={cx('wapper__favorite')}>
-        <HeaderOption title={'Favorite store'} link={'/menu'} />
         <div className={cx('favorite__content')}>
           <div className={cx('favorite__content__item')}>
             <div className={cx('item__right')}>

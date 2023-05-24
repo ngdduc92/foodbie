@@ -1,7 +1,6 @@
 import React from 'react';
 import styles from './order.module.scss';
 import classNames from 'classnames/bind';
-import HeaderOption from '../../components/headerOption';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faCircleCheck, faChevronRight } from '@fortawesome/free-solid-svg-icons';
 import Footer from '@/components/footer/footer.component';
@@ -11,7 +10,6 @@ export default function Order() {
   return (
     <>
       <div className={cx('wapper__order')}>
-        <HeaderOption title={'My order'} link={'/menu'} />
         <div className={cx('Order__completed')}>
           <span className={cx('Order__completed__title')}>Orde completed</span>
           <div className={cx('Order__completed__content')}>

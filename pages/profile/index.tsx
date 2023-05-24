@@ -3,7 +3,6 @@ import classNames from 'classnames/bind';
 import styles from './profile.module.scss';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faUser, faPen, faChevronRight } from '@fortawesome/free-solid-svg-icons';
-import HeaderOption from '@/components/headerOption';
 import authService from '@/services/auth';
 const cx = classNames.bind(styles);
 
@@ -13,7 +12,6 @@ export default function Profile() {
   };
   return (
     <div className={cx('wrapper__profile')}>
-      <HeaderOption title={'Account Information'} link={'/menu'} />
       <div className={cx('avt__profile')}>
         <i className={cx('avt__user')}>
           <FontAwesomeIcon icon={faUser} />
