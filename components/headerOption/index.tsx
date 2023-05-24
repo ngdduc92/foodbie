@@ -14,7 +14,7 @@ export default function HeaderOption(props: any) {
   };
   return (
     <div className={cx('header__option')}>
-      <i>
+      <i style={{ color: '#fd5a2f' }}>
         <FontAwesomeIcon
           icon={faArrowLeft}
           onClick={() => {
