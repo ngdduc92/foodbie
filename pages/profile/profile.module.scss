@@ -1,4 +1,4 @@
-@use '../../styles/base' as *;
+@use "../../styles/base" as *;
 
 .wrapper__profile {
   background: #cbd9e145;
@@ -7,18 +7,25 @@
   margin: 0;
 }
 .avt__profile {
-  @include flex(center, center);
-  padding: 20px 0;
+  padding: 10px 0;
   background: #fff;
+  margin-top: 8px;
+  border-bottom: 1px solid rgba(158, 158, 158, 0.37);
 }
 .avt__user {
-  @include flex(center, center);
+  @include flex(center, space-between);
+  padding: 0 10px;
+}
+.user__img {
   border-radius: 50%;
-  width: 70px;
-  height: 70px;
-  font-size: 25px;
-  color: #fff;
-  background-color: #e80013;
+  width: 55px;
+  height: 55px;
+  object-fit: cover;
+}
+.change__avt {
+}
+.icon__chev__right {
+  margin-left: 15px;
 }
 // .information__content {
 //   border-bottom: 1px solid;
@@ -27,58 +34,29 @@
   padding: 0;
   margin: 0;
 }
-.information__user li:last-child .information__content {
+.information__user li:last-child {
   border-bottom: none;
 }
 .information__content {
-  position: relative;
-  display: flex;
-  flex-direction: column;
-  flex: 1;
-  border-bottom: 1px solid rgba(158, 158, 158, 0.37);
+  @include flex(center, space-between);
   padding: 10px 0;
-}
-.information__user li i {
-  position: absolute;
-  right: 20px;
+  width: 100%;
 }
 .information__user li {
   @include flex(center, space-between);
   list-style-type: none;
   padding: 0 10px;
   background-color: #fff;
-}
-.information__user input {
-  border: none;
-  outline: none;
+  border-bottom: 1px solid rgba(158, 158, 158, 0.37);
 }
 .title__information {
   margin-bottom: 0;
 }
-.account {
-  position: relative;
-  padding: 0 10px;
-  background-color: #fff;
-}
-.account p {
-  margin: 0;
-  border-bottom: 1px solid rgba(158, 158, 158, 0.37);
-  padding: 10px 0;
-}
-.icon__account {
-  position: absolute;
-  right: 20px;
-  top: 14px;
-}
-.notification p {
-  margin: 10px 0;
-  padding: 10px;
-}
-.logout {
-  @include flex(center, center);
-  padding: 10px 0;
-  border-bottom: 1px solid #8f9193;
-  color: red;
-  background-color: #fff;
-  cursor: pointer;
+.txt__information {
+  display: block;
+  width: 40%;
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  text-align: end;
 }

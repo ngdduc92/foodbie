@@ -20,42 +20,24 @@ import {
   faUtensils,
 } from '@fortawesome/free-solid-svg-icons';
 import Link from 'next/link';
-import HeaderOption from '@/components/headerOption';
 import Footer from '@/components/footer/footer.component';
+import authService from '@/services/auth';
 
 const cx = classNames.bind(styles);
 
 export default function SideMenu() {
+  const logout = () => {
+    authService.logout();
+  };
   return (
     <>
       <nav className={cx('wrapper__menu')}>
-        <HeaderOption title={'Account Information'} link={'/'} />
         <div className={cx('profile')}>
           <Link href="/profile" className={cx('user__sidebar')}>
             <img className={cx('user__img')} src="https://vnn-imgs-f.vgcloud.vn/2021/05/11/15/nintchdbpict000591626263.jpg" />
             <label>Leonardo DiCaprio</label>
           </Link>
         </div>
-        {/* <div className={cx('utility__list')}>
-          <div className={cx('utility__item')}>
-            <Link href="../order" className={cx('utility__item__content')}>
-              <FontAwesomeIcon icon={faReceipt} />
-              <label>Order</label>
-            </Link>
-          </div>
-          <div className={cx('utility__item')}>
-            <Link href="../favoriteStore" className={cx('utility__item__content')}>
-              <FontAwesomeIcon icon={faHeart} />
-              <label>Favorite store</label>
-            </Link>
-          </div>
-          <div className={cx('utility__item')}>
-            <Link href="../address" className={cx('utility__item__content')}>
-              <FontAwesomeIcon icon={faMapLocationDot} />
-              <label>Address</label>
-            </Link>
-          </div>
-        </div> */}
         <ul className={cx('payment__option', 'option')}>
           <li className={cx('option__item')}>
             <a>
@@ -152,8 +134,11 @@ export default function SideMenu() {
             </a>
           </li>
         </ul>
+        <div className={cx('logout')} onClick={() => logout()}>
+          <span>Log Out</span>
+        </div>
+        <Footer />
       </nav>
-      <Footer />
     </>
   );
 }
