@@ -9,7 +9,7 @@ export default function Home() {
     <Layout>
       <Slider />
       <Category />
-      <div className="large__line"></div>
+      <div className="large__line my-4"></div>
       <div className="wrapper__product__list">
         <h2 className="heading">What's delicious around here?</h2>
         <Product dataProduct={DATA_PRODUCTS} />

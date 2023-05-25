@@ -1,31 +1,11 @@
 @use '../../styles/base' as *;
 
-.heading {
-  @extend %heading;
+.product__price {
+  color: #0288d1;
 }
-.title {
-  @extend %title;
+.product__icon__add {
+  font-size: 30px;
 }
-.title__icon {
-  color: $primary-color;
-}
-.sub__title {
-  font-size: 14px;
-}
-.title__icon {
-  margin-right: 4px;
-}
-.product__content {
-  margin-left: 10px;
-  flex: 1;
-  justify-content: space-between;
-}
-
-.product__item {
-  @include flex(null, null);
-  padding: 20px 0;
-}
-
 .product__image {
   width: 100px;
   height: 80px;
@@ -33,30 +13,4 @@
     @extend %img-cover;
     border-radius: 6px;
   }
-}
-.product__content__right {
-  display: flex;
-  justify-content: space-between;
-}
-.product__price {
-  font-size: 18px;
-  font-weight: 700;
-  color: #0288d1;
-  margin-right: 20px;
-}
-.product__icon__add {
-  font-size: 30px;
-  color: $primary-color;
-}
-.content__bottom {
-  @include flex(center, null);
-}
-.quantity__purchased {
-  margin: 0 8px 0 4px;
-}
-.distance {
-  margin-left: 8px;
-}
-.rating {
-  color: #ffce3e;
 }
