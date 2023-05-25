@@ -74,33 +74,7 @@ function Search() {
   const [searchFilter, setSearchFilter] = useState<string[]>([]);
   const [searchResult, setSearchResult] = useState<object[]>([]);
   const [searchHistory, setsearchHistory] = useState<string[]>([]);
-  // const { searchResult, setSearchParam } = useSearchStore((state: any) => ({
-  //   searchResult: state.searchResult,
-  //   setSearchParam: state.setSearchParam,
-  // }));
-  const handleRemoveSearchText = () => {
-    if (inputElement.current !== null) {
-      inputElement.current.value = '';
-    }
-    setSearchFilter([]);
-    setSearchResult([]);
-  };
-  const handleRemoveHistory = (value: string) => {
-    const results = searchHistory.filter((item) => item !== value);
-    setsearchHistory(results);
-  };
-  const handleSearchResult = (value: string) => {
-    if (inputElement.current !== null) {
-      inputElement.current.value = value;
-    }
-    const results = DATA_PRODUCTS.filter((item) => item.title.toLowerCase().includes(value.toLowerCase()));
-    setSearchResult(results);
-  };
-  const handleKeyDown = (e: any, value: string) => {
-    if (e.key === 'Enter') {
-      handleSearchResult(value);
-    }
-  };
+
   useEffect(() => {
     const keySearch = searchInput.toLowerCase();
     if (keySearch === '') {
@@ -111,17 +85,46 @@ function Search() {
       setSearchFilter(results);
     }
   }, [searchInput]);
+
   // search history
   useEffect(() => {
     const searchHistory: string[] = ['Cơm tấm', 'Phở', 'Bún mắm'];
     localStorage.setItem('SEARCHHISTORYS', JSON.stringify(searchHistory));
     setsearchHistory(JSON.parse(localStorage.getItem('SEARCHHISTORYS') || '[]'));
   }, []);
+
+  const handleRemoveSearchText = () => {
+    if (inputElement.current !== null) {
+      inputElement.current.value = '';
+    }
+    setSearchFilter([]);
+    setSearchResult([]);
+  };
+
+  const handleRemoveHistory = (value: string) => {
+    const results = searchHistory.filter((item) => item !== value);
+    setsearchHistory(results);
+  };
+
+  const handleSearchResult = (value: string) => {
+    if (inputElement.current !== null) {
+      inputElement.current.value = value;
+    }
+    const results = DATA_PRODUCTS.filter((item) => item.title.toLowerCase().includes(value.toLowerCase()));
+    setSearchResult(results);
+  };
+
+  const handleKeyDown = (e: any, value: string) => {
+    if (e.key === 'Enter') {
+      handleSearchResult(value);
+    }
+  };
+
   return (
-    <div className={cx('container-fluid')}>
-      <div className={cx('wrapper__search__input')}>
+    <div className="container-fluid">
+      <div className="d-flex align-items-center mt-1 py-3">
         <Link href="/">
-          <FontAwesomeIcon icon={faArrowLeft} className={cx('icon__back')} />
+          <FontAwesomeIcon icon={faArrowLeft} className="fs-1 pe-3" />
         </Link>
         <input
           value={inputElement.current?.value}
@@ -131,23 +134,27 @@ function Search() {
           onChange={(e) => setsearchInput(e.target.value)}
           onKeyDown={(e) => handleKeyDown(e, (e.target as HTMLInputElement).value)}
         />
-        <FontAwesomeIcon icon={faCircleXmark} className={cx('remove__icon')} onClick={() => handleRemoveSearchText()} />
+        <FontAwesomeIcon icon={faCircleXmark} className="fs-1" onClick={() => handleRemoveSearchText()} />
       </div>
       <div className="small__line"></div>
       {searchResult.length > 0 ? (
-        <div className={cx('search__result')}>
-          <span className={cx('search__result__title')}>{searchResult.length} restaurants found</span>
+        <div className="search__result">
+          <h2 className="d-block mt-4 fw-bold">{searchResult.length} restaurants found</h2>
           <Product dataProduct={searchResult} />
         </div>
       ) : (
         <>
           {searchFilter.length > 0 ? (
-            <div className={cx('search__suggestions')}>
+            <div className="search__suggestions">
               {searchFilter.map((item, index) => (
-                <div className={cx('search__suggestion__item')} key={index} onClick={() => handleSearchResult(item)}>
+                <div
+                  className="d-flex justify-content-between align-items-center py-4"
+                  key={index}
+                  onClick={() => handleSearchResult(item)}
+                >
                   <div>
                     <FontAwesomeIcon icon={faMagnifyingGlass} />
-                    <span className={cx('ms-5')}>{item}</span>
+                    <span className="ms-5">{item}</span>
                   </div>
                   <Image alt="" src="/assets/images/up-left-arrow.png" width={25} height={25} />
                 </div>
@@ -157,20 +164,22 @@ function Search() {
             <>
               {searchHistory.length > 0 && (
                 <>
-                  <div className={cx('search__history')}>
-                    <div className={cx('history__heading')}>
-                      <h2>Recent searches</h2>
-                      <span onClick={() => setsearchHistory([])}>Clear</span>
+                  <div className="search__history mb-4">
+                    <div className="d-flex align-items-center justify-content-between my-4">
+                      <h2 className="fw-bold">Recent searches</h2>
+                      <span className="text-primary" onClick={() => setsearchHistory([])}>
+                        Clear
+                      </span>
                     </div>
-                    <div className={cx('history')}>
+                    <div className="d-flex flex-wrap">
                       {searchHistory.map((item, index) => (
-                        <div className={cx('history__item')} key={index} onClick={() => handleSearchResult(item)}>
+                        <div
+                          className="px-3 py-2 border bg-light me-4 fs-4 rounded-pill"
+                          key={index}
+                          onClick={() => handleSearchResult(item)}
+                        >
                           {item}
-                          <FontAwesomeIcon
-                            icon={faXmark}
-                            className={cx('ms-2')}
-                            onClick={() => handleRemoveHistory(item)}
-                          />
+                          <FontAwesomeIcon icon={faXmark} className="ms-2" onClick={() => handleRemoveHistory(item)} />
                         </div>
                       ))}
                     </div>
@@ -178,11 +187,15 @@ function Search() {
                   <div className="large__line"></div>
                 </>
               )}
-              <div className={cx('food__suggestions')}>
-                <h2 className={cx('suggestions__heading')}>What's hot?</h2>
-                <div className={cx('suggestions')}>
+              <div className="food__suggestions mt-4">
+                <h2 className="fw-bold">What's hot?</h2>
+                <div className="d-flex flex-wrap">
                   {foodSuggestions.map((item, index) => (
-                    <div className={cx('suggestions__item')} key={index} onClick={() => handleSearchResult(item)}>
+                    <div
+                      className="px-3 py-2 border bg-light me-4 fs-4 rounded-pill mt-4"
+                      key={index}
+                      onClick={() => handleSearchResult(item)}
+                    >
                       {item}
                     </div>
                   ))}

@@ -1,6 +1,5 @@
 import authService from '@/services/auth';
 import '@/styles/globals.scss';
-import 'bootstrap/dist/css/bootstrap.css';
 import type { AppProps } from 'next/app';
 import { useRouter } from 'next/router';
 import React, { useEffect } from 'react';
