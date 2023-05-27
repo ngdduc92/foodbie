@@ -188,7 +188,7 @@ function Search() {
                 </>
               )}
               <div className="food__suggestions mt-4">
-                <h2 className="fw-bold">What's hot?</h2>
+                <h2 className="fw-bold">{"What's hot?"}</h2>
                 <div className="d-flex flex-wrap">
                   {foodSuggestions.map((item, index) => (
                     <div
