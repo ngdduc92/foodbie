@@ -4,13 +4,7 @@
   height: 400px;
   width: 100%;
 }
-.navigation {
-  @include flex(center, space-between);
-  position: absolute;
-  top: 10px;
-  width: 100%;
-  height: 40px;
-}
+
 .avatar {
   @extend %full-screen;
   height: 100%;
@@ -18,6 +12,7 @@
     @extend %img-cover;
   }
 }
+
 .nav__right {
   display: flex;
   .icon {
@@ -27,6 +22,7 @@
     }
   }
 }
+
 .icon {
   background-color: #353213;
   padding: 8px;
@@ -39,6 +35,7 @@
 .detail__restaurant__info {
   padding-top: 20px;
 }
+
 .label {
   color: $white;
   margin-bottom: 0;
@@ -47,52 +44,17 @@
   border-radius: 2px;
   font-size: 14px;
 }
-.label__icon {
-  margin: 0 6px;
-  color: #ffc107;
-}
-.detail__restaurant {
-  display: inline;
-  font-weight: 700;
-  color: #333;
-}
-.address__restaurant {
-  font-size: 14px;
-}
-.wrapper__reviews {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  margin-top: 10px;
-}
-.reviews {
-  display: flex;
-}
-.star_item {
-  margin-right: 2px;
-  &:last-child {
-    margin-right: 0;
-  }
-}
-.rating {
-  margin: 0 6px;
-}
-.highlight {
-  color: #ffc107;
-}
+
 .heart__icon {
   font-size: 25px;
   cursor: pointer;
 }
-.reviews__distance {
-  margin-left: 10px;
-  padding-left: 10px;
-  border-left: 1px solid #999;
-}
+
 .menu__title {
   @extend %heading;
   margin: 20px 0;
 }
+
 .menu__item__img {
   width: 100%;
   height: 100%;
@@ -103,9 +65,7 @@
     border-radius: 4px;
   }
 }
-.menu__item__name {
-  margin: 6px 0;
-}
+
 @include mobile {
   .header {
     height: 250px;
