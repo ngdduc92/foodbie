@@ -3,10 +3,13 @@ import { useForm, SubmitHandler } from 'react-hook-form';
 import style from './login.module.scss';
 import clsx from 'clsx';
 import Link from 'next/link';
-import { AUTH_LOGIN } from '@/share/constants';
-import http from '@/services/http';
 import { useRouter } from 'next/router';
 import authService from '@/services/auth';
+import HeaderOption from '@/components/headerOption';
+import Image from 'next/image';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faEye, faEyeSlash, faLock, faUser } from '@fortawesome/free-solid-svg-icons';
+import { Button } from 'react-bootstrap';
 
 type Inputs = {
   email: string;
@@ -16,11 +19,27 @@ type Inputs = {
 function Login() {
   const router = useRouter();
   const [errorMessages, setErrorMessages] = useState(false);
+  const [passwordShown, setPasswordShown] = useState(false);
   const {
     register,
     handleSubmit,
     formState: { errors },
   } = useForm<Inputs>();
+
+  const loginSteps = [
+    {
+      id: 1,
+      title: 'Login with google',
+      link: '/',
+    },
+    {
+      id: 2,
+
+      title: 'Login with Facebook',
+      link: '/',
+    },
+  ];
+
   const onSubmit: SubmitHandler<Inputs> = (data) => {
     authService.login(data).then((res) => {
       if (res.status === 200) {
@@ -31,76 +50,83 @@ function Login() {
       }
     });
   };
-  const loginSteps = [
-    {
-      title: 'Login with google',
-      link: '/',
-    },
-    {
-      title: 'Login with Facebook',
-      link: '/',
-    },
-  ];
 
   const handleRenderBtn = () =>
-    loginSteps.map((loginStep, index) => (
-      <div key={index} className={clsx(style.SiginBtn)}>
-        <a href={loginStep.link} className={clsx(style.SiginLink)}>
-          <img src="https://accounts.fullstack.edu.vn/assets/images/signin/personal-18px.svg" />
-          <span>{loginStep.title}</span>
+    loginSteps.map((loginStep) => (
+      <div key={loginStep.id} className="rounded border border-secondary p-2 my-4 position-relative">
+        <a href={loginStep.link} className="d-block">
+          <img
+            className="position-absolute start-0 top-50 translate-middle-y ms-3"
+            src="https://accounts.fullstack.edu.vn/assets/images/signin/personal-18px.svg"
+          />
+          <span className="fs-3 fw-bold">{loginStep.title}</span>
         </a>
       </div>
     ));
-  3;
+
   return (
-    <div className={clsx(style.LoginWrapper)}>
-      <div className={clsx(style.LoginContainer)}>
-        <div className={clsx(style.LoginContent)}>
-          <div>
-            <Link href="/">
-              <img
-                className={clsx(style.LoginLogo)}
-                src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSgJvop9nmQGn1posiz4Z1YAaCwSqQ5u-VP5A&usqp=CAU"
-              />
-            </Link>
-            <h1 className={clsx(style.LoginTitle)}>Login</h1>
-            <div className={clsx(style.LoginBody)}>
-              <form className={clsx(style.LoginFormBody)} onSubmit={handleSubmit(onSubmit)}>
-                <div className={clsx(style.FormControlWrapper)}>
-                  <label className={clsx(style.FormControlLabel)}>Email</label>
-                  <div className={clsx(style.FormControlInput)}>
-                    <input
-                      {...register('email', {
-                        required: 'Email is required.',
-                        pattern: {
-                          value: /^[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$/,
-                          message: 'Please enter a valid email',
-                        },
-                      })}
-                    />
-                  </div>
-                  {errors?.email && <span className="mt-2 text-danger text-center">{errors.email.message}</span>}
-                </div>
-                <div className={clsx(style.FormControlWrapper)}>
-                  <label className={clsx(style.FormControlLabel)}>Password</label>
-                  <div className={clsx(style.FormControlInput)}>
-                    <input {...register('password', { required: 'Password is required' })} type="password" />
-                  </div>
-                  {errors?.password && <span className="mt-2 text-danger text-center">{errors.password.message}</span>}
-                  {errorMessages && <span className="mt-2 text-danger text-center">Invalid username or password</span>}
-                </div>
-                <button type="submit" className={clsx(style.LoginBtn)}>
-                  <div className={clsx(style.LoginBtnInner)}>
-                    <span>Login</span>
-                  </div>
-                </button>
-              </form>
+    <div className="container-fluid">
+      <HeaderOption title={'Log In / Sign Up'} />
+      <div className="row justify-content-center text-center">
+        <div className="col col-md-6 align-self-center mt-5">
+          <Link href="/">
+            <img
+              className={clsx(style.LoginLogo)}
+              src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSgJvop9nmQGn1posiz4Z1YAaCwSqQ5u-VP5A&usqp=CAU"
+              alt=""
+            />
+          </Link>
+          <form className="mt-4" onSubmit={handleSubmit(onSubmit)}>
+            <div className="d-flex align-items-center border-bottom py-4">
+              <FontAwesomeIcon icon={faUser} className="fs-1" />
+              <div className="d-flex flex-column w-100 ">
+                <input
+                  placeholder="Email/Username"
+                  className="flex-grow-1 ms-3 border-0"
+                  {...register('email', {
+                    required: 'Email is required.',
+                    pattern: {
+                      value: /^[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$/,
+                      message: 'Please enter a valid email',
+                    },
+                  })}
+                />
+                {/* {errors?.email && <span className="mt-2 text-danger text-center">{errors.email.message}</span>} */}
+              </div>
             </div>
-            <div className={clsx(style.LoginOr)}>
-              <span>or</span>
+            <div className="d-flex align-items-center border-bottom py-4">
+              <FontAwesomeIcon icon={faLock} className="fs-1" />
+              <div className="d-flex w-100 align-items-center">
+                <input
+                  placeholder="Password"
+                  className="flex-grow-1 ms-3 border-0"
+                  {...register('password', { required: 'Password is required' })}
+                  type={passwordShown ? 'text' : 'password'}
+                />
+                <div>
+                  <FontAwesomeIcon
+                    icon={passwordShown ? faEye : faEyeSlash}
+                    className="pe-3"
+                    onClick={() => setPasswordShown(!passwordShown)}
+                  />
+                  <span className="text-info ps-3 border-start border-secondary">Forgot?</span>
+                </div>
+                {/* {errors?.password && <span className="mt-2 text-danger text-center">{errors.password.message}</span>}
+                {errorMessages && <span className="mt-2 text-danger text-center">Invalid username or password</span>} */}
+              </div>
             </div>
-            <div className={clsx(style.LoginMainStep)}>{handleRenderBtn()}</div>
+
+            <div className="mt-4 d-grid">
+              <Button className="py-3" type="submit" variant="primary" size="lg">
+                <span className="text-white fs-2">Log in</span>
+              </Button>
+            </div>
+          </form>
+          <p className="text-end my-3 text-info">Login in width SMS</p>
+          <div className={clsx(style.LoginOr)}>
+            <span>or</span>
           </div>
+          <div className={clsx(style.LoginMainStep)}>{handleRenderBtn()}</div>
         </div>
       </div>
     </div>
