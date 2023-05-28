@@ -9,12 +9,14 @@ const cx = classNames.bind(styles);
 export default function HeaderOption(props: any) {
   const { title, link } = props;
   const router = useRouter();
+
   const back = () => {
     router.push(link);
   };
+
   return (
-    <div className={cx('header__option')}>
-      <i style={{ color: '#fd5a2f' }}>
+    <div className="d-flex justify-content-center align-items-center py-3 position-relative bg-white small__line">
+      <i className="position-absolute start-0 text-primary fs-1 ms-3">
         <FontAwesomeIcon
           icon={faArrowLeft}
           onClick={() => {
@@ -22,7 +24,7 @@ export default function HeaderOption(props: any) {
           }}
         />
       </i>
-      <p>{title}</p>
+      <p className="fs-2 fw-bold mb-0">{title}</p>
     </div>
   );
 }
