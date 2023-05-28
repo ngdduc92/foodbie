@@ -20,13 +20,13 @@ function DetailStore() {
     }
   }, [shopData, shopId]);
   return (
-    <div className={cx('container-fluid')}>
+    <div className="container-fluid">
       <div className={cx('header')}>
         <div className={cx('avatar')}>
           <img src={shopData?.image} />
         </div>
-        <nav className={cx('navigation')}>
-          <div className={cx('nav__left')} onClick={() => router.back()}>
+        <nav className="d-flex justify-content-between position-absolute top-0 w-100 mt-3">
+          <div onClick={() => router.back()}>
             <FontAwesomeIcon icon={faArrowLeft} className={cx('icon')} />
           </div>
           <div className={cx('nav__right')}>
@@ -35,32 +35,34 @@ function DetailStore() {
           </div>
         </nav>
       </div>
-      <div className={cx('content')}>
-        <div className={cx('detail__restaurant__info')}>
-          <span className={cx('label')}>Preferred</span>
-          <FontAwesomeIcon className={cx('label__icon')} icon={faCircleCheck} />
-          <h1 className={cx('detail__restaurant')}>{shopData?.title}</h1>
-          <div className={cx('wrapper__reviews')}>
-            <div className={cx('reviews')}>
-              <div className={cx('reviews_star')}>
-                <FontAwesomeIcon className={cx('star_item', 'highlight')} icon={faStar} />
-                <FontAwesomeIcon className={cx('star_item', 'highlight')} icon={faStar} />
-                <FontAwesomeIcon className={cx('star_item', 'highlight')} icon={faStar} />
-                <FontAwesomeIcon className={cx('star_item', 'highlight')} icon={faStar} />
-                <FontAwesomeIcon className={cx('star_item', 'highlight')} icon={faStarHalfStroke} />
+      <div className="content">
+        <div className="my-4">
+          <div className="d-flex align-items-center">
+            <span className="text-white bg-primary rounded px-2">Preferred</span>
+            <FontAwesomeIcon className="text-warning mx-2" icon={faCircleCheck} />
+            <h1>{shopData?.title}</h1>
+          </div>
+          <div className="d-flex justify-content-between align-items-center mt-3">
+            <div className="d-flex">
+              <div className="reviews_star">
+                <FontAwesomeIcon className="me-1 text-warning" icon={faStar} />
+                <FontAwesomeIcon className="me-1 text-warning" icon={faStar} />
+                <FontAwesomeIcon className="me-1 text-warning" icon={faStar} />
+                <FontAwesomeIcon className="me-1 text-warning" icon={faStar} />
+                <FontAwesomeIcon className="text-warning" icon={faStarHalfStroke} />
               </div>
-              <div className={cx('reviews_conntent')}>
-                <span className={cx('rating')}>4.9</span>
-                <span className={cx('number__reviews')}>(999+ Review)</span>
-                <span className={cx('reviews__distance')}>{shopData?.distance}</span>
+              <div className="reviews_conntent">
+                <span className="ms-3">4.9</span>
+                <span className="mx-3">(999+ Review)</span>
+                <span className="me-3 ps-3 border-start">{shopData?.distance}</span>
               </div>
             </div>
-            <FontAwesomeIcon icon={faHeart} className={cx('heart__icon')} />
+            <FontAwesomeIcon icon={faHeart} className="fs-1" />
           </div>
         </div>
         <div className="large__line"></div>
-        <div className={cx('menu')}>
-          <h2 className={cx('menu__title')}>Menu</h2>
+        <div className="menu">
+          <h2 className="my-4">Menu</h2>
           <Product dataProduct={shopData?.menu} menu />
         </div>
       </div>
