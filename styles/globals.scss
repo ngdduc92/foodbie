@@ -45,6 +45,9 @@ body a {
 .heading {
   @extend %heading;
 }
+input {
+  outline: none;
+}
 // Start: slider
 .slider-wrapper {
   padding: 20px 0;
