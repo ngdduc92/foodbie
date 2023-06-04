@@ -27,14 +27,24 @@ const cx = classNames.bind(styles);
 
 export default function SideMenu() {
   const logout = () => {
-    authService.logout();
+    authService
+      .logout()
+      .then((res) => {
+        console.log(res);
+      })
+      .catch((error) => {
+        console.log(error);
+      });
   };
   return (
     <>
       <nav className={cx('wrapper__menu')}>
         <div className={cx('profile')}>
           <Link href="/profile" className={cx('user__sidebar')}>
-            <img className={cx('user__img')} src="https://vnn-imgs-f.vgcloud.vn/2021/05/11/15/nintchdbpict000591626263.jpg" />
+            <img
+              className={cx('user__img')}
+              src="https://vnn-imgs-f.vgcloud.vn/2021/05/11/15/nintchdbpict000591626263.jpg"
+            />
             <label>Leonardo DiCaprio</label>
           </Link>
         </div>
@@ -134,7 +144,7 @@ export default function SideMenu() {
             </a>
           </li>
         </ul>
-        <div className={cx('logout')} onClick={() => logout()}>
+        <div className={cx('logout')} onClick={logout}>
           <span>Log Out</span>
         </div>
         <Footer />

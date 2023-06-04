@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { useForm, SubmitHandler } from 'react-hook-form';
 import style from './login.module.scss';
 import clsx from 'clsx';
@@ -23,9 +23,15 @@ function Login() {
   const {
     register,
     handleSubmit,
+    watch,
     formState: { errors },
-  } = useForm<Inputs>();
-
+  } = useForm<Inputs>({
+    defaultValues: {
+      email: '',
+      password: '',
+    },
+  });
+  const [email, password] = watch(['email', 'password']);
   const loginSteps = [
     {
       id: 1,
@@ -117,7 +123,13 @@ function Login() {
             </div>
 
             <div className="mt-4 d-grid">
-              <Button className="py-3" type="submit" variant="primary" size="lg">
+              <Button
+                disabled={email.length > 0 && password.length > 0 ? false : true}
+                className="py-3"
+                type="submit"
+                variant="primary"
+                size="lg"
+              >
                 <span className="text-white fs-2">Log in</span>
               </Button>
             </div>

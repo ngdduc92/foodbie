@@ -7,13 +7,7 @@ import React, { useEffect } from 'react';
 export default function App({ Component, pageProps }: AppProps) {
   const router = useRouter();
   useEffect(() => {
-    const apiToken = localStorage.getItem('API_TOKEN');
-    authService
-      .profile()
-      .then((res) => {
-        console.log('res', res);
-      })
-      .catch((errors) => {});
+    const apiToken = authService.getToken();
     if (!apiToken) {
       router.push('/login');
     }

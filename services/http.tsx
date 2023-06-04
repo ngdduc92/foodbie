@@ -1,8 +1,53 @@
 import { REFRESH_TOKEN } from '@/share/constants';
 import axios from 'axios';
 import authService from './auth';
+import createAuthRefreshInterceptor from 'axios-auth-refresh';
 
-const BASE_URI = 'http://foobbie.com:5000';
+const BASE_URI = process.env.NEXT_PUBLIC_BASE_URI;
+
+const refreshTokenInstance = axios.create();
+
+const controller = new AbortController();
+
+const refreshAuthLogic = async (failedRequest: any) => {
+  if (contains(failedRequest.request.responseURL, ['refresh', 'logout'])) return;
+  const refreshToken = await refreshTokenInstance.get(`${BASE_URI}/${REFRESH_TOKEN}`, getDefaultOptions());
+  if (!refreshToken) return;
+  localStorage.setItem('API_TOKEN', refreshToken.data);
+  failedRequest.response.config.headers['Authorization'] = 'Bearer ' + authService.getToken();
+};
+
+refreshTokenInstance.interceptors.response.use(
+  (response) => response,
+  (error) => {
+    controller.abort();
+    window.location.href = '/login';
+    return;
+  },
+);
+
+createAuthRefreshInterceptor(axios, refreshAuthLogic);
+
+axios.interceptors.response.use(
+  (response) => {
+    if (!response) {
+      throw new Error('Response data is null');
+    }
+    return response;
+  },
+  (error) => {
+    if (error.response && error.response.status) {
+      switch (error.response.status) {
+        case 403:
+          //console.log(403);
+          break;
+        default:
+          break;
+      }
+    }
+    return Promise.reject(error);
+  },
+);
 
 function contains(target: string, pattern: any[]) {
   let value = 0;
@@ -15,6 +60,7 @@ function contains(target: string, pattern: any[]) {
 function getDefaultOptions() {
   const token = typeof localStorage !== 'undefined' ? localStorage.getItem('API_TOKEN') : null;
   return {
+    signal: controller.signal,
     baseURL: BASE_URI,
     timeout: 60000,
     headers: {
@@ -23,49 +69,17 @@ function getDefaultOptions() {
   };
 }
 
-function get(url: string) {
-  return axios.get(url, getDefaultOptions()).catch((errors) => {
-    refreshTokenAndRetry(errors, url, () => get(url));
-    return errors;
-  });
-}
-function post(url: string, body: Object) {
-  return axios.post(url, body, getDefaultOptions()).catch((errors) => {
-    refreshTokenAndRetry(errors, url, () => post(url, body));
-    return errors;
-  });
-}
-function put(url: string, body: Object) {
-  return axios.put(url, body, getDefaultOptions()).catch((errors) => {
-    refreshTokenAndRetry(errors, url, () => put(url, body));
-    return errors;
-  });
-}
-function remove(url: string) {
-  return axios.delete(url, getDefaultOptions()).catch((errors) => {
-    refreshTokenAndRetry(errors, url, () => remove(url));
-    return errors;
-  });
-}
-function refreshTokenAndRetry(errors: any, url: string, apiCall: Function) {
-  if (errors.response.status == 401 && !contains(url, ['logout', 'refresh'])) {
-    get(REFRESH_TOKEN)
-      .then((res) => {
-        console.log(res);
-        if (res.data) {
-          localStorage.setItem('API_TOKEN', res.data);
-          apiCall();
-        } else {
-          authService.logout();
-        }
-      })
-      .catch((errors) => {
-        if (errors.status == 401) {
-          authService.logout();
-        }
-        return errors;
-      });
-  }
-}
+const get = (url: string) => {
+  return axios.get(`${BASE_URI}/${url}`, getDefaultOptions());
+};
+const post = (url: string, body: Object) => {
+  return axios.post(`${BASE_URI}/${url}`, body, getDefaultOptions());
+};
+const put = (url: string, body: Object) => {
+  return axios.put(`${BASE_URI}/${url}`, body, getDefaultOptions());
+};
+const remove = (url: string) => {
+  return axios.delete(`${BASE_URI}/${url}`, getDefaultOptions());
+};
 
 export default { get, post, put, remove };
