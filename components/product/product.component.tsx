@@ -15,7 +15,7 @@ function Product(props: any) {
         <div className="wrapper__product__item" key={item.id}>
           <div className="d-flex py-4" onClick={() => !menu && router.push(`shop/${item.id}`)}>
             <div className={cx('product__image')}>
-              <img alt="" src={item.image} />
+              <img src={item.image} />
             </div>
             <div className="flex-grow-1 ms-3">
               <div>
