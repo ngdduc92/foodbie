@@ -1,7 +1,6 @@
 import React from 'react';
 import classNames from 'classnames/bind';
 import styles from './product.module.scss';
-import Image from 'next/image';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faCircleCheck, faSquarePlus, faStar } from '@fortawesome/free-solid-svg-icons';
 import { useRouter } from 'next/router';
