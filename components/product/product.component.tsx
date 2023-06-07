@@ -1,20 +1,15 @@
-import React, { useState } from 'react';
+import React from 'react';
 import classNames from 'classnames/bind';
 import styles from './product.module.scss';
-import Image from 'next/image';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faCircleCheck, faSquarePlus, faStar } from '@fortawesome/free-solid-svg-icons';
 import { useRouter } from 'next/router';
-import ProductPopup from '../product-popup/product-popup.component';
 const cx = classNames.bind(styles);
 
 function Product(props: any) {
   const { dataProduct, menu = false } = props;
 
-  const [show, setShow] = useState<Boolean>(false);
-
   const router = useRouter();
-  const handleShow = () => setShow(true);
   return (
     <div className="product__list">
       {dataProduct?.map((item: any) => (
@@ -52,11 +47,7 @@ function Product(props: any) {
                       {item?.price}
                       <sup>đ</sup>
                     </span>
-                    <FontAwesomeIcon
-                      className={cx('product__icon__add', 'text-primary')}
-                      icon={faSquarePlus}
-                      onClick={handleShow}
-                    />
+                    <FontAwesomeIcon className={cx('product__icon__add', 'text-primary')} icon={faSquarePlus} />
                   </div>
                 </>
               )}
@@ -65,7 +56,6 @@ function Product(props: any) {
           <div className="small__line"></div>
         </div>
       ))}
-      <ProductPopup show={show} setShow={setShow} />
     </div>
   );
 }

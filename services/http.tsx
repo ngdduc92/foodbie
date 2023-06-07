@@ -10,7 +10,7 @@ const refreshTokenInstance = axios.create();
 const controller = new AbortController();
 
 const refreshAuthLogic = async (failedRequest: any) => {
-  if (contains(failedRequest.request.responseURL, ['refresh', 'logout'])) return;
+  if (contains(failedRequest.request.responseURL, ['refresh', 'logout', 'login'])) return;
   const refreshToken = await refreshTokenInstance.get(`${BASE_URI}/${REFRESH_TOKEN}`, getDefaultOptions());
   if (!refreshToken) return;
   localStorage.setItem('API_TOKEN', refreshToken.data);
