@@ -1,7 +1,6 @@
 import React from 'react';
 import classNames from 'classnames/bind';
 import styles from './product.module.scss';
-import Image from 'next/image';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faCircleCheck, faSquarePlus, faStar } from '@fortawesome/free-solid-svg-icons';
 import { useRouter } from 'next/router';
@@ -9,6 +8,7 @@ const cx = classNames.bind(styles);
 
 function Product(props: any) {
   const { dataProduct, menu = false } = props;
+
   const router = useRouter();
   return (
     <div className="product__list">

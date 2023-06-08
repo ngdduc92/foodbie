@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { useForm, SubmitHandler } from 'react-hook-form';
 import style from './login.module.scss';
 import clsx from 'clsx';
@@ -6,7 +6,6 @@ import Link from 'next/link';
 import { useRouter } from 'next/router';
 import authService from '@/services/auth';
 import HeaderOption from '@/components/headerOption';
-import Image from 'next/image';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faEye, faEyeSlash, faLock, faUser } from '@fortawesome/free-solid-svg-icons';
 import { Button } from 'react-bootstrap';
@@ -23,9 +22,15 @@ function Login() {
   const {
     register,
     handleSubmit,
+    watch,
     formState: { errors },
-  } = useForm<Inputs>();
-
+  } = useForm<Inputs>({
+    defaultValues: {
+      email: '',
+      password: '',
+    },
+  });
+  const [email, password] = watch(['email', 'password']);
   const loginSteps = [
     {
       id: 1,
@@ -41,14 +46,18 @@ function Login() {
   ];
 
   const onSubmit: SubmitHandler<Inputs> = (data) => {
-    authService.login(data).then((res) => {
-      if (res.status === 200) {
-        localStorage.setItem('API_TOKEN', res.data.accessToken);
-        router.push('/');
-      } else {
+    authService
+      .login(data)
+      .then((res) => {
+        if (res.status === 200) {
+          localStorage.setItem('API_TOKEN', res.data.accessToken);
+          router.push('/');
+        }
+      })
+      .catch((error) => {
         setErrorMessages(true);
-      }
-    });
+        return error;
+      });
   };
 
   const handleRenderBtn = () =>
@@ -111,13 +120,18 @@ function Login() {
                   />
                   <span className="text-info ps-3 border-start border-secondary">Forgot?</span>
                 </div>
-                {/* {errors?.password && <span className="mt-2 text-danger text-center">{errors.password.message}</span>}
-                {errorMessages && <span className="mt-2 text-danger text-center">Invalid username or password</span>} */}
               </div>
             </div>
+            {errorMessages && <span className="d-block mt-4 text-danger">Invalid username or password</span>}
 
             <div className="mt-4 d-grid">
-              <Button className="py-3" type="submit" variant="primary" size="lg">
+              <Button
+                disabled={email.length > 0 && password.length > 0 ? false : true}
+                className="py-3"
+                type="submit"
+                variant="primary"
+                size="lg"
+              >
                 <span className="text-white fs-2">Log in</span>
               </Button>
             </div>
