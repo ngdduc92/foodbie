@@ -4,6 +4,7 @@ import styles from './product.module.scss';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faCircleCheck, faSquarePlus, faStar } from '@fortawesome/free-solid-svg-icons';
 import { useRouter } from 'next/router';
+import { Image } from 'react-bootstrap';
 const cx = classNames.bind(styles);
 
 function Product(props: any) {
@@ -16,7 +17,7 @@ function Product(props: any) {
         <div className="wrapper__product__item" key={item.id}>
           <div className="d-flex py-4" onClick={() => !menu && router.push(`shop/${item.id}`)}>
             <div className={cx('product__image')}>
-              <img alt="" src={item.image} />
+              <Image src={item.image} />
             </div>
             <div className="flex-grow-1 ms-3">
               <div>
