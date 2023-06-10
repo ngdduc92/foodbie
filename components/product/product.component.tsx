@@ -35,7 +35,6 @@ const Product: FC<ProductProps> = (props: any) => {
                       <FontAwesomeIcon icon={faCircleCheck} className="text-primary me-2" />
                       {item.title}
                     </h3>
-                    <h3 className="fw-light fs-4 my-2">{item.subTitle}</h3>
                   </div>
                   <div className="d-flex align-items-center">
                     <div className="text-warning">
@@ -53,10 +52,7 @@ const Product: FC<ProductProps> = (props: any) => {
                 {menu && (
                   <>
                     <div className="d-flex justify-content-between">
-                      <span className={cx('product__price', 'fs-2 fw-bold')}>
-                        {item?.price}
-                        <sup>đ</sup>
-                      </span>
+                      <span className={cx('product__price', 'fs-2 fw-bold')}>{item?.price}$</span>
                       <FontAwesomeIcon
                         className={cx('product__icon__add', 'text-primary')}
                         icon={faSquarePlus}
@@ -71,7 +67,7 @@ const Product: FC<ProductProps> = (props: any) => {
           </div>
         </div>
       ))}
-      <ProductPopup showPopup={showPopup} onClose={handleClose} onShow={handleShow} />
+      {menu && <ProductPopup showPopup={showPopup} onClose={handleClose} onShow={handleShow} />}
     </div>
   );
 };

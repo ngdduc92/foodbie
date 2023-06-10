@@ -18,19 +18,19 @@ export default function Order() {
                 <i>
                   <FontAwesomeIcon icon={faCircleCheck} />
                 </i>
-                <span>&ensp; Delivered</span>
-                <span>&ensp; &#8226; &ensp;18, Jul</span>
+                <span className="ms-2">{'Delivered • 20, Jul'}</span>
               </div>
-              <span className={cx('information__shop')}>Trà Sữa MayCha - Đồng Đen</span>
+              <span className={cx('information__shop')}>MayCha Milk Tea</span>
               <div className={cx('information__price')}>
-                <span>62.000đ (wallet MOMO) &#8226; 3 dishes</span>
+                <span className="ms-2">{'8$ (wallet MOMO) • 3 dishes'}</span>
+                <span></span>
               </div>
               <i className={cx('icon__information__order')}>
                 <FontAwesomeIcon icon={faChevronRight} />
               </i>
             </div>
             <div className={cx('again__oder')}>
-              <span>Đặt Lại</span>
+              <span>Re-Order</span>
             </div>
           </div>
           <div className={cx('Order__completed__content')}>
@@ -39,19 +39,18 @@ export default function Order() {
                 <i>
                   <FontAwesomeIcon icon={faCircleCheck} />
                 </i>
-                <span>&ensp; Delivered</span>
-                <span>&ensp; &#8226; &ensp;18, Jul</span>
+                <span className="ms-2">{'Delivered • 20, Jul'}</span>
               </div>
-              <span className={cx('information__shop')}>Trà Sữa MayCha - Đồng Đen</span>
+              <span className={cx('information__shop')}>MayCha Milk Tea</span>
               <div className={cx('information__price')}>
-                <span>182.000đ (wallet MOMO) &#8226; 6 dishes</span>
+                <span className="ms-2">{'8$ (wallet MOMO) • 6 dishes'}</span>
               </div>
               <i className={cx('icon__information__order')}>
                 <FontAwesomeIcon icon={faChevronRight} />
               </i>
             </div>
             <div className={cx('again__oder')}>
-              <span>Đặt Lại</span>
+              <span>Re-Order</span>
             </div>
           </div>
         </div>
