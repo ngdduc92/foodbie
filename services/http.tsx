@@ -3,7 +3,7 @@ import axios from 'axios';
 import authService from './auth';
 import createAuthRefreshInterceptor from 'axios-auth-refresh';
 
-const BASE_URI = process.env.NEXT_PUBLIC_BASE_URI || 'http://foobbie.com:5000/api';
+const BASE_URI = process.env.NEXT_PUBLIC_BASE_URI || 'http://foobbie.com:5000';
 
 const refreshTokenInstance = axios.create();
 
