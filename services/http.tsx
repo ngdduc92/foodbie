@@ -56,12 +56,12 @@ function refreshTokenAndRetry(errors: any, url: string, apiCall: Function) {
           localStorage.setItem('API_TOKEN', res.data);
           apiCall();
         } else {
-          authService.logout();
+          // authService.logout();
         }
       })
       .catch((errors) => {
         if (errors.status == 401) {
-          authService.logout();
+          // authService.logout();
         }
         return errors;
       });

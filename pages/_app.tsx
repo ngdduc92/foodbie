@@ -4,6 +4,7 @@ import 'bootstrap/dist/css/bootstrap.css';
 import type { AppProps } from 'next/app';
 import { useRouter } from 'next/router';
 import React, { useEffect } from 'react';
+import '@/components/i18n';
 
 export default function App({ Component, pageProps }: AppProps) {
   const router = useRouter();
@@ -14,10 +15,10 @@ export default function App({ Component, pageProps }: AppProps) {
       .then((res) => {
         console.log('res', res);
       })
-      .catch((errors) => {});
-    if (!apiToken) {
-      router.push('/login');
-    }
+      .catch((errors) => { });
+    // if (!apiToken) {
+    //   router.push('/login');
+    // }
   }, []);
   return <Component {...pageProps} />;
 }
