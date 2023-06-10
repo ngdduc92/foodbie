@@ -2,6 +2,11 @@
 @import 'normalize.css';
 @import '_base';
 
+// custom
+@import './custom/day-picker.scss';
+@import './custom/form';
+@import './custom/plugins/react-select';
+
 * {
   margin: 0;
   padding: 0;
