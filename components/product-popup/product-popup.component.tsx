@@ -2,7 +2,7 @@ import { faMinus, faPlus } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import React, { FC, useState } from 'react';
 import { Button, Card, Modal } from 'react-bootstrap';
-import { Checkbox, HButton, HField, HForm, RadioGroup } from '../hook-form';
+import { Checkbox, HButton, HField, HForm } from '../hook-form';
 import { useForm } from 'react-hook-form';
 
 interface ProductPopupProps {

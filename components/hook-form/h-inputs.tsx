@@ -1,4 +1,5 @@
 // @flow
+// @ts-nocheck
 import { useEffect, useState } from 'react';
 import { useFormContext, Controller } from 'react-hook-form';
 import classNames from 'classnames';

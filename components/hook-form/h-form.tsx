@@ -1,4 +1,6 @@
 // @flow
+// @ts-nocheck
+
 import { type HTMLAttributes } from 'react';
 import { FormProvider, useFormContext } from 'react-hook-form';
 import { Collapse, Form } from 'react-bootstrap';

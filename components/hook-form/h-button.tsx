@@ -9,12 +9,12 @@ import { useTranslation } from 'react-i18next';
 import { useEffect } from 'react';
 import { NS_COMMON } from '@/components/i18n';
 
-export const HButton = ({ icon, saveTitle, ...props }: ButtonProps) => {
+export const HButton = ({ ...props }) => {
   const { t } = useTranslation(NS_COMMON);
   const { formState } = useFormContext();
   const temp = useFormContext();
   const { isSubmitting, dirtyFields } = formState;
-  const spinnerClasses = classNames('me-2', { 'd-none': !isSubmitting && !icon });
+  const spinnerClasses = classNames('me-2', { 'd-none': !isSubmitting && !props.icon });
 
   useEffect(() => {
   }, [isSubmitting]);
@@ -27,13 +27,13 @@ export const HButton = ({ icon, saveTitle, ...props }: ButtonProps) => {
       disabled={!Object.keys(dirtyFields).length || isSubmitting || props.disabled}
     >
       <FontAwesomeIcon
-        icon={isSubmitting ? faSpinner : icon || faSpinner}
+        icon={isSubmitting ? faSpinner : props.icon || faSpinner}
         spin={isSubmitting}
         fixedWidth
         className={spinnerClasses}
       />
 
-      {props.children || t(saveTitle)}
+      {props.children || t(props.saveTitle)}
     </Button>
   );
 };

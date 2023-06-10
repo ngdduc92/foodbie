@@ -1,5 +1,6 @@
 /* eslint-disable eqeqeq */
 // @flow
+// @ts-nocheck
 import { useState, useEffect, type FunctionComponent } from 'react';
 import classNames from 'classnames';
 import { NS_COMMON } from '@/components/i18n';
