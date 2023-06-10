@@ -29,7 +29,7 @@ export default function FavoriteStore() {
                   <FontAwesomeIcon icon={faStar} />
                 </i>
                 <span>4.0</span>
-                <span>(15+) &ensp; &#8226; &ensp;0.1km</span>
+                <span>{'(15+) • 0.1km'}</span>
               </div>
               <div className={cx('promotion')}>
                 <span>15% off menu</span>
@@ -57,7 +57,7 @@ export default function FavoriteStore() {
                   <FontAwesomeIcon icon={faStar} />
                 </i>
                 <span>4.0</span>
-                <span>(15+) &ensp; &#8226; &ensp;0.1km</span>
+                <span>{'(15+) • 0.1km'}</span>
               </div>
               <div className={cx('promotion')}>
                 <span> 15% off menu</span>

@@ -52,10 +52,7 @@ const Product: FC<ProductProps> = (props: any) => {
                 {menu && (
                   <>
                     <div className="d-flex justify-content-between">
-                      <span className={cx('product__price', 'fs-2 fw-bold')}>
-                        {item?.price}
-                        <sup>đ</sup>
-                      </span>
+                      <span className={cx('product__price', 'fs-2 fw-bold')}>{item?.price}$</span>
                       <FontAwesomeIcon
                         className={cx('product__icon__add', 'text-primary')}
                         icon={faSquarePlus}
