@@ -23,7 +23,7 @@ function Header() {
         <div className={cx('location')}>
           <FontAwesomeIcon icon={faLocationDot} className={cx('location__icon')} />
           <div className={cx('location__current')}>
-            <p>491/8 Trường Chinh, Tân Phú, Thành phố Hồ Chí Minh491/8 Trường Chinh, Tân Phú, Thành phố Hồ Chí Minh</p>
+            <p>788 SW El Prado Ave, Lake City, FL 32025, USA</p>
           </div>
         </div>
         <div className={cx('actions')}>

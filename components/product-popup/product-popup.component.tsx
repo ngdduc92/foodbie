@@ -37,7 +37,6 @@ const ProductPopup: React.FC<ProductPopupProps> = (props) => {
 
   return (
     <>
-      <Button variant="primary" onClick={() => onShow()}></Button>
       <Modal show={showPopup} onHide={() => onClose()} centered>
         <HForm methods={methods} onSubmit={onSubmit}>
           <Modal.Header closeButton>

@@ -22,9 +22,8 @@ export default function FavoriteStore() {
                 <i>
                   <FontAwesomeIcon icon={faCircleCheck} />
                 </i>
-                Trà Sữa Maycha - Đồng Đen
+                MayCha Milk Tea
               </span>
-              <span className={cx('sub__title')}>Trà bông cúc bạc hà, Trà sâm thảo dược bảo bối</span>
               <div className={cx('evaluate')}>
                 <i>
                   <FontAwesomeIcon icon={faStar} />
@@ -33,7 +32,7 @@ export default function FavoriteStore() {
                 <span>(15+) &ensp; &#8226; &ensp;0.1km</span>
               </div>
               <div className={cx('promotion')}>
-                <span>Giảm 15% tối đa 100k</span>
+                <span>15% off menu</span>
               </div>
               <div className={cx('heart')}>
                 <i>
@@ -51,9 +50,8 @@ export default function FavoriteStore() {
                 <i>
                   <FontAwesomeIcon icon={faCircleCheck} />
                 </i>
-                Trà Sữa Maika - Thành Long
+                Maika Milk Tea
               </span>
-              <span className={cx('sub__title')}>Trà bông cúc bạc hà, Trà sâm thảo dược bảo bối</span>
               <div className={cx('evaluate')}>
                 <i>
                   <FontAwesomeIcon icon={faStar} />
@@ -62,7 +60,7 @@ export default function FavoriteStore() {
                 <span>(15+) &ensp; &#8226; &ensp;0.1km</span>
               </div>
               <div className={cx('promotion')}>
-                <span>Giảm 15% tối đa 100k</span>
+                <span> 15% off menu</span>
               </div>
               <div className={cx('heart')}>
                 <i>

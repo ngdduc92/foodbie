@@ -2,7 +2,13 @@ import React, { useEffect, useState } from 'react';
 import classNames from 'classnames/bind';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import styles from './detailstore.module.scss';
-import { faArrowLeft, faCircleCheck, faMagnifyingGlass, faStar } from '@fortawesome/free-solid-svg-icons';
+import {
+  faArrowLeft,
+  faCircleCheck,
+  faMagnifyingGlass,
+  faStar,
+  faHeart as faHeartSolid,
+} from '@fortawesome/free-solid-svg-icons';
 import { faHeart, faShareFromSquare, faStarHalfStroke } from '@fortawesome/free-regular-svg-icons';
 import { useRouter } from 'next/router';
 import ShopService from '@/services/shop';
@@ -14,11 +20,18 @@ function DetailStore() {
   const router = useRouter();
   const [shopData, setShopData] = useState<Shop>();
   const shopId = router.query.id;
+  const [isLiked, setIsLiked] = useState(false);
+
   useEffect(() => {
     if (shopId && !shopData) {
       setShopData(ShopService.getById(`${shopId}`));
     }
   }, [shopData, shopId]);
+
+  const handleLike = () => {
+    setIsLiked(!isLiked);
+  };
+
   return (
     <div className="container-fluid">
       <div className={cx('header')}>
@@ -57,7 +70,11 @@ function DetailStore() {
                 <span className="me-3 ps-3 border-start">{shopData?.distance}</span>
               </div>
             </div>
-            <FontAwesomeIcon icon={faHeart} className="fs-1" />
+            {isLiked ? (
+              <FontAwesomeIcon icon={faHeart} className="fs-1" onClick={handleLike} />
+            ) : (
+              <FontAwesomeIcon icon={faHeartSolid} className="fs-1 text-primary" onClick={handleLike} />
+            )}
           </div>
         </div>
         <div className="large__line"></div>

@@ -11,64 +11,8 @@ import { DATA_PRODUCTS } from '@/share/constants';
 const cx = classNames.bind(styles);
 
 function Search() {
-  const dataSearch = [
-    'Phở',
-    'Bánh khọt',
-    'Bún',
-    'Bún chả',
-    'Bún bò Huế',
-    'Bún thang',
-    'Bát bún cá',
-    'Bún đũa',
-    'Bánh cuốn',
-    'Cơm tấm',
-    'Bánh mì',
-    'Bánh xèo',
-    'Gà nướng KonPlông',
-    'Gỏi cuốn',
-    'Bánh chưng',
-    'Bánh tét',
-    'Bánh bèo',
-    'Chả giò',
-    'Nem rán',
-    'Hủ tiếu',
-    'Cơm cháy',
-    'Cao lầu',
-    'Bánh căn',
-    'Phở chua',
-    'Yến sào',
-    'Lẩu thả',
-    'Bánh canh',
-    'Súp lươn',
-    'Cơm hến',
-    'Cơm sường',
-    'Cơm phần',
-    'Bánh khoái Huế',
-    'Mì Quảng',
-    'Bún chả cá Quy Nhơn',
-    'Bánh đa cua',
-    'Chả cá',
-    'Chả mực',
-  ];
-  const foodSuggestions = [
-    'Cơm tấm',
-    'Bánh khọt',
-    'Phở',
-    'Chả cá',
-    'Bánh xèo',
-    'Cao lầu',
-    'Rau muống',
-    'Nem rán/chả giò',
-    'Gỏi cuốn',
-    'Bún bò Huế',
-    'Gà tần',
-    'Nộm hoa chuối',
-    'Bún bò Nam bộ',
-    'Hoa quả dầm',
-    'Phở cuốn',
-    'Gà nướng',
-    'Phở xào',
-  ];
+  const dataSearch = ['Street Food', 'Pizza', 'TocoToco Bubble Tea', 'broken rice', 'Phuc Loc Tho broken rice'];
+  const foodSuggestions = ['Street Food', 'Pizza', 'TocoToco Bubble Tea', 'broken rice', 'Phuc Loc Tho broken rice'];
   const inputElement = useRef<HTMLInputElement>(null);
   const [searchInput, setsearchInput] = useState<string>('');
   const [searchFilter, setSearchFilter] = useState<string[]>([]);
@@ -88,7 +32,7 @@ function Search() {
 
   // search history
   useEffect(() => {
-    const searchHistory: string[] = ['Cơm tấm', 'Phở', 'Bún mắm'];
+    const searchHistory: string[] = ['broken rice', 'tea'];
     localStorage.setItem('SEARCHHISTORYS', JSON.stringify(searchHistory));
     setsearchHistory(JSON.parse(localStorage.getItem('SEARCHHISTORYS') || '[]'));
   }, []);
