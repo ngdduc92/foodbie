@@ -1,11 +1,11 @@
-@import 'bootstrap-5.0.2/bootstrap.scss';
-@import 'normalize.css';
-@import '_base';
+@import "bootstrap-5.0.2/bootstrap.scss";
+@import "normalize.css";
+@import "_base";
 
 // custom
-@import './custom/day-picker.scss';
-@import './custom/form';
-@import './custom/plugins/react-select';
+@import "./custom/day-picker.scss";
+@import "./custom/form";
+@import "./custom/plugins/react-select";
 
 * {
   margin: 0;
@@ -44,6 +44,10 @@ body a {
 }
 .small__line {
   border-bottom: 1px solid #999;
+  margin-right: var(--bs-gutter-x, -0.75rem);
+  margin-left: var(--bs-gutter-x, -0.75rem);
+}
+.full-screen {
   margin-right: var(--bs-gutter-x, -0.75rem);
   margin-left: var(--bs-gutter-x, -0.75rem);
 }

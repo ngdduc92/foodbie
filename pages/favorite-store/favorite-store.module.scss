@@ -1,4 +1,4 @@
-@use '../../styles/base' as *;
+@use "../../styles/base" as *;
 
 .favorite__content__item {
   display: flex;
@@ -40,27 +40,27 @@
 .evaluate {
   font-size: 13px;
   margin-top: 8px;
-  border-bottom: 1px solid rgba(158, 158, 158, 0.37);
   padding-bottom: 5px;
 }
 .evaluate i {
   color: #ffeb3b;
   margin-right: 5px;
 }
+.evaluate span {
+  color: #999;
+}
 .promotion {
-  color: #a52a2ac9;
+  color: #ee4d2d;
   display: flex;
-  font-size: 10px;
-  margin-top: 10px;
-  font-weight: 600;
+  font-size: 11px;
+  align-items: center;
 }
 .promotion span {
-  background: #ffebcd;
-  padding: 2px 4px;
-  border-radius: 3px;
+  padding: 0px 4px;
+  border-radius: 2px;
+  border: 0.1px solid;
 }
 .heart {
   text-align: end;
-  margin-top: 20px;
   color: red;
 }
