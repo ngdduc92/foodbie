@@ -4,6 +4,14 @@ export const AUTH_LOGIN = 'auth/login';
 export const AUTH_PROFILE = 'auth/profile';
 export const REFRESH_TOKEN = 'auth/refresh';
 
+export type Breakpoint = 'xs' | 'sm' | 'md' | 'lg' | 'xl' | 'xxl';
+export const SIZE_XS = 'xs';
+export const SIZE_SM = 'sm';
+export const SIZE_MD = 'md';
+export const SIZE_LG = 'lg';
+export const SIZE_XL = 'xl';
+export const SIZE_XXL = 'xxl';
+
 export const DATA_PRODUCTS: Shop[] = [
   {
     id: 2,
@@ -196,5 +204,144 @@ export const DATA_PRODUCTS: Shop[] = [
         price: '7',
       },
     ],
+  },
+];
+
+export const SHOP_DATA_WHAT_EAT_TODAY = [
+  {
+    id: 1,
+    name: 'Grilled Chicken & Veggies Over Rice',
+    image: 'https://images.foody.vn/res/g2/11349/prof/s280x175/image-3111762a-200910114155.jpeg',
+    codeOff: 10,
+  },
+  {
+    id: 2,
+    name: 'Chicken & Burger McDonald’s Saigon Supermarket',
+    image: 'https://images.foody.vn/res/g25/247390/prof/s280x175/image-58b19640-221228093307.jpeg',
+    codeOff: 5,
+  },
+  {
+    id: 3,
+    name: 'Chicken, Pizza & Milk Tea',
+    image:
+      'https://images.foody.vn/res/g81/804679/prof/s280x175/foody-upload-api-foody-mobile-co-3d15d160-211027112428.jpeg',
+    codeOff: 8,
+  },
+  {
+    id: 4,
+    name: 'Hanuri - Korean Restaurant',
+    image:
+      'https://images.foody.vn/res/g5/42888/prof/s280x175/file_restaurant_photo_yluh_16382-e9f40114-211130095543.jpeg',
+    codeOff: 6,
+  },
+  {
+    id: 5,
+    name: 'Chicken Rice Dong Nguyen',
+    image:
+      'https://images.foody.vn/res/g1/5160/prof/s280x175/file_restaurant_photo_9b3y_16221-4d690c33-210528091635.jpg',
+    codeOff: 12,
+  },
+  {
+    id: 6,
+    name: 'Grilled Steak and Asian Noodle Salad',
+    image: 'https://images.foody.vn/res/g29/288002/prof/s280x175/foody-mobile-1-jpg-569-636131575772929264.jpg',
+    codeOff: 16,
+  },
+  {
+    id: 7,
+    name: 'Bento Delichi - Grilled Chicken And Rice',
+    image: 'https://images.foody.vn/res/g96/956524/prof/s280x175/image-22567dd5-230404181210.jpeg',
+    codeOff: 30,
+  },
+  {
+    id: 8,
+    name: 'Chicken Noodle Soup Ky Dong',
+    image: 'https://images.foody.vn/res/g94/935622/prof/s280x175/image-32011acf-200910114148.jpeg',
+    codeOff: 20,
+  },
+  {
+    id: 9,
+    name: 'Sandwich - Hamburger Chia Nui',
+    image:
+      'https://images.foody.vn/res/g26/258535/prof/s280x175/foody-upload-api-foody-mobile-aaf1865d7a229e7cc733-190626151553.jpg',
+    codeOff: 10,
+  },
+  {
+    id: 10,
+    name: 'Phan Le - Rice Noodles with Snakehead Fish',
+    image:
+      'https://images.foody.vn/res/g77/767327/prof/s280x175/foody-upload-api-foody-mobile-co-0db64f20-230306154037.jpeg',
+    codeOff: 8,
+  },
+];
+
+export const SHOP_DATA_SUGGEST = [
+  {
+    id: 1,
+    name: 'Big Sushi World',
+    image:
+      'https://images.foody.vn/res/g106/1055208/prof/s280x175/file_restaurant_photo_8qnp_16057-e6939de0-201119210842.jpeg',
+    codeOff: 10,
+  },
+  {
+    id: 2,
+    name: 'Matsu Sushi - Truong Sa',
+    image:
+      'https://images.foody.vn/res/g10/98801/prof/s280x175/foody-upload-api-foody-mobile-e6-baa34ec4-211004103523.jpeg',
+    codeOff: 5,
+  },
+  {
+    id: 3,
+    name: 'Tomodachi Sushi',
+    image:
+      'https://images.foody.vn/res/g113/1122564/prof/s280x175/file_restaurant_photo_jnau_16460-3f26f678-220228123821.jpg',
+    codeOff: 8,
+  },
+  {
+    id: 4,
+    name: 'Sushi Bone',
+    image:
+      'https://images.foody.vn/res/g114/1130440/prof/s280x175/foody-upload-api-foody-mobile-an-72cc547a-220322113148.jpeg',
+    codeOff: 6,
+  },
+  {
+    id: 5,
+    name: 'Sushi Cool',
+    image:
+      'https://images.foody.vn/res/g95/943814/prof/s280x175/file_restaurant_photo_4qpe_16329-f18273fe-210929143345.jpeg',
+    codeOff: 12,
+  },
+  {
+    id: 6,
+    name: 'Sapinkie',
+    image: 'https://images.foody.vn/res/g11/102846/prof/s280x175/foody-mobile-an-vat-jpg-168-636045170872659246.jpg',
+    codeOff: 10,
+  },
+  {
+    id: 7,
+    name: 'Sushi Go',
+    image:
+      'https://images.foody.vn/res/g114/1136656/prof/s280x175/foody-upload-api-foody-mobile-90-e4f80643-221208174934.jpeg',
+    codeOff: 5,
+  },
+  {
+    id: 8,
+    name: 'Yoko Sushi',
+    image: 'https://images.foody.vn/res/g79/781513/prof/s280x175/foody-upload-api-foody-mobile-2-190611091841.jpg',
+    codeOff: 8,
+  },
+  {
+    id: 9,
+    name: 'Sushi Bin',
+    image:
+      'https://images.foody.vn/res/g107/1066231/prof/s280x175/foody-upload-api-foody-mobile-img_20200303_232638-210206143318.jpg',
+    codeOff: 6,
+  },
+  {
+    id: 5,
+    name: 'Tomo Dinning Room',
+    image:
+      'https://images.foody.vn/res/g75/747191/prof/s280x175/foody-upload-api-foody-mobile-miramen-jpg-180606165901.jpg',
+    codeOff: 12,
   },
 ];
