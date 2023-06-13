@@ -20,8 +20,7 @@ export default function FavoriteStore() {
   return (
     <>
       <div className={cx('wapper__favorite')}>
-
-        <HeaderOption title={'Likes'} isArrow />
+        <HeaderOption title={'Likes'} isArrow ischeckSmallLine />
         <Tabs
           defaultActiveKey="Latest"
           id="fill-tab-example"

@@ -4,7 +4,7 @@ import { faArrowLeft } from '@fortawesome/free-solid-svg-icons';
 import { useRouter } from 'next/router';
 
 export default function HeaderOption(props: any) {
-  const { title, link, isArrow } = props;
+  const { title, link, isArrow, ischeckSmallLine } = props;
   const router = useRouter();
 
   const back = () => {
@@ -12,15 +12,16 @@ export default function HeaderOption(props: any) {
   };
 
   return (
-    <div className="d-flex justify-content-center align-items-center py-3 position-relative bg-white small__line">
-      {isArrow ? '' : <i className="position-absolute start-0 text-primary fs-1 ms-3" >
+    <div className={`d-flex justify-content-center align-items-center py-3 position-relative bg-white ${!ischeckSmallLine && 'small__line'}`}>
+      {!isArrow &&
         <FontAwesomeIcon
+          className="position-absolute start-0 text-primary fs-1 ms-3"
           icon={faArrowLeft}
           onClick={() => {
             back();
           }}
         />
-      </i>}
+      }
       <p className="fs-2 fw-bold mb-0">{title}</p>
     </div>
   );
