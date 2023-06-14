@@ -44,7 +44,8 @@
   .nav-link {
     margin-bottom: -$nav-tabs-border-width;
     background: none;
-    border: $nav-tabs-border-width solid transparent;
+    border: none;
+    color: $gray-700;
     @include border-top-radius($nav-tabs-border-radius);
 
     &:hover,
@@ -65,7 +66,7 @@
   .nav-item.show .nav-link {
     color: $nav-tabs-link-active-color;
     background-color: $nav-tabs-link-active-bg;
-    border-color: $nav-tabs-link-active-border-color;
+    border-bottom: 1px solid red;
   }
 
   .dropdown-menu {

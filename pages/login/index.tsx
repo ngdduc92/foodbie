@@ -44,7 +44,6 @@ function Login() {
       link: '/',
     },
   ];
-
   const onSubmit: SubmitHandler<Inputs> = (data) => {
     authService
       .login(data)
