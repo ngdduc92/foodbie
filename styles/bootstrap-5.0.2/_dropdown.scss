@@ -16,7 +16,6 @@
 // The dropdown menu
 .dropdown-menu {
   position: absolute;
-  width: 100%;
   z-index: $zindex-dropdown;
   display: none; // none by default, but block on "open" of the menu
   min-width: $dropdown-min-width;

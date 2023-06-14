@@ -44,11 +44,6 @@ function Login() {
       link: '/',
     },
   ];
-  const handleKeyDown = (event: any) => {
-    if (event.key === "Enter") {
-      handleSubmit(onSubmit)();
-    }
-  };
   const onSubmit: SubmitHandler<Inputs> = (data) => {
     authService
       .login(data)
@@ -130,7 +125,6 @@ function Login() {
 
             <div className="mt-4 d-grid">
               <Button
-                onKeyDown={(e) => handleKeyDown(e)}
                 disabled={email.length > 0 && password.length > 0 ? false : true}
                 className="py-3"
                 type="submit"

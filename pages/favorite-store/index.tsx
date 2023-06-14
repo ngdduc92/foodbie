@@ -17,6 +17,21 @@ const cx = classNames.bind(styles);
 export default function FavoriteStore() {
   const [dropdownBtnTitle, setDropdownBtnTitle] = useState('All Services')
   const dataDropdown = ['All Services', 'Food', 'Fresh', 'Beer', 'Flowers', 'Mart']
+  const dropDown = () => (
+    <Dropdown>
+      <Dropdown.Toggle variant="light" id="dropdown-basic" className="bg-light ps-3 shadow-none w-100 d-flex justify-content-start align-items-center" >
+        {dropdownBtnTitle}
+      </Dropdown.Toggle>
+      <Dropdown.Menu className='w-100'>
+        {dataDropdown.map((item) => (
+          <Dropdown.Item key={uuid()} onClick={() => setDropdownBtnTitle(item)} className="d-flex justify-content-between w-100">
+            {item}
+            {dropdownBtnTitle === item && <FontAwesomeIcon icon={faCheck} className="text-primary" />}
+          </Dropdown.Item>
+        ))}
+      </Dropdown.Menu>
+    </Dropdown>
+  )
   return (
     <>
       <div className={cx('wapper__favorite')}>
@@ -28,14 +43,7 @@ export default function FavoriteStore() {
           fill
         >
           <Tab eventKey="Latest" title="Latest">
-            <DropdownButton variant="ouline-primary" id="dropdown-basic-button" title={dropdownBtnTitle} className="border-0 bg-light w-100 shadow-0">
-              {dataDropdown.map((item) => (
-                <Dropdown.Item key={uuid()} onClick={() => setDropdownBtnTitle(item)} className="d-flex justify-content-between w-100">
-                  {item}
-                  {dropdownBtnTitle === item && <FontAwesomeIcon icon={faCheck} className="text-primary" />}
-                </Dropdown.Item>
-              ))}
-            </DropdownButton>
+            {dropDown()}
             <div className={cx('favorite__content')}>
               <div className={cx('favorite__content__item')}>
                 <div className={cx('item__right')}>
@@ -94,14 +102,7 @@ export default function FavoriteStore() {
             </div>
           </Tab>
           <Tab eventKey="Nearby" title="Nearby">
-            <DropdownButton variant="ouline-primary" id="dropdown-basic-button" title={dropdownBtnTitle} className="border-0 shadow-0 bg-light">
-              {dataDropdown.map((item) => (
-                <Dropdown.Item key={uuid()} onClick={() => setDropdownBtnTitle(item)} className="d-flex justify-content-between">
-                  {item}
-                  {dropdownBtnTitle === item && <FontAwesomeIcon icon={faCheck} className='primary' />}
-                </Dropdown.Item>
-              ))}
-            </DropdownButton>
+            {dropDown()}
             <div className={cx('favorite__content')}>
               <div className={cx('favorite__content__item')}>
                 <div className={cx('item__right')}>
