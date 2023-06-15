@@ -1,37 +1,41 @@
-import React from 'react'
+import React from 'react';
 import classNames from 'classnames/bind';
-import styles from './footer.module.scss'
+import styles from './footer.module.scss';
 import Link from 'next/link';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faBell, faHeart, faHouse, faReceipt, faUser } from '@fortawesome/free-solid-svg-icons';
+import { HOME, LIKES, MENU_ME, ORDER } from '@/share/constants';
+import { useRouter } from 'next/router';
 
 const cx = classNames.bind(styles);
 
 export default function Footer() {
+  const router = useRouter();
+  const pathName = router.pathname;
   return (
     <div className={cx('wrapper__footer')}>
       <div className={cx('footer__content')}>
-        <Link href="/" className={cx('footer__content__item')}>
-          <i><FontAwesomeIcon icon={faHouse} /></i>
+        <Link href={HOME} className={cx('footer__content__item', `${pathName === HOME ? 'text-primary' : ''}`)}>
+          <FontAwesomeIcon icon={faHouse} size="lg" />
           <label>Home</label>
         </Link>
-        <Link href="../order" className={cx('footer__content__item')}>
-          <i><FontAwesomeIcon icon={faReceipt} /></i>
+        <Link href={ORDER} className={cx('footer__content__item', `${pathName === ORDER ? 'text-primary' : ''}`)}>
+          <FontAwesomeIcon icon={faReceipt} size="lg" />
           <label>Order</label>
         </Link>
-        <Link href="../favorite-store" className={cx('footer__content__item')}>
-          <i><FontAwesomeIcon icon={faHeart} /></i>
+        <Link href={LIKES} className={cx('footer__content__item', `${pathName === LIKES ? 'text-primary' : ''}`)}>
+          <FontAwesomeIcon icon={faHeart} size="lg" />
           <label>Likes</label>
         </Link>
         <div className={cx('footer__content__item')}>
-          <i><FontAwesomeIcon icon={faBell} /></i>
+          <FontAwesomeIcon icon={faBell} size="lg" />
           <label>Notifications</label>
         </div>
-        <Link href="../menu" className={cx('footer__content__item')}>
-          <i><FontAwesomeIcon icon={faUser} /></i>
+        <Link href={MENU_ME} className={cx('footer__content__item', `${pathName === MENU_ME ? 'text-primary' : ''}`)}>
+          <FontAwesomeIcon icon={faUser} size="lg" />
           <label>Me</label>
         </Link>
       </div>
     </div>
-  )
+  );
 }
