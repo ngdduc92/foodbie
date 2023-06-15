@@ -26,14 +26,14 @@ function Header() {
             <p>788 SW El Prado Ave, Lake City, FL 32025, USA</p>
           </div>
         </div>
-        <div className={cx('actions')}>
+        {/* <div className={cx('actions')}>
           <div className={cx('notification')}>
             <FontAwesomeIcon icon={faEnvelope} />
           </div>
           <div className={cx('mobile__menu')}>
             <FontAwesomeIcon icon={faBars} onClick={() => showMenu()} />
           </div>
-        </div>
+        </div> */}
       </div>
       <Link href="/search">
         <div className={cx('search')}>

@@ -1,7 +1,7 @@
 // Start: Modules
 $primary-color: #ee4d2d;
 $text-color: #333;
-$font-family: 'ProximaNova', sans-serif;
+$font-family: "ProximaNova", sans-serif;
 $white: #fff;
 $black: #000;
 // End: Modules
@@ -20,11 +20,6 @@ $black: #000;
   height: 100%;
   font-size: 16px;
   background-color: #fff;
-}
-%heading {
-  font-size: 20px;
-  font-weight: 700;
-  margin-bottom: 0;
 }
 %title {
   font-size: 18px;

@@ -3,6 +3,11 @@ import { Shop } from './model/shop';
 export const AUTH_LOGIN = 'auth/login';
 export const AUTH_PROFILE = 'auth/profile';
 export const REFRESH_TOKEN = 'auth/refresh';
+export const HOME = '/';
+export const ORDER = '/order';
+export const LIKES = '/favorite-store';
+export const NOTIFICATION = '/notification';
+export const MENU_ME = '/menu';
 
 export type Breakpoint = 'xs' | 'sm' | 'md' | 'lg' | 'xl' | 'xxl';
 export const SIZE_XS = 'xs';

@@ -18,13 +18,14 @@ interface SliderCommonProps {
   sliders: SliderCommonModel[];
 }
 
-export default function SliderCommon({ title, subTitle, sliders }: SliderCommonProps) {
+const SliderCommon = ({ title, subTitle, sliders }: SliderCommonProps) => {
   const size = useBreakpoint();
   const sliderSettings = useMemo(() => {
     let sliderSettingInitial = {
       dots: false,
       infinite: true,
       speed: 700,
+      arrows: false,
       slidesToShow: 6,
       slidesToScroll: 6,
     };
@@ -58,7 +59,7 @@ export default function SliderCommon({ title, subTitle, sliders }: SliderCommonP
     <>
       <Stack className="d-flex" gap={3}>
         <div>
-          <h3 className="text-primary">{title}</h3>
+          <h3 className="text-primary fw-bolder pb-2">{title}</h3>
           <p>{subTitle}</p>
         </div>
         <Link href="/" className="ms-auto fs-6 text-end w-25">
@@ -71,7 +72,7 @@ export default function SliderCommon({ title, subTitle, sliders }: SliderCommonP
           <Card key={uuid()}>
             <Card.Img variant="top" src={slider.image} />
             <Card.Body>
-              <Card.Text className="d-flex">
+              <Card.Text className="d-flex align-items-center">
                 <FontAwesomeIcon icon={faCircleCheck} className="text-primary me-2" />
                 <span className={cx('product__name')}>{slider.name}</span>
               </Card.Text>
@@ -84,4 +85,6 @@ export default function SliderCommon({ title, subTitle, sliders }: SliderCommonP
       </Slider>
     </>
   );
-}
+};
+
+export default SliderCommon;

@@ -24,24 +24,25 @@ const Product = (props: any) => {
           <div className="wrapper__product__item">
             <div className="d-flex py-4" onClick={() => !menu && router.push(`shop/${item.id}`)}>
               <div className={cx('product__image')}>
-                <Image src={item.image} />
+                <Image src={item.image} alt={item.title} />
               </div>
               <div className="flex-grow-1 ms-3">
                 <div>
                   <div className="content__top">
-                    <h3 className="fs-2 mb-1">
+                    <h5 className="fw-bolder mb-1">
                       <FontAwesomeIcon icon={faCircleCheck} className="text-primary me-2" />
                       {item.title}
-                    </h3>
+                    </h5>
                   </div>
                   <div className="d-flex align-items-center">
                     <div className="text-warning">
                       <FontAwesomeIcon icon={faStar} />
                     </div>
+                    <span className="px-3 border-end">4.9</span>
                     {!menu && (
                       <>
-                        <span className="mx-2">({item.quantityPurchased})</span>
-                        &#8226;
+                        <span className="mx-2 px-3 border-end">({item.quantityPurchased} review)</span>
+                        {/* &#8226; */}
                         <div className="ms-2">{item.distance}</div>
                       </>
                     )}
