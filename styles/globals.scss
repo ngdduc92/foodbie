@@ -1,3 +1,5 @@
+@import "slick-carousel/slick/slick.css";
+@import "slick-carousel/slick/slick-theme.css";
 @import "bootstrap-5.0.2/bootstrap.scss";
 @import "normalize.css";
 @import "_base";
@@ -6,6 +8,8 @@
 @import "./custom/day-picker.scss";
 @import "./custom/form";
 @import "./custom/plugins/react-select";
+@import "./custom/plugins/react-slick";
+
 
 * {
   margin: 0;
