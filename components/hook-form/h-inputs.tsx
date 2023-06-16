@@ -60,7 +60,7 @@ export const RadioGroup = ({
     ...restProps
 }) => {
     const { t } = useTranslation(NS_COMMON);
-    const { formState: { errors }, getValues } = useFormContext();
+    const { formState: { errors }, getValues, register } = useFormContext();
 
     const error = errors[name];
     const [isCheck, setIsCheck] = useState();
@@ -70,28 +70,21 @@ export const RadioGroup = ({
     }, [defaultValue !== '']);
 
     return (
-        <Controller
-            as={
-                <div className={classNames('group-radio', { 'is-invalid': !!error })}>
-                    {data.map((item, idx) => (
-                        <Form.Check
-                            id={`${id}${idx}`}
-                            key={idx.toString()}
-                            name={name}
-                            {...restProps}
-                            type="radio"
-                            value={item.value}
-                            label={t(item.label)}
-                            checked={isCheck === item.value || getValues(name) === item.value}
-                            onChange={(e) => setIsCheck(e.target.value)}
-                            disabled={item.value === itemDisabled}
-                        />
-                    ))}
-                </div>
-            }
-            rules={rules}
-            name={name}
-        />
+        <div className={classNames('group-radio', { 'is-invalid': !!error })}>
+            {data.map((item, idx) => (
+                <Form.Check
+                    id={`${id}${idx}`}
+                    key={idx.toString()}
+                    name={name}
+                    {...restProps}
+                    {...register(name, rules)}
+                    type="radio"
+                    value={item.value}
+                    label={t(item.label)}
+                    disabled={item.value === itemDisabled}
+                />
+            ))}
+        </div>
     );
 };
 
