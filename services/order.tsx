@@ -1,4 +1,4 @@
-import { Order } from '@/share/models/order';
+import { Order } from '@/models/order';
 import httpService from './http';
 
 const BASE_URI = '/order';

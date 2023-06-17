@@ -1,4 +1,3 @@
-/* eslint-disable @next/next/no-img-element */
 import Footer from '@/components/footer/footer.component';
 import HeaderOption from '@/components/header-option';
 import PageLayout from '@/components/page-layout/page-layout.component';

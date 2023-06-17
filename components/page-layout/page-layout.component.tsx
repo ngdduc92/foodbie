@@ -1,7 +1,7 @@
 // @flow
 // @ts-nocheck
 import authService from '@/services/auth';
-import { LOGIN } from '@/share/constants/constants';
+import { LOGIN } from '@/constants/constants';
 import { useRouter } from 'next/router';
 import type { FunctionComponent } from 'react';
 import { createContext, useContext, useEffect } from 'react';

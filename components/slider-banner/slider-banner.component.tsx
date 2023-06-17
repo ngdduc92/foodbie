@@ -1,8 +1,6 @@
 /* eslint-disable @next/next/no-img-element */
 import React from 'react';
 import classNames from 'classnames/bind';
-import { Carousel } from 'react-responsive-carousel';
-import 'react-responsive-carousel/lib/styles/carousel.min.css';
 import styles from './slider-banner.module.scss';
 import Slider from 'react-slick';
 

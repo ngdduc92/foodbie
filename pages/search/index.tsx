@@ -6,7 +6,7 @@ import styles from './search.module.scss';
 import Link from 'next/link';
 import Image from 'next/image';
 import Product from '@/components/product/product.component';
-import { DATA_PRODUCTS } from '@/share/constants/constants';
+import { DATA_PRODUCTS } from '@/constants/constants';
 
 const cx = classNames.bind(styles);
 
