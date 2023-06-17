@@ -9,9 +9,12 @@ import ProductPopup from '../product-popup/product-popup.component';
 import { uuid } from '../utils';
 const cx = classNames.bind(styles);
 
-interface ProductProps {}
+interface ProductProps {
+  dataProduct: object[] | undefined;
+  menu: boolean;
+}
 
-const Product: FC<ProductProps> = (props: any) => {
+const Product: FC<ProductProps> = (props) => {
   const router = useRouter();
   const { dataProduct, menu = false } = props;
   const [showPopup, setshowPopup] = useState(false);

@@ -399,3 +399,7 @@ export const SHOP_DATA_SUGGEST = [
     codeOff: 12,
   },
 ];
+
+export const routerDict = {
+  confirmOrder: '/confirm-order',
+};

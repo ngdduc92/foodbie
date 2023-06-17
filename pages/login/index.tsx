@@ -50,7 +50,7 @@ function Login() {
   const onSubmit: SubmitHandler<Inputs> = (data) => {
     authService
       .login(data)
-      .then((res) => {
+      .then((res: any) => {
         if (res.status === 200) {
           localStorage.setItem('API_TOKEN', res.data.accessToken);
           if (previousPageParam) {

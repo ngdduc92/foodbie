@@ -4,18 +4,20 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import React, { useEffect, useState } from 'react';
 import { Button, Col, Image, Modal, Row } from 'react-bootstrap';
 import { uuid } from '../utils';
+import { useRouter } from 'next/router';
+import { routerDict } from '@/share/constants';
 
 function Basket() {
-  const removeProductToCart = useProductStore((state) => state.removeProductToCart);
-
+  const removeProductToCart = useProductStore((state: any) => state.removeProductToCart);
+  const router = useRouter();
   const [showBasket, setShowBasket] = useState(false);
-  const carts = useProductStore((state) => state.carts);
+  const carts = useProductStore((state: any) => state.carts);
   const [total, setTotal] = useState(0);
   const handleClose = () => setShowBasket(false);
   const handleShow = () => setShowBasket(true);
 
   useEffect(() => {
-    const result = carts?.reduce((total, cart) => {
+    const result = carts?.reduce((total: number, cart: any) => {
       return (total += cart.total);
     }, 0);
     setTotal(result);
@@ -36,7 +38,12 @@ function Basket() {
               <span className="text-end text-primary flex-grow-1">{total}$</span>
             </Col>
             <Col xs={4} md={3}>
-              <Button className="bg-primary text-white w-100 h-100 fs-3">Checkout</Button>
+              <Button
+                className="bg-primary text-white w-100 h-100 fs-3"
+                onClick={() => router.push(routerDict.confirmOrder)}
+              >
+                Checkout
+              </Button>
             </Col>
           </Row>
           <Modal show={showBasket} onHide={handleClose} centered>
@@ -54,7 +61,7 @@ function Basket() {
               </a>
             </Modal.Header>
             <Modal.Body>
-              {carts.map((carts) => (
+              {carts.map((carts: any) => (
                 <Row className="my-5" key={uuid()}>
                   <Col xs={2}>
                     <Image src={carts.image} className="w-100" alt="" />
