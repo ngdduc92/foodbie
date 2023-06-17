@@ -1,4 +1,4 @@
-import { Breakpoint, SIZE_LG, SIZE_MD, SIZE_SM, SIZE_XL, SIZE_XS, SIZE_XXL } from '@/share/constants';
+import { Breakpoint, SIZE_LG, SIZE_MD, SIZE_SM, SIZE_XL, SIZE_XS, SIZE_XXL } from '@/constants/constants';
 import { useState, useEffect } from 'react';
 import { useDebouncedCallback } from 'use-debounce';
 

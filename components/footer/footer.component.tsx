@@ -4,7 +4,7 @@ import styles from './footer.module.scss';
 import Link from 'next/link';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faBell, faHeart, faHouse, faReceipt, faUser } from '@fortawesome/free-solid-svg-icons';
-import { HOME, LIKES, MENU_ME, ORDER } from '@/share/constants';
+import { HOME, LIKES, MENU_ME, ORDER } from '@/constants/constants';
 import { useRouter } from 'next/router';
 
 const cx = classNames.bind(styles);

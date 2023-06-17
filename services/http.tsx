@@ -1,7 +1,7 @@
-import { REFRESH_TOKEN } from '@/share/constants';
 import axios from 'axios';
 import authService from './auth';
 import createAuthRefreshInterceptor from 'axios-auth-refresh';
+import { REFRESH_TOKEN } from '@/constants/constants';
 
 const BASE_URI = process.env.NEXT_PUBLIC_BASE_URI || 'http://foobbie.com:5000';
 

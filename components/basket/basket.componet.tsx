@@ -5,7 +5,7 @@ import React, { useEffect, useState } from 'react';
 import { Button, Col, Image, Modal, Row } from 'react-bootstrap';
 import { uuid } from '../utils';
 import { useRouter } from 'next/router';
-import { routerDict } from '@/share/constants';
+import { RouteSegments } from '@/enums/route-segments';
 
 function Basket() {
   const removeProductToCart = useProductStore((state: any) => state.removeProductToCart);
@@ -40,7 +40,7 @@ function Basket() {
             <Col xs={4} md={3}>
               <Button
                 className="bg-primary text-white w-100 h-100 fs-3"
-                onClick={() => router.push(routerDict.confirmOrder)}
+                onClick={() => router.push(RouteSegments.CONFIRM_ORDER)}
               >
                 Checkout
               </Button>

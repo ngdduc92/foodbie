@@ -8,7 +8,7 @@ import Form from 'react-bootstrap/Form';
 import { Col, FormControl } from 'react-bootstrap';
 import { useTranslation } from 'react-i18next';
 import { NS_COMMON } from '@/components/i18n';
-import { uuid } from '../utils';
+import { uuid } from '../../../components/utils';
 
 export const Checkbox = (props) => {
   const { t } = useTranslation(NS_COMMON);

@@ -1,4 +1,4 @@
-export interface SliderCommon {
+export interface SliderModel {
   id: number;
   name: string;
   image: string;

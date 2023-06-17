@@ -11,7 +11,7 @@ import { useState } from 'react';
 import { Tab, Tabs } from 'react-bootstrap';
 import Dropdown from 'react-bootstrap/Dropdown';
 import styles from './favorite-store.module.scss';
-import { LIKES } from '@/share/constants';
+import { LIKES } from '@/constants/constants';
 
 const cx = classNames.bind(styles);
 

@@ -22,7 +22,7 @@ import {
 import Link from 'next/link';
 import Footer from '@/components/footer/footer.component';
 import authService from '@/services/auth';
-import { HOME } from '@/share/constants';
+import { HOME } from '@/share/constants/constants';
 import { useRouter } from 'next/router';
 
 const cx = classNames.bind(styles);

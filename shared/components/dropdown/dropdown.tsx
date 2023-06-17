@@ -3,11 +3,11 @@ import { useEffect, useState } from 'react';
 import { Button, Dropdown, DropdownButton, FormControl } from 'react-bootstrap';
 import { useTranslation } from 'react-i18next';
 import { NS_COMMON } from '@/components/i18n';
-import { uuid } from '../utils';
+import { uuid } from '../../../components/utils';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faCheck } from '@fortawesome/free-solid-svg-icons';
 
-interface CVariantsDropDownProps {
+interface CDropdownProps {
   variant: string;
   title: string;
   options: any[];
@@ -20,7 +20,7 @@ interface CVariantsDropDownProps {
   onClick: Function;
 }
 
-export const CVariantsDropDown = ({
+export const CDropDown = ({
   variant,
   title,
   options,
@@ -31,7 +31,7 @@ export const CVariantsDropDown = ({
   children,
   active,
   onClick,
-}: CVariantsDropDownProps) => {
+}: CDropdownProps) => {
   const { t } = useTranslation(NS_COMMON);
   const [id] = useState(uuid());
 

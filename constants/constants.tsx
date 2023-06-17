@@ -1,4 +1,4 @@
-import { Shop } from './model/shop';
+import { Shop } from '../models/shop';
 
 export const AUTH_LOGIN = 'auth/login';
 export const AUTH_PROFILE = 'auth/profile';
@@ -399,7 +399,3 @@ export const SHOP_DATA_SUGGEST = [
     codeOff: 12,
   },
 ];
-
-export const routerDict = {
-  confirmOrder: '/confirm-order',
-};

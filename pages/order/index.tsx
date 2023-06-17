@@ -6,7 +6,7 @@ import { faCircleCheck, faChevronRight } from '@fortawesome/free-solid-svg-icons
 import Footer from '@/components/footer/footer.component';
 import PageLayout from '@/components/page-layout/page-layout.component';
 import { GetStaticProps } from 'next';
-import { ORDER } from '@/share/constants';
+import { ORDER } from '@/constants/constants';
 const cx = classNames.bind(styles);
 
 interface OrderProps {
