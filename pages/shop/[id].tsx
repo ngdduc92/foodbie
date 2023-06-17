@@ -14,6 +14,7 @@ import { useRouter } from 'next/router';
 import ShopService from '@/services/shop';
 import { Shop } from '@/share/model/shop';
 import Product from '@/components/product/product.component';
+import Basket from '@/components/basket/basket.componet';
 const cx = classNames.bind(styles);
 
 function DetailStore() {
@@ -71,9 +72,9 @@ function DetailStore() {
               </div>
             </div>
             {isLiked ? (
-              <FontAwesomeIcon icon={faHeart} className="fs-1" onClick={handleLike} />
-            ) : (
               <FontAwesomeIcon icon={faHeartSolid} className="fs-1 text-primary" onClick={handleLike} />
+            ) : (
+              <FontAwesomeIcon icon={faHeart} className="fs-1" onClick={handleLike} />
             )}
           </div>
         </div>
@@ -83,6 +84,7 @@ function DetailStore() {
           <Product dataProduct={shopData?.menu} menu />
         </div>
       </div>
+      <Basket />
     </div>
   );
 }

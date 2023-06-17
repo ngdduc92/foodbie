@@ -69,17 +69,19 @@ function getDefaultOptions() {
   };
 }
 
-const get = (url: string) => {
+function get<T>(url: string): Promise<T> {
   return axios.get(`${BASE_URI}/${url}`, getDefaultOptions());
-};
-const post = (url: string, body: Object) => {
+}
+
+function post<T>(url: string, body: T): Promise<T> {
   return axios.post(`${BASE_URI}/${url}`, body, getDefaultOptions());
-};
-const put = (url: string, body: Object) => {
+}
+function put<T>(url: string, body: T): Promise<T> {
   return axios.put(`${BASE_URI}/${url}`, body, getDefaultOptions());
-};
-const remove = (url: string) => {
+}
+
+function remove(url: string) {
   return axios.delete(`${BASE_URI}/${url}`, getDefaultOptions());
-};
+}
 
 export default { get, post, put, remove };

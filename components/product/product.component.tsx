@@ -4,19 +4,25 @@ import styles from './product.module.scss';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faCircleCheck, faSquarePlus, faStar } from '@fortawesome/free-solid-svg-icons';
 import { useRouter } from 'next/router';
-import { Button, Image } from 'react-bootstrap';
+import { Col, Image, Row } from 'react-bootstrap';
 import ProductPopup from '../product-popup/product-popup.component';
 import { uuid } from '../utils';
 const cx = classNames.bind(styles);
 
-const Product = (props: any) => {
+interface ProductProps {}
+
+const Product: FC<ProductProps> = (props: any) => {
+  const router = useRouter();
   const { dataProduct, menu = false } = props;
   const [showPopup, setshowPopup] = useState(false);
-
+  const [selectedProduct, setSelectedProduct] = useState(null);
   const handleClose = () => setshowPopup(false);
-  const handleShow = () => setshowPopup(true);
 
-  const router = useRouter();
+  const handleShow = (item: React.SetStateAction<null>) => {
+    setshowPopup(true);
+    setSelectedProduct(item);
+  };
+
   return (
     <div className="product__list">
       {dataProduct?.map((item: any) => (
@@ -34,33 +40,38 @@ const Product = (props: any) => {
                       {item.title}
                     </h5>
                   </div>
-                  <div className="d-flex align-items-center mb-2 text-secondary">
-                    <div className="text-warning">
-                      <FontAwesomeIcon icon={faStar} />
+                  {!menu && (
+                    <div className="d-flex align-items-center">
+                      <div className="text-warning">
+                        <FontAwesomeIcon icon={faStar} />
+                      </div>
+                      <span className="px-3 border-end">4.9</span>
+
+                      <span className="mx-2 px-3 border-end">({item.quantityPurchased} review)</span>
+                      {/* &#8226; */}
+                      <div className="ms-2">{item.distance}</div>
                     </div>
-                    <span className="px-3 border-end">4.9</span>
-                    {!menu && (
-                      <>
-                        <span className="mx-2 px-3 border-end">({item.quantityPurchased} review)</span>
-                        {/* &#8226; */}
-                        <div className="ms-2">{item.distance}</div>
-                      </>
-                    )}
-                  </div>
-                  <Button className={cx('tab_code__off')} variant="outline-primary" size="sm">
-                    <span>{' Code 10% off'}</span>
-                  </Button>
+                  )}
                 </div>
                 {menu && (
                   <>
-                    <div className="d-flex justify-content-between">
-                      <span className={cx('product__price', 'fs-2 fw-bold')}>{item?.price}$</span>
-                      <FontAwesomeIcon
-                        className={cx('product__icon__add', 'text-primary')}
-                        icon={faSquarePlus}
-                        onClick={handleShow}
-                      />
+                    <div className="fs-5">
+                      <span className="pe-3 border-end">{item.sold}k sold</span>
+                      <span className="ps-3">{item.like} like</span>
                     </div>
+                    <Row>
+                      <Col xs={10}>
+                        <span className="fs-5 me-3 text-decoration-line-through">{item?.oldPrice}$</span>
+                        <span className=" fs-3 text-primary">{item?.newPrice}$</span>
+                      </Col>
+                      <Col xs={2} className=" text-end">
+                        <FontAwesomeIcon
+                          className={'text-primary fs-1'}
+                          icon={faSquarePlus}
+                          onClick={() => handleShow(item)}
+                        />
+                      </Col>
+                    </Row>
                   </>
                 )}
               </div>
@@ -69,7 +80,9 @@ const Product = (props: any) => {
           </div>
         </div>
       ))}
-      {menu && <ProductPopup showPopup={showPopup} onClose={handleClose} onShow={handleShow} />}
+      {selectedProduct && (
+        <ProductPopup showPopup={showPopup} onClose={handleClose} selectedProduct={selectedProduct} />
+      )}
     </div>
   );
 };
