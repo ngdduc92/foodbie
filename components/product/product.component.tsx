@@ -4,7 +4,7 @@ import styles from './product.module.scss';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faCircleCheck, faSquarePlus, faStar } from '@fortawesome/free-solid-svg-icons';
 import { useRouter } from 'next/router';
-import { Col, Image, Row } from 'react-bootstrap';
+import { Button, Col, Image, Row } from 'react-bootstrap';
 import ProductPopup from '../product-popup/product-popup.component';
 import { uuid } from '../utils';
 const cx = classNames.bind(styles);
@@ -41,16 +41,21 @@ const Product: FC<ProductProps> = (props: any) => {
                     </h5>
                   </div>
                   {!menu && (
-                    <div className="d-flex align-items-center">
-                      <div className="text-warning">
-                        <FontAwesomeIcon icon={faStar} />
-                      </div>
-                      <span className="px-3 border-end">4.9</span>
+                    <>
+                      <div className="d-flex align-items-center">
+                        <div className="text-warning">
+                          <FontAwesomeIcon icon={faStar} />
+                        </div>
+                        <span className="px-3 border-end">4.9</span>
 
-                      <span className="mx-2 px-3 border-end">({item.quantityPurchased} review)</span>
-                      {/* &#8226; */}
-                      <div className="ms-2">{item.distance}</div>
-                    </div>
+                        <span className="mx-2 px-3 border-end">({item.quantityPurchased} review)</span>
+                        {/* &#8226; */}
+                        <div className="ms-2">{item.distance}</div>
+                      </div>
+                      <Button className={cx('tab_code__off')} variant="outline-primary" size="sm">
+                        <span>{' Code 10% off'}</span>
+                      </Button>
+                    </>
                   )}
                 </div>
                 {menu && (
@@ -61,8 +66,10 @@ const Product: FC<ProductProps> = (props: any) => {
                     </div>
                     <Row>
                       <Col xs={10}>
-                        <span className="fs-5 me-3 text-decoration-line-through">{item?.oldPrice}$</span>
-                        <span className=" fs-3 text-primary">{item?.newPrice}$</span>
+                        {item?.oldPrice && (
+                          <span className="fs-5 me-3 text-decoration-line-through">{item?.oldPrice}$</span>
+                        )}
+                        <span className=" fs-3 text-primary">{item?.newPrice || item?.price}$</span>
                       </Col>
                       <Col xs={2} className=" text-end">
                         <FontAwesomeIcon
