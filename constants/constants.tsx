@@ -32,7 +32,7 @@ export const DATA_PRODUCTS: Shop[] = [
         newPrice: 8,
         oldPrice: 10,
         sold: 5.6,
-        like: 90,
+        like: 1482,
         option: [
           {
             option_title: 'CHOOSE SIZE',
@@ -67,7 +67,7 @@ export const DATA_PRODUCTS: Shop[] = [
         oldPrice: 10,
         newPrice: 8,
         sold: 5.0,
-        like: 22,
+        like: 1216,
       },
       {
         title: 'Cream Cheese Green Tea',
@@ -75,7 +75,7 @@ export const DATA_PRODUCTS: Shop[] = [
         oldPrice: 10,
         newPrice: 8,
         sold: 5.9,
-        like: 70,
+        like: 2621,
       },
       {
         title: 'Royal Pearl Milk Tea',
@@ -83,7 +83,7 @@ export const DATA_PRODUCTS: Shop[] = [
         oldPrice: 11,
         newPrice: 9,
         sold: 4.2,
-        like: 10,
+        like: 8321,
       },
       {
         title: 'Toco Milk Tea',
@@ -91,7 +91,7 @@ export const DATA_PRODUCTS: Shop[] = [
         oldPrice: 10,
         newPrice: 8,
         sold: 2.0,
-        like: 4,
+        like: 7215,
       },
       {
         title: 'Mint Milk Tea',
@@ -99,7 +99,7 @@ export const DATA_PRODUCTS: Shop[] = [
         oldPrice: 10,
         newPrice: 8,
         sold: 4.9,
-        like: 40,
+        like: 1216,
       },
       {
         title: 'Milk Tea',
@@ -107,7 +107,7 @@ export const DATA_PRODUCTS: Shop[] = [
         oldPrice: 9,
         newPrice: 6,
         sold: 5.0,
-        like: 45,
+        like: 2526,
       },
     ],
   },
@@ -123,38 +123,56 @@ export const DATA_PRODUCTS: Shop[] = [
         title: 'Fried chicken combo',
         image:
           'https://images.foody.vn/res/g79/789740/s120x120/5034c277-acf7-4248-86c4-ceff731e-116eceec-210701153738.jpeg',
-        price: '14',
+        newPrice: 8,
+        oldPrice: 14,
+        sold: 5.6,
+        like: 3456,
       },
       {
         title: 'Cheese shake chicken combo',
         image:
           'https://images.foody.vn/res/g79/789740/s120x120/bcb3e96e-84a9-4409-9e51-24c8091b-a8951201-210712161120.jpeg',
-        price: '14',
+        newPrice: 12,
+        oldPrice: 16,
+        sold: 5.8,
+        like: 4523,
       },
       {
         title: 'Friend 1',
         image:
           'https://images.foody.vn/res/g79/789740/s120x120/73a2fa61-f5e4-4889-be32-25cbfda4-6218639b-210701113035.jpeg',
-        price: '12',
+        newPrice: 18,
+        oldPrice: 20,
+        sold: 5.6,
+        like: 6823,
       },
       {
         title: 'Friend 2',
         image:
           'https://images.foody.vn/res/g79/789740/s120x120/59aea499-109e-4391-b468-965eb062-41b96def-210712092916.jpeg',
-        price: '12',
+        newPrice: 18,
+        oldPrice: 17,
+        sold: 5.4,
+        like: 1263,
       },
       {
         title: 'Combo chicken with sauce',
         image:
           'https://images.foody.vn/res/g79/789740/s120x120/43d53b34-1a48-458c-b0d8-cbfcf2f1-7fda2b96-210712161026.jpeg',
-        price: '12',
+        newPrice: 12,
+        oldPrice: 14,
+        sold: 5.8,
+        like: 4632,
       },
 
       {
         title: 'Combo boneless chicken thighs',
         image:
           'https://images.foody.vn/res/g79/789740/s120x120/d219c6fd-84eb-491c-8ad7-69a7ad37-2c5bf340-220221091542.jpeg',
-        price: '12',
+        newPrice: 12,
+        oldPrice: 14,
+        sold: 5.1,
+        like: 2361,
       },
     ],
   },
@@ -170,40 +188,61 @@ export const DATA_PRODUCTS: Shop[] = [
         title: 'braised fish rice',
         subTitle: '',
         image: 'https://images.foody.vn/res/g13/126552/s120x120/da923b02-0c8b-4862-a5f6-ab964edd7544.jpg',
-        price: '8',
+        newPrice: 8,
+        oldPrice: 9,
+        sold: 5.1,
+        like: 2346,
       },
 
       {
         title: 'Braised pork and pepper rice',
         image: 'https://images.foody.vn/res/g13/126552/s120x120/d71d932c-8b24-41d9-9492-4e3a36f279fe.jpg',
-        price: '7',
+        newPrice: 10,
+        oldPrice: 11,
+        sold: 5.5,
+        like: 4673,
       },
       {
         title: 'salt-roasted ribs',
         image: 'https://images.foody.vn/res/g13/126552/s120x120/2f5cf43a-c0ae-45b6-bbd7-c070447d5e0f.jpg',
-        price: '7',
+        newPrice: 8,
+        oldPrice: 9,
+        sold: 5.5,
+        like: 1246,
       },
       {
         title: 'Braised egg rice with meat',
         image: 'https://images.foody.vn/res/g13/126552/s120x120/c8deb356-75c0-428e-bfa1-0c45967f9409.jpg',
-        price: '7',
+        newPrice: 10,
+        oldPrice: 12,
+        sold: 5.8,
+        like: 3457,
       },
       {
         title: 'Meat tofu rice',
         image: 'https://images.foody.vn/res/g13/126552/s120x120/b26fe43c-7642-4c47-ab5e-7aa30aaec7af.jpg',
-        price: '7',
+        newPrice: 6,
+        oldPrice: 8,
+        sold: 5.1,
+        like: 7632,
       },
       {
         title: 'Roasted pork rice',
         image: 'https://images.foody.vn/res/g13/126552/s120x120/341ffb0d-4a35-4dd5-9937-adb32b299160.jpg',
-        price: '7',
+        newPrice: 10,
+        oldPrice: 13,
+        sold: 5.2,
+        like: 6353,
       },
       {
         title: 'Grilled ribs rice',
         subTitle: '',
         image:
           'https://images.foody.vn/res/g13/126552/s120x120/41ab60a2-eece-4c2f-b576-003f33ea-260a0330-220927134633.jpeg',
-        price: '47,000',
+        newPrice: 15,
+        oldPrice: 16,
+        sold: 5.7,
+        like: 4532,
       },
     ],
   },
@@ -219,43 +258,129 @@ export const DATA_PRODUCTS: Shop[] = [
         title: 'Phuc Loc Tho Rib Rice',
         image:
           'https://images.foody.vn/res/g98/972468/s120x120/faf23e23-580c-4f62-971a-9b805c88-eb58c57c-230516154246.jpeg',
-        price: '5',
+        newPrice: 10,
+        oldPrice: 13,
+        sold: 5.2,
+        like: 6353,
       },
       {
         title: 'Combo Coke 1 Person',
         image:
           'https://images.foody.vn/res/g98/972468/s120x120/173b7834-3e17-4d06-ae1c-51ef14e0-55582286-230516113231.jpeg',
-        price: '8',
+        newPrice: 6,
+        oldPrice: 8,
+        sold: 5.1,
+        like: 7632,
       },
       {
         title: 'Combo Phuc Loc Tho Ribs + 1 buffet dish',
         image:
           'https://images.foody.vn/res/g98/972468/s120x120/42360fa0-2ee7-4f75-aafa-f8a77f1f-4ee1dad4-230516154811.jpeg',
-        price: '6',
+        newPrice: 15,
+        oldPrice: 16,
+        sold: 5.7,
+        like: 4532,
       },
       {
         title: 'Combo Phuc Loc Tho Ribs + 2 buffet dishes',
         image:
           'https://images.foody.vn/res/g98/972468/s120x120/ead6305a-ea6d-4589-bc09-3a5ce3e1-67a98731-230516154313.jpeg',
-        price: '7',
+        newPrice: 10,
+        oldPrice: 12,
+        sold: 5.8,
+        like: 3457,
       },
       {
         title: 'Combo Phuc Loc Tho Ribs + 3 buffet dishes',
         image:
           'https://images.foody.vn/res/g98/972468/s120x120/dacd84b7-a70b-49aa-a859-6ccd6ca3-8d0057d2-230516154823.jpeg',
-        price: '8',
+        newPrice: 10,
+        oldPrice: 12,
+        sold: 5.8,
+        like: 3457,
       },
       {
         title: 'Combo Chicken thighs + 1 buffet dish',
         image:
           'https://images.foody.vn/res/g98/972468/s120x120/ccaba59f-d5e4-4b36-9589-2f954d8e-83330bba-230512155921.jpeg',
-        price: '6',
+        newPrice: 8,
+        oldPrice: 9,
+        sold: 5.1,
+        like: 2346,
       },
       {
         title: 'Combo Chicken thighs + 2 buffet dishes',
         image:
           'https://images.foody.vn/res/g98/972468/s120x120/77b804bc-ebd7-436f-a70c-f97532bf-fa237289-230510172801.jpeg',
-        price: '7',
+        newPrice: 18,
+        oldPrice: 20,
+        sold: 5.6,
+        like: 6823,
+      },
+    ],
+  },
+  {
+    id: 6,
+    title: 'Hello Burger - Hamburger & Chicken ',
+    quantityPurchased: '999+',
+    distance: '0.3km',
+    image:
+      'https://images.foody.vn/res/g117/1165799/prof/s640x400/file_restaurant_photo_cscs_16804-53f6e6e3-230403105301.jpeg',
+    menu: [
+      {
+        title: 'Hamburger Beef + Egg',
+        image:
+          'https://images.foody.vn/res/g117/1165799/s120x120/8d8d777c-ce05-4abb-8349-76a4d490-7d31aa12-230403090819.jpeg',
+        newPrice: 8,
+        oldPrice: 14,
+        sold: 5.6,
+        like: 3456,
+      },
+      {
+        title: 'Hamburger Beef + Cheese',
+        image:
+          'https://images.foody.vn/res/g117/1165799/s120x120/c09613ec-9b04-44d4-bb6b-d7aa78a1-a4f478e7-230403090713.jpeg',
+        newPrice: 12,
+        oldPrice: 16,
+        sold: 5.8,
+        like: 4523,
+      },
+      {
+        title: 'Beef Hamburger 2 tiers',
+        image:
+          'https://images.foody.vn/res/g117/1165799/s120x120/c3a549f0-0e15-4bec-9eab-2c576e70-ac330a44-230403090911.jpeg',
+        newPrice: 18,
+        oldPrice: 20,
+        sold: 5.6,
+        like: 6823,
+      },
+      {
+        title: 'Hamburger Chicken + Cheese',
+        image:
+          'https://images.foody.vn/res/g117/1165799/s120x120/199d11e8-1b92-41f3-aa46-24755afc-17eb7c68-230403090929.jpeg',
+        newPrice: 18,
+        oldPrice: 17,
+        sold: 5.4,
+        like: 1263,
+      },
+      {
+        title: 'Hamburger Chicken + Egg',
+        image:
+          'https://images.foody.vn/res/g117/1165799/s120x120/199d11e8-1b92-41f3-aa46-24755afc-17eb7c68-230403090929.jpeg',
+        newPrice: 12,
+        oldPrice: 14,
+        sold: 5.8,
+        like: 4632,
+      },
+
+      {
+        title: ' Hamburger Beef + Cheese + Coca',
+        image:
+          'https://images.foody.vn/res/g117/1165799/s120x120/c09613ec-9b04-44d4-bb6b-d7aa78a1-a4f478e7-230403090713.jpeg',
+        newPrice: 12,
+        oldPrice: 14,
+        sold: 5.1,
+        like: 2361,
       },
     ],
   },
