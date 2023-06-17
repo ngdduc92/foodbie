@@ -2,17 +2,27 @@ pipeline {
     agent any
 
     stages {
-        stage('Build') {
+         stage('Build') {
             steps {
                 sh "docker build -t foobbie:0.0.1 ."
                 echo 'Build successfully'
+            }
+        }
 
+        stage('Stop existing app') {
+            when {
+                branch "dev"
+            }
+            steps {
                 sh "chmod +x ./stopByPort.sh"
                 sh "./stopByPort.sh 3000"
                 echo 'Stop successfully'
             }
         }
         stage('Deploy') {
+            when {
+                branch "dev"
+            }
             steps {
                 sh "docker run -d -p 3000:3000 foobbie:0.0.1"
                 echo 'Start successfully'
