@@ -1,4 +1,4 @@
-@use '../../styles/base' as *;
+@use "../../styles/base" as *;
 .header {
   position: relative;
   height: 400px;
@@ -51,7 +51,9 @@
 }
 
 .menu__title {
-  @extend %heading;
+  font-size: 20px;
+  font-weight: 700;
+  margin-bottom: 0;
   margin: 20px 0;
 }
 
