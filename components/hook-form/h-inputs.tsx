@@ -158,6 +158,7 @@ export type Props = PropsWithChildren<{
   label?: string;
   helpText?: string;
   labelProps: LabelProps;
+  className: string;
 }>;
 
 export const HField: FunctionComponent<Props> = ({

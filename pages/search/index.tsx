@@ -84,7 +84,7 @@ function Search() {
       {searchResult.length > 0 ? (
         <div className="search__result">
           <h2 className="d-block mt-4 fw-bold">{searchResult.length} restaurants found</h2>
-          <Product dataProduct={searchResult} />
+          <Product dataProduct={searchResult} menu={false} />
         </div>
       ) : (
         <>

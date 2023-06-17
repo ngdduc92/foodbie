@@ -105,7 +105,7 @@ const ProductPopup: React.FC<ProductPopupProps> = (props) => {
                     </Button>
                   </Col>
                   <Col xs={2}>
-                    <HField name="count" className="text-center border-none" />
+                    <HField name="count" className="text-center border-none" labelProps={undefined} />
                   </Col>
                   <Col xs={2}>
                     <Button onClick={increaseCount}>
