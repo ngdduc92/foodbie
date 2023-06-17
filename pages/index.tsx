@@ -24,8 +24,9 @@ export default function Home() {
         subTitle="Suggest a lot of food you need to try today!"
         sliders={SHOP_DATA_SUGGEST}
       />
+      <div className="large__line my-4"></div>
       <div className="wrapper__product__list mb-5 pb-5">
-        <h2 className="heading">{"What's delicious around here?"} </h2>
+        <h2 className="text-primary fw-bolder">{"What's delicious around here?"} </h2>
         <Product dataProduct={DATA_PRODUCTS} />
       </div>
     </Layout>

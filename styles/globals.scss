@@ -10,7 +10,6 @@
 @import "./custom/plugins/react-select";
 @import "./custom/plugins/react-slick";
 
-
 * {
   margin: 0;
   padding: 0;
@@ -47,7 +46,7 @@ body a {
   border-bottom: 8px solid #cbd9e145;
 }
 .small__line {
-  border-bottom: 1px solid #999;
+  border-bottom: 1px solid #cbd9e145;
   margin-right: var(--bs-gutter-x, -0.75rem);
   margin-left: var(--bs-gutter-x, -0.75rem);
 }
