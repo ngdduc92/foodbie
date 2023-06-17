@@ -31,7 +31,7 @@ function Basket() {
   return (
     <>
       {carts.length > 0 && (
-        <div className="fixed-bottom zindex-1">
+        <div className="fixed-bottom">
           <Row className="bg-white ps-3 shadow-lg">
             <Col xs={8} md={9} className="py-3 d-flex align-items-center" onClick={handleShow}>
               <FontAwesomeIcon icon={faBasketShopping} className="text-primary display-6" />

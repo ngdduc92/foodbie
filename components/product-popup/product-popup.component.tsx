@@ -81,9 +81,9 @@ const ProductPopup: React.FC<ProductPopupProps> = (props) => {
             <Modal.Title>Add New Item</Modal.Title>
           </Modal.Header>
           <Modal.Body>
-            <Card className="d-flex flex-row border-0 mb-3">
+            <Card className="d-flex flex-row border-0 mb-3 ">
               <Card.Img variant="top" src={props.selectedProduct?.image} style={{ width: '100px', height: '80px' }} />
-              <Card.Body style={{ width: '70%' }}>
+              <Card.Body className="py-0" style={{ width: '70%' }}>
                 <Card.Title className="fs-3">{props.selectedProduct.title}</Card.Title>
                 <Card.Text className="fs-5 text-truncate mb-0 w-100">
                   Some quick example text to build on the card title and make up the bulk of the
@@ -93,13 +93,11 @@ const ProductPopup: React.FC<ProductPopupProps> = (props) => {
                   <span className="ps-3">{props.selectedProduct.like}like</span>
                 </div>
                 <Row className="align-items-center">
-                  <Col xs={2}>
-                    <span className="fs-5 text-decoration-line-through">{props.selectedProduct.oldPrice}$</span>
-                  </Col>
-                  <Col xs={2}>
+                  <Col xs={6}>
+                    <span className="fs-5 text-decoration-line-through me-3">{props.selectedProduct.oldPrice}$</span>
                     <span className="fs-3 text-primary">{props.selectedProduct.newPrice}$</span>
                   </Col>
-                  <Col xs={4} className="text-end">
+                  <Col xs={2} className="text-end">
                     <Button onClick={decreaseCount} variant="outline-primary">
                       <FontAwesomeIcon icon={faMinus} />
                     </Button>
