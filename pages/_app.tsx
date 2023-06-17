@@ -6,12 +6,5 @@ import React, { useEffect } from 'react';
 import '@/components/i18n';
 
 export default function App({ Component, pageProps }: AppProps) {
-  const router = useRouter();
-  useEffect(() => {
-    const apiToken = authService.getToken();
-    if (!apiToken) {
-      router.push('/login');
-    }
-  }, []);
   return <Component {...pageProps} />;
 }

@@ -1,8 +1,7 @@
-@use '../../styles/base' as *;
+@use "../../styles/base" as *;
 
 .slider__item {
   height: 370px;
-  margin: 0 20px;
   cursor: pointer;
   img {
     @extend %img-cover;
@@ -16,7 +15,7 @@
 @include mobile {
   .slider {
     padding: 0;
-    margin: 20px -10px 0;
+    margin-right: 1rem;
   }
   .slider__item {
     margin: 0 6px;

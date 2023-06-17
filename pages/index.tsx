@@ -2,15 +2,16 @@
 
 import Category from '../components/category/category.component';
 import Layout from '@/components/layout/layout.component';
-import Slider from '../components/slider/slider.component';
+import SliderBanner from '../components/slider-banner/slider-banner.component';
 import Product from '@/components/product/product.component';
 import { DATA_PRODUCTS, SHOP_DATA_SUGGEST, SHOP_DATA_WHAT_EAT_TODAY } from '@/share/constants';
 import SliderCommon from '@/components/slider-common';
+import { Tab, Tabs } from 'react-bootstrap';
 
 export default function Home() {
   return (
     <Layout>
-      <Slider />
+      <SliderBanner />
       <Category />
       <div className="large__line my-4"></div>
       <SliderCommon
@@ -25,10 +26,18 @@ export default function Home() {
         sliders={SHOP_DATA_SUGGEST}
       />
       <div className="large__line my-4"></div>
-      <div className="wrapper__product__list mb-5 pb-5">
-        <h2 className="text-primary fw-bolder">{"What's delicious around here?"} </h2>
-        <Product dataProduct={DATA_PRODUCTS} />
-      </div>
+      <Tabs id="menu-tabs" defaultActiveKey="nearby" className="mb-2" fill>
+        <Tab eventKey="nearby" title="Nearby" tabClassName="fw-bold">
+          <div className="mb-5 pb-5">
+            <Product dataProduct={DATA_PRODUCTS} />
+          </div>
+        </Tab>
+        <Tab eventKey="rating" title="Rating" tabClassName="fw-bold">
+          <div className="mb-5 pb-5">
+            <Product dataProduct={DATA_PRODUCTS} />
+          </div>
+        </Tab>
+      </Tabs>
     </Layout>
   );
 }

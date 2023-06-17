@@ -1,4 +1,4 @@
-@use '../../styles/base' as *;
+@use "../../styles/base" as *;
 
 .product__price {
   color: #0288d1;
@@ -15,4 +15,9 @@
     object-fit: cover;
     border-radius: 6px;
   }
+}
+
+.tab_code__off:hover {
+  font-weight: bold;
+  color: $white;
 }

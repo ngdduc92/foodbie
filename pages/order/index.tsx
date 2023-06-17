@@ -4,11 +4,19 @@ import classNames from 'classnames/bind';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faCircleCheck, faChevronRight } from '@fortawesome/free-solid-svg-icons';
 import Footer from '@/components/footer/footer.component';
+import PageLayout from '@/components/page-layout/page-layout.component';
+import { GetStaticProps } from 'next';
+import { ORDER } from '@/share/constants';
 const cx = classNames.bind(styles);
 
-export default function Order() {
+interface OrderProps {
+  secure: boolean;
+  pageRoute: string;
+}
+
+export default function Order({ secure, pageRoute }: OrderProps) {
   return (
-    <>
+    <PageLayout secure={secure} pageRoute={pageRoute}>
       <div className={cx('wapper__order')}>
         <div className={cx('Order__completed')}>
           <span className={cx('Order__completed__title')}>Orde completed</span>
@@ -56,6 +64,15 @@ export default function Order() {
         </div>
       </div>
       <Footer />
-    </>
+    </PageLayout>
   );
 }
+
+export const getStaticProps: GetStaticProps = () => {
+  return {
+    props: {
+      secure: true,
+      pageRoute: ORDER,
+    },
+  };
+};

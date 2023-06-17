@@ -4,7 +4,7 @@ import styles from './product.module.scss';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faCircleCheck, faSquarePlus, faStar } from '@fortawesome/free-solid-svg-icons';
 import { useRouter } from 'next/router';
-import { Image } from 'react-bootstrap';
+import { Button, Image } from 'react-bootstrap';
 import ProductPopup from '../product-popup/product-popup.component';
 import { uuid } from '../utils';
 const cx = classNames.bind(styles);
@@ -21,20 +21,20 @@ const Product = (props: any) => {
     <div className="product__list">
       {dataProduct?.map((item: any) => (
         <div key={uuid()}>
-          <div className="wrapper__product__item">
-            <div className="d-flex py-4" onClick={() => !menu && router.push(`shop/${item.id}`)}>
+          <div>
+            <div className="d-flex algin-items-center py-4" onClick={() => !menu && router.push(`shop/${item.id}`)}>
               <div className={cx('product__image')}>
                 <Image src={item.image} alt={item.title} />
               </div>
               <div className="flex-grow-1 ms-3">
                 <div>
-                  <div className="content__top">
-                    <h5 className="fw-bolder mb-1">
+                  <div className="content__top mb-2">
+                    <h5 className="fw-bolder">
                       <FontAwesomeIcon icon={faCircleCheck} className="text-primary me-2" />
                       {item.title}
                     </h5>
                   </div>
-                  <div className="d-flex align-items-center">
+                  <div className="d-flex align-items-center mb-2 text-secondary">
                     <div className="text-warning">
                       <FontAwesomeIcon icon={faStar} />
                     </div>
@@ -47,6 +47,9 @@ const Product = (props: any) => {
                       </>
                     )}
                   </div>
+                  <Button className={cx('tab_code__off')} variant="outline-primary" size="sm">
+                    <span>{' Code 10% off'}</span>
+                  </Button>
                 </div>
                 {menu && (
                   <>

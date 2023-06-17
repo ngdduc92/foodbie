@@ -2,9 +2,6 @@ import React from 'react';
 import classNames from 'classnames/bind';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import {
-  faPlateWheat,
-  faBagShopping,
-  faPenRuler,
   faBowlFood,
   faEgg,
   faWineBottle,
@@ -23,7 +20,7 @@ const cx = classNames.bind(stytes);
 
 function Category() {
   return (
-    <nav className={cx('container')}>
+    <nav className={cx('container', 'mt-5')}>
       <div className="row row-cols-4 row-cols-lg-6 gy-4 gx-4">
         <div className="col">
           <div className={cx('category__item')}>

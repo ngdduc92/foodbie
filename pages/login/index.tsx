@@ -1,3 +1,4 @@
+/* eslint-disable @next/next/no-img-element */
 import React, { useEffect, useState } from 'react';
 import { useForm, SubmitHandler } from 'react-hook-form';
 import style from './login.module.scss';
@@ -9,6 +10,7 @@ import HeaderOption from '@/components/header-option';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faEye, faEyeSlash, faLock, faUser } from '@fortawesome/free-solid-svg-icons';
 import { Button } from 'react-bootstrap';
+import { HOME } from '@/share/constants';
 
 type Inputs = {
   email: string;
@@ -19,6 +21,7 @@ function Login() {
   const router = useRouter();
   const [errorMessages, setErrorMessages] = useState(false);
   const [passwordShown, setPasswordShown] = useState(false);
+  const previousPageParam = router.query?.page as string;
   const {
     register,
     handleSubmit,
@@ -50,7 +53,11 @@ function Login() {
       .then((res) => {
         if (res.status === 200) {
           localStorage.setItem('API_TOKEN', res.data.accessToken);
-          router.push('/');
+          if (previousPageParam) {
+            router.push(previousPageParam);
+          } else {
+            router.push(HOME);
+          }
         }
       })
       .catch((error) => {
@@ -66,6 +73,7 @@ function Login() {
           <img
             className="position-absolute start-0 top-50 translate-middle-y ms-3"
             src="https://accounts.fullstack.edu.vn/assets/images/signin/personal-18px.svg"
+            alt="Account"
           />
           <span className="fs-3 fw-bold">{loginStep.title}</span>
         </a>

@@ -22,15 +22,18 @@ import {
 import Link from 'next/link';
 import Footer from '@/components/footer/footer.component';
 import authService from '@/services/auth';
+import { HOME } from '@/share/constants';
+import { useRouter } from 'next/router';
 
 const cx = classNames.bind(styles);
 
 export default function SideMenu() {
+  const router = useRouter();
   const logout = () => {
     authService
       .logout()
       .then((res) => {
-        console.log(res);
+        router.push(HOME);
       })
       .catch((error) => {
         console.log(error);

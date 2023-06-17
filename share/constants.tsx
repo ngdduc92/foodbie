@@ -8,6 +8,7 @@ export const ORDER = '/order';
 export const LIKES = '/favorite-store';
 export const NOTIFICATION = '/notification';
 export const MENU_ME = '/menu';
+export const LOGIN = '/login';
 
 export type Breakpoint = 'xs' | 'sm' | 'md' | 'lg' | 'xl' | 'xxl';
 export const SIZE_XS = 'xs';
