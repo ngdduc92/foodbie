@@ -1,11 +1,11 @@
 // @flow
 // @ts-nocheck
 import authService from '@/services/auth';
-import { LOGIN, ORDER } from '@/share/constants';
+import { LOGIN } from '@/share/constants/constants';
 import { useRouter } from 'next/router';
 import type { FunctionComponent } from 'react';
 import { createContext, useContext, useEffect } from 'react';
-import { Container } from 'reactstrap';
+import Container from 'react-bootstrap/Container';
 
 // @flow
 export type PageProps = {

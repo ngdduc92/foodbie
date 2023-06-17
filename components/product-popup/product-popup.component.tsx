@@ -2,7 +2,7 @@ import { faMinus, faPlus } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import React, { useEffect, useState } from 'react';
 import { Button, Card, Col, Modal, Row } from 'react-bootstrap';
-import { Checkbox, HButton, HField, HForm, HRadio, RadioGroup } from '../hook-form';
+import { Checkbox, HButton, HField, HForm } from '@/shared/components/forms';
 import { useForm } from 'react-hook-form';
 import { uuid } from '../utils';
 import { useProductStore } from '@/store/product/product.store';

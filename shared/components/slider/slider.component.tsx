@@ -1,24 +1,24 @@
 import useBreakpoint from '@/hooks/user-breakpoint';
-import { SIZE_LG, SIZE_MD, SIZE_SM, SIZE_XS } from '@/share/constants';
-import { SliderCommon as SliderCommonModel } from '@/share/model/slider.model';
+import { SIZE_LG, SIZE_MD, SIZE_SM, SIZE_XS } from '@/constants/constants';
+import { SliderModel } from '@/models/slider.model';
 import { faCircleCheck, faGreaterThan } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import classNames from 'classnames/bind';
 import { useMemo } from 'react';
 import { Button, Card, Stack } from 'react-bootstrap';
 import Slider from 'react-slick';
-import { uuid } from '../utils';
-import styles from './slider-common.module.scss';
+import styles from './slider.module.scss';
 import Link from 'next/link';
+import { uuid } from '@/components/utils';
 const cx = classNames.bind(styles);
 
-interface SliderCommonProps {
+interface CSliderProps {
   title: string;
   subTitle: string;
-  sliders: SliderCommonModel[];
+  sliders: SliderModel[];
 }
 
-const SliderCommon = ({ title, subTitle, sliders }: SliderCommonProps) => {
+const CSlider = ({ title, subTitle, sliders }: CSliderProps) => {
   const size = useBreakpoint();
   const sliderSettings = useMemo(() => {
     let sliderSettingInitial = {
@@ -87,4 +87,4 @@ const SliderCommon = ({ title, subTitle, sliders }: SliderCommonProps) => {
   );
 };
 
-export default SliderCommon;
+export default CSlider;

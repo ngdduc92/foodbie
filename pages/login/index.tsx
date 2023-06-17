@@ -10,7 +10,7 @@ import HeaderOption from '@/components/header-option';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faEye, faEyeSlash, faLock, faUser } from '@fortawesome/free-solid-svg-icons';
 import { Button } from 'react-bootstrap';
-import { HOME } from '@/share/constants';
+import { HOME } from '@/constants/constants';
 
 type Inputs = {
   email: string;

@@ -12,7 +12,7 @@ import {
 import { faHeart, faShareFromSquare, faStarHalfStroke } from '@fortawesome/free-regular-svg-icons';
 import { useRouter } from 'next/router';
 import ShopService from '@/services/shop';
-import { Shop } from '@/share/model/shop';
+import { Shop } from '@/share/models/shop';
 import Product from '@/components/product/product.component';
 import Basket from '@/components/basket/basket.componet';
 const cx = classNames.bind(styles);

@@ -3,7 +3,7 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faArrowLeft } from '@fortawesome/free-solid-svg-icons';
 import { useRouter } from 'next/router';
 import { Col, Row } from 'react-bootstrap';
-import { HOME } from '@/share/constants';
+import { HOME } from '@/constants/constants';
 
 export default function HeaderOption(props: any) {
   const { title, link, isArrow, ischeckSmallLine } = props;

@@ -1,6 +1,6 @@
-import { DATA_PRODUCTS } from '@/share/constants';
+import { DATA_PRODUCTS } from '@/constants/constants';
 import httpService from './http';
-import { Shop } from '@/share/model/shop';
+import { Shop } from '@/models/shop';
 
 const BASE_URI = '/shop';
 const SHOP_DETAIL = BASE_URI + '/{id}';
