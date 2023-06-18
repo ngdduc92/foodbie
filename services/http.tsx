@@ -4,7 +4,7 @@ import createAuthRefreshInterceptor from 'axios-auth-refresh';
 import { ApiPaths } from '@/enums/api-paths';
 import { RouteSegments } from '@/enums/route-segments';
 
-const BASE_URI = process.env.NEXT_PUBLIC_BASE_URI || 'http://foobbie.com:5000/api';
+const BASE_URI = process.env.NEXT_PUBLIC_BASE_URI;
 
 const refreshTokenInstance = axios.create();
 

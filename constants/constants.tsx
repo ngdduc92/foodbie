@@ -1,4 +1,18 @@
 import { Shop } from '../models/shop';
+import {
+  faBowlFood,
+  faBreadSlice,
+  faCakeCandles,
+  faCandyCane,
+  faCheese,
+  faCookie,
+  faEgg,
+  faFish,
+  faHotdog,
+  faPizzaSlice,
+  faShrimp,
+  faWineBottle,
+} from '@fortawesome/free-solid-svg-icons';
 
 export type Breakpoint = 'xs' | 'sm' | 'md' | 'lg' | 'xl' | 'xxl';
 export const SIZE_XS = 'xs';
@@ -512,5 +526,128 @@ export const SHOP_DATA_SUGGEST = [
     image:
       'https://images.foody.vn/res/g75/747191/prof/s280x175/foody-upload-api-foody-mobile-miramen-jpg-180606165901.jpg',
     codeOff: 12,
+  },
+];
+
+export const CATEGORY_DATA = [
+  {
+    id: 1,
+    name: 'Egg',
+    icon: faEgg,
+  },
+  {
+    id: 2,
+    name: 'Rice',
+    icon: faBowlFood,
+  },
+  {
+    id: 3,
+    name: 'Wine',
+    icon: faWineBottle,
+  },
+  {
+    id: 4,
+    name: 'Bread',
+    icon: faBreadSlice,
+  },
+  {
+    id: 5,
+    name: 'Cookie',
+    icon: faCookie,
+  },
+  {
+    id: 6,
+    name: 'Pizza',
+    icon: faPizzaSlice,
+  },
+  {
+    id: 7,
+    name: 'Hotdog',
+    icon: faHotdog,
+  },
+  {
+    id: 8,
+    name: 'Cake',
+    icon: faCakeCandles,
+  },
+  {
+    id: 9,
+    name: 'Shrimp',
+    icon: faShrimp,
+  },
+  {
+    id: 10,
+    name: 'Fish',
+    icon: faFish,
+  },
+  {
+    id: 11,
+    name: 'Cheese',
+    icon: faCheese,
+  },
+  {
+    id: 12,
+    name: 'Candy',
+    icon: faCandyCane,
+  },
+  {
+    id: 1,
+    name: 'Egg',
+    icon: faEgg,
+  },
+  {
+    id: 2,
+    name: 'Rice',
+    icon: faBowlFood,
+  },
+  {
+    id: 3,
+    name: 'Wine',
+    icon: faWineBottle,
+  },
+  {
+    id: 4,
+    name: 'Bread',
+    icon: faBreadSlice,
+  },
+  {
+    id: 5,
+    name: 'Cookie',
+    icon: faCookie,
+  },
+  {
+    id: 6,
+    name: 'Pizza',
+    icon: faPizzaSlice,
+  },
+  {
+    id: 7,
+    name: 'Hotdog',
+    icon: faHotdog,
+  },
+  {
+    id: 8,
+    name: 'Cake',
+    icon: faCakeCandles,
+  },
+  {
+    id: 9,
+    name: 'Shrimp',
+    icon: faShrimp,
+  },
+  {
+    id: 10,
+    name: 'Fish',
+    icon: faFish,
+  },
+  {
+    id: 11,
+    name: 'Cheese',
+    icon: faCheese,
+  },
+  {
+    id: 12,
+    name: 'Candy',
+    icon: faCandyCane,
   },
 ];

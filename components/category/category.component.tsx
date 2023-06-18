@@ -1,126 +1,75 @@
-import React from 'react';
 import classNames from 'classnames/bind';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import {
-  faBowlFood,
-  faEgg,
-  faWineBottle,
-  faBreadSlice,
-  faCookie,
-  faPizzaSlice,
-  faHotdog,
-  faCakeCandles,
-  faShrimp,
-  faFish,
-  faCheese,
-  faCandyCane,
-} from '@fortawesome/free-solid-svg-icons';
 import stytes from './category.module.scss';
+import { CategoryModel } from '@/models/category.model';
+import Slider from 'react-slick';
+import { Col, Row, Stack } from 'react-bootstrap';
+import { uuid } from '../utils';
+import useSliderSettings from '@/hooks/use-slider-settings';
+import { ChangeEvent, useRef, useState } from 'react';
 const cx = classNames.bind(stytes);
 
-function Category() {
+interface CategoryProps {
+  categories: CategoryModel[];
+}
+
+const Category = ({ categories }: CategoryProps) => {
+  const sliderSettings = useSliderSettings();
+  const [sliderIndex, setSliderIndex] = useState<number>(0);
+  const sliderRef: any = useRef(null);
+
+  const sliderChanges = {
+    ...sliderSettings,
+    beforeChange: (oldIndex: number, newIndex: number) => {
+      setSliderIndex(newIndex);
+    },
+  };
+
+  const categoryRows = categories?.reduce((rows: any, currentValue, index) => {
+    return (index % 2 == 0 ? rows.push([currentValue]) : rows[rows.length - 1].push(currentValue)) && rows;
+  }, []);
+
+  const totalSlider = categoryRows.length - sliderChanges.slidesToShow || 0;
+
   return (
     <nav className={cx('container', 'mt-5')}>
-      <div className="row row-cols-4 row-cols-lg-6 gy-4 gx-4">
-        <div className="col">
-          <div className={cx('category__item')}>
-            <i className={cx('wrapper__icon')}>
-              <FontAwesomeIcon icon={faEgg} className={cx('category__icon')} />
-            </i>
-            <span className={cx('category__content')}>egg</span>
-          </div>
-        </div>
-        <div className="col">
-          <div className={cx('category__item')}>
-            <i className={cx('wrapper__icon')}>
-              <FontAwesomeIcon icon={faBowlFood} className={cx('category__icon')} />
-            </i>
-            <span className={cx('category__content')}>rice</span>
-          </div>
-        </div>
-        <div className="col">
-          <div className={cx('category__item')}>
-            <i className={cx('wrapper__icon')}>
-              <FontAwesomeIcon icon={faWineBottle} className={cx('category__icon')} />
-            </i>
-            <span className={cx('category__content')}>wine</span>
-          </div>
-        </div>
-        <div className="col">
-          <div className={cx('category__item')}>
-            <i className={cx('wrapper__icon')}>
-              <FontAwesomeIcon icon={faBreadSlice} className={cx('category__icon')} />
-            </i>
-            <span className={cx('category__content')}>Bread</span>
-          </div>
-        </div>
-        <div className="col">
-          <div className={cx('category__item')}>
-            <i className={cx('wrapper__icon')}>
-              <FontAwesomeIcon icon={faCookie} className={cx('category__icon')} />
-            </i>
-            <span className={cx('category__content')}>Cookie</span>
-          </div>
-        </div>
-        <div className="col">
-          <div className={cx('category__item')}>
-            <i className={cx('wrapper__icon')}>
-              <FontAwesomeIcon icon={faPizzaSlice} className={cx('category__icon')} />
-            </i>
-            <span className={cx('category__content')}>Pizza</span>
-          </div>
-        </div>
-        <div className="col">
-          <div className={cx('category__item')}>
-            <i className={cx('wrapper__icon')}>
-              <FontAwesomeIcon icon={faHotdog} className={cx('category__icon')} />
-            </i>
-            <span className={cx('category__content')}>Hotdog</span>
-          </div>
-        </div>
-        <div className="col">
-          <div className={cx('category__item')}>
-            <i className={cx('wrapper__icon')}>
-              <FontAwesomeIcon icon={faCakeCandles} className={cx('category__icon')} />
-            </i>
-            <span className={cx('category__content')}>Cake</span>
-          </div>
-        </div>
-        <div className="col">
-          <div className={cx('category__item')}>
-            <i className={cx('wrapper__icon')}>
-              <FontAwesomeIcon icon={faShrimp} className={cx('category__icon')} />
-            </i>
-            <span className={cx('category__content')}>Shrimp</span>
-          </div>
-        </div>
-        <div className="col">
-          <div className={cx('category__item')}>
-            <i className={cx('wrapper__icon')}>
-              <FontAwesomeIcon icon={faFish} className={cx('category__icon')} />
-            </i>
-            <span className={cx('category__content')}>Fish</span>
-          </div>
-        </div>
-        <div className="col">
-          <div className={cx('category__item')}>
-            <i className={cx('wrapper__icon')}>
-              <FontAwesomeIcon icon={faCheese} className={cx('category__icon')} />
-            </i>
-            <span className={cx('category__content')}>Cheese</span>
-          </div>
-        </div>
-        <div className="col">
-          <div className={cx('category__item')}>
-            <i className={cx('wrapper__icon')}>
-              <FontAwesomeIcon icon={faCandyCane} className={cx('category__icon')} />
-            </i>
-            <span className={cx('category__content')}>candy</span>
-          </div>
-        </div>
-      </div>
+      <Slider ref={sliderRef} {...sliderChanges}>
+        {categoryRows?.map((categoryPair: CategoryModel[]) => (
+          <Row key={uuid()} className="gy-4 gx-4">
+            <Col>
+              <Stack className={cx('category__item')}>
+                <span className={cx('wrapper__icon')}>
+                  <FontAwesomeIcon icon={categoryPair[0].icon} className={cx('category__icon')} />
+                </span>
+                <span className={cx('category__content')}>{categoryPair[0].name}</span>
+              </Stack>
+            </Col>
+            {categoryPair[1] && (
+              <Col>
+                <Stack className={cx('category__item')}>
+                  <span className={cx('wrapper__icon')}>
+                    <FontAwesomeIcon icon={categoryPair[1].icon} className={cx('category__icon')} />
+                  </span>
+                  <span className={cx('category__content')}>{categoryPair[1].name}</span>
+                </Stack>
+              </Col>
+            )}
+          </Row>
+        ))}
+      </Slider>
+      <Stack className={cx('input__range')}>
+        <input
+          className="d-flex mx-auto mt-4"
+          onChange={(e: ChangeEvent<HTMLInputElement>) => sliderRef.current.slickGoTo(e.target.value)}
+          value={sliderIndex}
+          type="range"
+          min={0}
+          max={totalSlider}
+          step={sliderChanges.slidesToShow}
+        />
+      </Stack>
     </nav>
   );
-}
+};
 
 export default Category;
