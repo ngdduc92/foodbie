@@ -20,7 +20,7 @@ interface CDropdownProps {
   onClick: Function;
 }
 
-export const CDropDown = ({
+export const CDropdown = ({
   variant,
   title,
   options,
@@ -30,10 +30,20 @@ export const CDropDown = ({
   itemClass,
   children,
   active,
-  onClick,
+  onClick
 }: CDropdownProps) => {
   const { t } = useTranslation(NS_COMMON);
   const [id] = useState(uuid());
+
+  const setActive = (label: string, opts: any) => {
+    const newOpts = opts.map((op: any) => {
+      op.active = label === op.label
+      return op;
+    });
+    return newOpts;
+  }
+
+  const [dropdownOptions, setDropdownOptions] = useState([]);
 
   return (
     <DropdownButton
@@ -43,23 +53,27 @@ export const CDropDown = ({
       title={title}
       className={dropdownButtonClasse}
     >
-      <Dropdown.Menu className={menuClasse}>
-        {options.map((data) => {
+      <Dropdown.Menu className={menuClasse} style={{ width: '100vw' }}>
+        {options.map((data: any) => {
           return (
             <div key={uuid()}>
-              <Dropdown.Item className={itemClass} onClick={() => onClick(data)}>
+              <Dropdown.Item
+                className={itemClass}
+                onClick={() => {
+                  setDropdownOptions(setActive(data.label, dropdownOptions))
+                  onClick(data)
+                }}
+              >
                 {data.value}
                 {data.active && <FontAwesomeIcon icon={faCheck} className="text-primary" />}
               </Dropdown.Item>
               {isDivider && <Dropdown.Divider />}
-            </div>
-          );
+            </div>)
         })}
       </Dropdown.Menu>
     </DropdownButton>
   );
 };
-
 interface CSplitDropDownProps {
   variant: string;
   titleButton: string;
@@ -87,28 +101,54 @@ export const CSplitDropDown = ({
   children,
   toggleClasse,
   active,
-  onClick,
+  onClick
 }: CSplitDropDownProps) => {
+
+  const setActive = (label: string, opts: any) => {
+    const newOpts = opts.map((op: any) => {
+      op.active = label === op.label
+      return op;
+    });
+    return newOpts;
+  }
+
+  const [dropdownOptions, setDropdownOptions] = useState([]);
+  const [title, setTitle] = useState(titleToggle);
+
+  useEffect(() => {
+    setDropdownOptions(setActive(titleToggle, options));
+  }, []);
+
   const { t } = useTranslation(NS_COMMON);
   const [id] = useState(uuid());
 
   return (
-    <Dropdown key={uuid()} id="dropdown-split" className={dropdownButtonClasse}>
+    <Dropdown
+      key={uuid()}
+      id="dropdown-split"
+      className={dropdownButtonClasse}
+    >
       {titleButton && <Button variant={variant.toLowerCase()}>{titleButton}</Button>}
       <Dropdown.Toggle split variant={variant.toLowerCase()} className={toggleClasse}>
-        {titleToggle}
+        {title}
       </Dropdown.Toggle>
-      <Dropdown.Menu className={menuClasse}>
-        {options.map((data) => {
+      <Dropdown.Menu className={menuClasse} style={{ width: '100vw' }}>
+        {dropdownOptions?.map((data: any) => {
           return (
             <div key={uuid()}>
-              <Dropdown.Item className={itemClass} onClick={() => onClick(data)}>
+              <Dropdown.Item
+                className={itemClass}
+                onClick={() => {
+                  setDropdownOptions(setActive(data.label, dropdownOptions))
+                  setTitle(data.label);
+                  onClick(data)
+                }}
+              >
                 {data.value}
                 {data.active && <FontAwesomeIcon icon={faCheck} className="text-primary" />}
               </Dropdown.Item>
               {isDivider && <Dropdown.Divider />}
-            </div>
-          );
+            </div>)
         })}
       </Dropdown.Menu>
     </Dropdown>
