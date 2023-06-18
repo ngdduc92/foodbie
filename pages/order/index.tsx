@@ -6,9 +6,8 @@ import { faCircleCheck, faChevronRight } from '@fortawesome/free-solid-svg-icons
 import Footer from '@/components/footer/footer.component';
 import PageLayout from '@/components/page-layout/page-layout.component';
 import { GetStaticProps } from 'next';
-import { ORDER } from '@/constants/constants';
+import { RouteSegments } from '@/enums/route-segments';
 const cx = classNames.bind(styles);
-
 interface OrderProps {
   secure: boolean;
   pageRoute: string;
@@ -72,7 +71,7 @@ export const getStaticProps: GetStaticProps = () => {
   return {
     props: {
       secure: true,
-      pageRoute: ORDER,
+      pageRoute: RouteSegments.ORDER,
     },
   };
 };

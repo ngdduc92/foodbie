@@ -9,7 +9,7 @@ import HeaderOption from '@/components/header-option';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faEye, faEyeSlash, faLock, faUser } from '@fortawesome/free-solid-svg-icons';
 import { Button } from 'react-bootstrap';
-import { HOME } from '@/constants/constants';
+import { RouteSegments } from '@/enums/route-segments';
 
 type Inputs = {
   email: string;
@@ -55,7 +55,7 @@ function Login() {
           if (previousPageParam) {
             router.push(previousPageParam);
           } else {
-            router.push(HOME);
+            router.push(RouteSegments.HOME);
           }
         }
       })

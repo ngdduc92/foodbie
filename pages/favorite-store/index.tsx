@@ -10,8 +10,7 @@ import { useState } from 'react';
 import { Tab, Tabs } from 'react-bootstrap';
 import Dropdown from 'react-bootstrap/Dropdown';
 import styles from './favorite-store.module.scss';
-import { LIKES } from '@/constants/constants';
-
+import { RouteSegments } from '@/enums/route-segments';
 const cx = classNames.bind(styles);
 
 interface FavoriteStoreProps {
@@ -181,7 +180,7 @@ export const getStaticProps: GetStaticProps = () => {
   return {
     props: {
       secure: true,
-      pageRoute: LIKES,
+      pageRoute: RouteSegments.LIKES,
     },
   };
 };

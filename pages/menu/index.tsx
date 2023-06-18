@@ -22,9 +22,8 @@ import {
 import Link from 'next/link';
 import Footer from '@/components/footer/footer.component';
 import authService from '@/services/auth';
-import { HOME } from '@/constants/constants';
 import { useRouter } from 'next/router';
-
+import { RouteSegments } from '@/enums/route-segments';
 const cx = classNames.bind(styles);
 
 export default function SideMenu() {
@@ -33,7 +32,8 @@ export default function SideMenu() {
     authService
       .logout()
       .then((res) => {
-        router.push(HOME);
+        if (!res) return;
+        router.push(RouteSegments.HOME);
       })
       .catch((error) => {
         console.log(error);

@@ -1,7 +1,7 @@
 // @flow
 // @ts-nocheck
+import { RouteSegments } from '@/enums/route-segments';
 import authService from '@/services/auth';
-import { LOGIN } from '@/constants/constants';
 import { useRouter } from 'next/router';
 import type { FunctionComponent } from 'react';
 import { createContext, useContext, useEffect } from 'react';
@@ -33,7 +33,7 @@ export const PageLayout: FunctionComponent<PageProps> = ({
     const apiToken = authService.getToken();
     if (secure && !apiToken) {
       router.push({
-        pathname: LOGIN,
+        pathname: RouteSegments.LOGIN,
         query: { page: pageRoute },
       });
     }

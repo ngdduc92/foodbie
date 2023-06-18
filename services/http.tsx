@@ -1,9 +1,10 @@
 import axios from 'axios';
 import authService from './auth';
 import createAuthRefreshInterceptor from 'axios-auth-refresh';
-import { REFRESH_TOKEN } from '@/constants/constants';
+import { ApiPaths } from '@/enums/api-paths';
+import { RouteSegments } from '@/enums/route-segments';
 
-const BASE_URI = process.env.NEXT_PUBLIC_BASE_URI || 'http://foobbie.com:5000';
+const BASE_URI = process.env.NEXT_PUBLIC_BASE_URI || 'http://foobbie.com:5000/api';
 
 const refreshTokenInstance = axios.create();
 
@@ -11,7 +12,7 @@ const controller = new AbortController();
 
 const refreshAuthLogic = async (failedRequest: any) => {
   if (contains(failedRequest.request.responseURL, ['refresh', 'logout', 'login'])) return;
-  const refreshToken = await refreshTokenInstance.get(`${BASE_URI}/${REFRESH_TOKEN}`, getDefaultOptions());
+  const refreshToken = await refreshTokenInstance.get(`${BASE_URI}/${ApiPaths.REFRESH_TOKEN}`, getDefaultOptions());
   if (!refreshToken) return;
   localStorage.setItem('API_TOKEN', refreshToken.data);
   failedRequest.response.config.headers['Authorization'] = 'Bearer ' + authService.getToken();
@@ -21,7 +22,7 @@ refreshTokenInstance.interceptors.response.use(
   (response) => response,
   (error) => {
     controller.abort();
-    window.location.href = '/login';
+    window.location.href = RouteSegments.LOGIN;
     return;
   },
 );
