@@ -1,10 +1,10 @@
 // The dropdown wrapper (`<div>`)
-.dropup,
-.dropend,
-.dropdown,
-.dropstart {
-  position: relative;
-}
+// .dropup,
+// .dropend,
+// .dropdown,
+// .dropstart {
+//   position: relative;
+// }
 
 .dropdown-toggle {
   white-space: nowrap;
@@ -15,6 +15,7 @@
 
 // The dropdown menu
 .dropdown-menu {
+  left: 0%;
   position: absolute;
   z-index: $zindex-dropdown;
   display: none; // none by default, but block on "open" of the menu
