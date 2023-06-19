@@ -8,28 +8,24 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faCheck } from '@fortawesome/free-solid-svg-icons';
 
 interface CDropdownProps {
-  variant: string;
-  title: string;
+  variant?: string;
   options: any[];
-  isDivider: boolean;
-  dropdownButtonClasse: string;
-  menuClasse: string;
-  itemClass: string;
-  children: any;
-  active: string | number;
+  isDivider?: boolean;
+  dropdownClasse?: string;
+  toggleClasse?: string;
+  menuClasse?: string;
+  itemClass?: string;
   onClick: Function;
 }
 
 export const CDropdown = ({
-  variant,
-  title,
+  variant = 'light',
   options,
-  isDivider,
-  dropdownButtonClasse,
+  isDivider = true,
+  dropdownClasse,
+  toggleClasse,
   menuClasse,
   itemClass,
-  children,
-  active,
   onClick
 }: CDropdownProps) => {
   const { t } = useTranslation(NS_COMMON);
@@ -43,35 +39,40 @@ export const CDropdown = ({
     return newOpts;
   }
 
-  const [dropdownOptions, setDropdownOptions] = useState([]);
+  const [title, setTitle] = useState(options.find(o => o.active == true).label);
 
+  const [dropdownOptions, setDropdownOptions] = useState(options);
   return (
-    <DropdownButton
+    <Dropdown
       key={uuid()}
       id={'dropdown-variants'}
-      variant={variant.toLowerCase()}
-      title={title}
-      className={dropdownButtonClasse}
-    >
+      className={dropdownClasse}>
+      <Dropdown.Toggle
+        variant={variant.toLowerCase()}
+        className={toggleClasse}
+      >
+        {title}
+      </Dropdown.Toggle>
       <Dropdown.Menu className={menuClasse} style={{ width: '100vw' }}>
-        {options.map((data: any) => {
+        {dropdownOptions.map((data: any) => {
           return (
             <div key={uuid()}>
               <Dropdown.Item
-                className={itemClass}
+                className={`${itemClass} py-3 text-dark`}
                 onClick={() => {
                   setDropdownOptions(setActive(data.label, dropdownOptions))
+                  setTitle(data.label);
                   onClick(data)
                 }}
               >
-                {data.value}
+                {data.label}
                 {data.active && <FontAwesomeIcon icon={faCheck} className="text-primary" />}
               </Dropdown.Item>
               {isDivider && <Dropdown.Divider />}
             </div>)
         })}
       </Dropdown.Menu>
-    </DropdownButton>
+    </Dropdown>
   );
 };
 interface CSplitDropDownProps {
@@ -128,8 +129,9 @@ export const CSplitDropDown = ({
       id="dropdown-split"
       className={dropdownButtonClasse}
     >
-      {titleButton && <Button variant={variant.toLowerCase()}>{titleButton}</Button>}
-      <Dropdown.Toggle split variant={variant.toLowerCase()} className={toggleClasse}>
+      {titleButton &&
+        <Button variant={variant?.toLowerCase()}>{titleButton}</Button>}
+      <Dropdown.Toggle split variant={variant?.toLowerCase()} className={toggleClasse}>
         {title}
       </Dropdown.Toggle>
       <Dropdown.Menu className={menuClasse} style={{ width: '100vw' }}>
@@ -137,7 +139,7 @@ export const CSplitDropDown = ({
           return (
             <div key={uuid()}>
               <Dropdown.Item
-                className={itemClass}
+                className={`${itemClass} py-3 border border-light text-dark`}
                 onClick={() => {
                   setDropdownOptions(setActive(data.label, dropdownOptions))
                   setTitle(data.label);

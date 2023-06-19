@@ -6,3 +6,4 @@ export interface Order {
   image: string;
   menu: object[];
 }
+

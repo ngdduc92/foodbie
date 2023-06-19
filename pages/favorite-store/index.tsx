@@ -3,7 +3,6 @@ import HeaderOption from '@/components/header-option';
 import PageLayout from '@/components/page-layout/page-layout.component';
 import { uuid } from '@/components/utils';
 import { faCheck, faCircleCheck, faHeart, faStar } from '@fortawesome/free-solid-svg-icons';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import classNames from 'classnames/bind';
 import { GetStaticProps } from 'next';
 import { useState } from 'react';
@@ -11,6 +10,8 @@ import { Tab, Tabs } from 'react-bootstrap';
 import Dropdown from 'react-bootstrap/Dropdown';
 import styles from './favorite-store.module.scss';
 import { RouteSegments } from '@/enums/route-segments';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+
 const cx = classNames.bind(styles);
 
 interface FavoriteStoreProps {
