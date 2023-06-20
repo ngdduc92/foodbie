@@ -4,7 +4,7 @@ import Category from '../components/category/category.component';
 import Layout from '@/components/layout/layout.component';
 import SliderBanner from '../components/slider-banner/slider-banner.component';
 import Product from '@/components/product/product.component';
-import { DATA_PRODUCTS, SHOP_DATA_SUGGEST, SHOP_DATA_WHAT_EAT_TODAY } from '@/constants/constants';
+import { CATEGORY_DATA, DATA_PRODUCTS, SHOP_DATA_SUGGEST, SHOP_DATA_WHAT_EAT_TODAY } from '@/constants/constants';
 
 import { Tab, Tabs } from 'react-bootstrap';
 import CSlider from '@/shared/components/slider';
@@ -13,7 +13,7 @@ export default function Home() {
   return (
     <Layout>
       <SliderBanner />
-      <Category />
+      <Category categories={CATEGORY_DATA} />
       <div className="large__line my-4"></div>
       <CSlider
         title="What should you eat today?"

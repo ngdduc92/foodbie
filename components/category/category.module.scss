@@ -1,4 +1,4 @@
-@use '../../styles/base' as *;
+@use "../../styles/base" as *;
 
 .category__item {
   @include flex(center, space-evenly);
@@ -47,11 +47,20 @@
   text-transform: capitalize;
 }
 
-// @include mobile {
-//   .category__list {
-//     justify-content: unset;
-//   }
-//   .category__item {
-//     min-width: 96px;
-//   }
-// }
+.input__range {
+  padding: 2rem;
+  input[type="range"] {
+    -webkit-appearance: none !important;
+    appearance: none !important;
+    background: #ccc;
+    height: 8px;
+    border-radius: 1rem;
+  }
+  input[type="range"]::-webkit-slider-thumb {
+    -webkit-appearance: none !important;
+    background: $primary-color;
+    height: 8px;
+    width: 50%;
+    border-radius: 1rem;
+  }
+}
