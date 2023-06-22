@@ -8,6 +8,7 @@ import { CATEGORY_DATA, DATA_PRODUCTS, SHOP_DATA_SUGGEST, SHOP_DATA_WHAT_EAT_TOD
 
 import { Tab, Tabs } from 'react-bootstrap';
 import CSlider from '@/shared/components/slider';
+import Shops from '@/components/shops/shops';
 
 export default function Home() {
   return (
@@ -30,12 +31,12 @@ export default function Home() {
       <Tabs id="menu-tabs" defaultActiveKey="nearby" className="mb-2" fill>
         <Tab eventKey="nearby" title="Nearby" tabClassName="fw-bold">
           <div className="mb-5 pb-5">
-            <Product dataProduct={DATA_PRODUCTS} />
+            <Shops />
           </div>
         </Tab>
         <Tab eventKey="rating" title="Rating" tabClassName="fw-bold">
           <div className="mb-5 pb-5">
-            <Product dataProduct={DATA_PRODUCTS} />
+            <Shops />
           </div>
         </Tab>
       </Tabs>
